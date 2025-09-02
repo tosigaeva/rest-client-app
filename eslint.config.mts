@@ -1,8 +1,9 @@
 import path from 'node:path';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
 import { defineConfig } from 'eslint/config';
+import perfectionist from 'eslint-plugin-perfectionist';
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
 
 export default defineConfig([
   {
@@ -18,7 +19,8 @@ export default defineConfig([
 
   js.configs.recommended,
   tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  perfectionist.configs['recommended-natural'],
+  eslintPluginPrettier,
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -26,10 +28,6 @@ export default defineConfig([
         project: './tsconfig.json',
         tsconfigRootDir: path.join(process.cwd()),
       },
-    },
-    rules: {
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-uses-react': 'off',
     },
     settings: {
       react: {
