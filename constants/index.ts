@@ -4,4 +4,4 @@ export const AUTHOR_GITHUBS: { name: string; url: string }[] = [
   { name: 'Yulia', url: 'https://github.com/YuliaDemir' },
 ];
 
-export const RSS_LINK = "https://rs.school/courses/reactjs";
+export const RSS_LINK = 'https://rs.school/courses/reactjs';
