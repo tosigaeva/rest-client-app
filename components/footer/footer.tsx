@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { AUTHOR_GITHUBS } from '@/constants';
+import Image from 'next/image';
+import { AUTHOR_GITHUBS, RSS_LINK } from '@/constants';
 
 export const Footer = () => {
   return (
@@ -15,8 +16,8 @@ export const Footer = () => {
 
         <span className="text-sm">&copy; 2025 REST Client App </span>
 
-        <Link href="https://rs.school/courses/reactjs" target="_blank">
-          6666
+        <Link href={RSS_LINK} target="_blank">
+          <Image src=".logos/rss-logo.svg" alt="RS School"/>
         </Link>
       </div>
     </footer>
