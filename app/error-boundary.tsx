@@ -1,4 +1,5 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react';
+import { Button } from '@/components/ui/button';
+import { Component, type ReactNode } from 'react';
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -17,10 +18,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('Error caught by Error Boundary:', error, errorInfo);
-  }
-
   handleTryAgain = () => {
     this.setState({ hasError: false });
   };
@@ -31,6 +28,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         <>
           <section className="flex flex-col justify-center gap-6">
             <h1 className="font-bold uppercase">Something went wrong.</h1>
+            <Button onClick={this.handleTryAgain}>Try Again</Button>
           </section>
         </>
       );
