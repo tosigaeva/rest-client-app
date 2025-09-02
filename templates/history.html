@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>History</title>
+  <link href="/layout-6/output.css" rel="stylesheet">
+</head>
+<body>
+<main class="flex-1 p-8 space-y-6">
+  <div class="bg-glass p-6 rounded-2xl shadow border border-bg-300">
+    <h2 class="text-xl font-semibold text-text mb-4">History</h2>
+    <ul class="space-y-3">
+      <li class="flex justify-between items-center p-3 bg-bg-100 rounded-lg border border-bg-300">
+        <span class="text-sm text-text"><strong>GET</strong> /users</span>
+        <button class="px-3 py-1 bg-accent-300 rounded hover:bg-accent-500 hover:text-white">Replay</button>
+      </li>
+      <li class="flex justify-between items-center p-3 bg-bg-100 rounded-lg border border-bg-300">
+        <span class="text-sm text-text"><strong>POST</strong> /login</span>
+        <button class="px-3 py-1 bg-accent-300 rounded hover:bg-accent-500 hover:text-white">Replay</button>
+      </li>
+    </ul>
+  </div>
+</main>
+<main class="flex-1 p-6 space-y-6">
+  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h2 class="text-xl font-semibold text-text mb-4">History</h2>
+    <ul class="space-y-2">
+      <li class="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition cursor-pointer">
+        <span class="text-sm text-text"><strong>GET</strong> https://jsonplaceholder.typicode.com/posts/1</span>
+      </li>
+      <li class="p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition cursor-pointer">
+        <span class="text-sm text-text"><strong>POST</strong> https://jsonplaceholder.typicode.com/posts</span>
+      </li>
+    </ul>
+    <p class="text-gray-500 mt-4">Click on a request to restore it in the REST Client.</p>
+  </div>
+</main>
+</body>
+</html>
