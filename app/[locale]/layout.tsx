@@ -14,7 +14,6 @@ export default async function LocaleLayout({
     <html lang={(await params).locale || 'en'}>
       <body>
         {children}
-        <Footer />
       </body>
     </html>
   );
