@@ -4,7 +4,7 @@ import type { ReactNode } from 'react';
 export default async function LocaleLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      {children}
+      <main className="flex-1">{children}</main>
       <Footer />
     </>
   );

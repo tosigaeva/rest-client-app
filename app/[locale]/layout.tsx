@@ -11,7 +11,7 @@ export default async function LocaleLayout({
 }) {
   return (
     <html lang={(await params).locale || 'en'}>
-      <body>{children}</body>
+      <body className="flex min-h-screen flex-col">{children}</body>
     </html>
   );
 }
