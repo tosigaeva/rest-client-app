@@ -1,78 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Auth with error</title>
-  <link href="/layout-6/output.css" rel="stylesheet">
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Auth</title>
-  <link href="/layout-6/output.css" rel="stylesheet">
-</head>
-<body>
-<div class="flex flex-col min-h-screen bg-bg-50 backdrop-blur-sm">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Auth with error</title>
+    <link href="/layout-6/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Auth</title>
+        <link href="/layout-6/output.css" rel="stylesheet" />
+      </head>
+      <body>
+        <div class="bg-bg-50 flex min-h-screen flex-col backdrop-blur-sm">
+          <!-- Header -->
+          <header
+            class="bg-glass text-text w-full p-4 text-center font-semibold shadow-md backdrop-blur-md"
+          >
+            REST Client
+          </header>
 
-  <!-- Header -->
-  <header class="w-full bg-glass backdrop-blur-md shadow-md p-4 text-center text-text font-semibold">
-    REST Client
-  </header>
+          <!-- Main -->
+          <main class="flex flex-1 items-center justify-center">
+            <div
+              class="bg-glass border-bg-300 max-w-md rounded-2xl border p-8 shadow-xl backdrop-blur-lg"
+            >
+              <h1 class="text-text mb-4 text-center text-2xl font-bold">Sign In</h1>
 
-  <!-- Main -->
-  <main class="flex-1 flex items-center justify-center">
-    <div class="bg-glass backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-bg-300 max-w-md">
-      <h1 class="text-2xl font-bold text-text mb-4 text-center">Sign In</h1>
+              <!-- Email -->
+              <div class="mb-3">
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Email"
+                  class="border-bg-300 bg-bg-100 text-text focus:ring-accent-300 w-full rounded-lg border px-3 py-2 transition focus:ring-2"
+                />
+                <p id="error-email" class="text-error mt-1 hidden text-sm">Invalid email</p>
+              </div>
 
-      <!-- Email -->
-      <div class="mb-3">
-        <input id="email" type="email" placeholder="Email"
-               class="w-full px-3 py-2 rounded-lg border border-bg-300 bg-bg-100 text-text focus:ring-2 focus:ring-accent-300 transition" />
-        <p id="error-email" class="text-sm text-error mt-1 hidden">Invalid email</p>
-      </div>
+              <!-- Password -->
+              <div class="mb-4">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                  class="border-bg-300 bg-bg-100 text-text focus:ring-accent-300 w-full rounded-lg border px-3 py-2 transition focus:ring-2"
+                />
+                <p id="error-password" class="text-error mt-1 hidden text-sm">Invalid password</p>
+              </div>
 
-      <!-- Password -->
-      <div class="mb-4">
-        <input id="password" type="password" placeholder="Password"
-               class="w-full px-3 py-2 rounded-lg border border-bg-300 bg-bg-100 text-text focus:ring-2 focus:ring-accent-300 transition" />
-        <p id="error-password" class="text-sm text-error mt-1 hidden">Invalid password</p>
-      </div>
+              <!-- Login Button -->
+              <button
+                id="login-btn"
+                class="bg-accent-500 hover:bg-accent-300 w-full rounded-xl py-2 text-white shadow transition"
+              >
+                Login
+              </button>
 
-      <!-- Login Button -->
-      <button id="login-btn" class="w-full py-2 bg-accent-500 text-white rounded-xl shadow hover:bg-accent-300 transition">
-        Login
-      </button>
+              <!-- General Error -->
+              <p id="error-general" class="text-error mt-4 hidden text-center text-sm">
+                Invalid email or password
+              </p>
 
-      <!-- General Error -->
-      <p id="error-general" class="text-sm text-error mt-4 text-center hidden">Invalid email or password</p>
+              <!-- Register Link -->
+              <p class="text-muted mt-4 text-center text-sm">
+                Don't have an account?
+                <a href="#" class="text-accent-500 hover:underline">Register</a>
+              </p>
+            </div>
+          </main>
 
-      <!-- Register Link -->
-      <p class="mt-4 text-center text-muted text-sm">
-        Don't have an account? <a href="#" class="text-accent-500 hover:underline">Register</a>
-      </p>
-    </div>
-  </main>
+          <!-- Footer -->
+          <footer
+            class="bg-glass border-bg-300 text-muted w-full border-t py-4 text-center text-sm backdrop-blur-md"
+          >
+            &copy; 2025 REST Client App
+          </footer>
+        </div>
 
-  <!-- Footer -->
-  <footer class="w-full bg-glass backdrop-blur-md border-t border-bg-300 py-4 text-center text-muted text-sm">
-    &copy; 2025 REST Client App
-  </footer>
-</div>
+        <script>
+          // Пример: показать ошибку при клике на Login
+          const loginBtn = document.getElementById('login-btn');
+          const errorGeneral = document.getElementById('error-general');
 
-<script>
-  // Пример: показать ошибку при клике на Login
-  const loginBtn = document.getElementById('login-btn');
-  const errorGeneral = document.getElementById('error-general');
-
-  loginBtn.addEventListener('click', () => {
-    // показываем общую ошибку
-    errorGeneral.classList.remove('hidden');
-  });
-</script>
-</body>
-</html>
-
-</body>
+          loginBtn.addEventListener('click', () => {
+            // показываем общую ошибку
+            errorGeneral.classList.remove('hidden');
+          });
+        </script>
+      </body>
+    </html>
+  </body>
 </html>

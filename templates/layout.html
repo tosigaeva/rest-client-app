@@ -1,87 +1,120 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Layout</title>
-  <link href="/layout-6/output.css" rel="stylesheet">
-</head>
-<body>
-<div class="flex flex-col min-h-screen bg-bg-50 backdrop-blur-sm">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Layout</title>
+    <link href="/layout-6/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="bg-bg-50 flex min-h-screen flex-col backdrop-blur-sm">
+      <!-- Header -->
+      <header class="bg-glass sticky top-0 z-10 w-full shadow-md backdrop-blur-md">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <div class="text-text text-xl font-semibold">REST Client</div>
+          <div class="flex gap-3">
+            <select class="bg-bg-100 text-text rounded border px-2 py-1">
+              EN
+            </select>
+            <button
+              class="bg-accent-500 hover:bg-accent-300 rounded-lg px-3 py-1 text-white shadow transition"
+            >
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </header>
 
-  <!-- Header -->
-  <header class="w-full bg-glass backdrop-blur-md shadow-md sticky top-0 z-10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <div class="text-xl font-semibold text-text">REST Client</div>
-      <div class="flex gap-3">
-        <select class="border rounded px-2 py-1 bg-bg-100 text-text">EN</select>
-        <button class="px-3 py-1 bg-accent-500 text-white rounded-lg shadow hover:bg-accent-300 transition">
-          Sign Out
-        </button>
+      <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside
+          class="bg-glass border-bg-300 flex w-64 flex-col gap-3 border-r p-4 backdrop-blur-md"
+        >
+          <a
+            href="#"
+            class="hover:bg-accent-300 text-text rounded-lg px-3 py-2 transition hover:text-white"
+            >REST Client</a
+          >
+          <a
+            href="#"
+            class="hover:bg-accent-300 text-text rounded-lg px-3 py-2 transition hover:text-white"
+            >History</a
+          >
+          <a
+            href="#"
+            class="hover:bg-accent-300 text-text rounded-lg px-3 py-2 transition hover:text-white"
+            >Variables</a
+          >
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 space-y-6 p-8">
+          <!-- Welcome Card -->
+          <div class="bg-glass border-bg-300 rounded-2xl border p-6 shadow backdrop-blur-lg">
+            <h1 class="text-text mb-2 text-2xl font-bold">Welcome Back!</h1>
+            <p class="text-muted">Use the sidebar to navigate through your workspace.</p>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+            <div class="bg-glass border-bg-300 rounded-xl border p-6 shadow">
+              <h2 class="text-text mb-2 text-lg font-semibold">New Request</h2>
+              <p class="text-muted mb-3">Create a new REST request</p>
+              <button
+                class="bg-accent-500 hover:bg-accent-300 rounded-lg px-4 py-2 text-white shadow transition"
+              >
+                Open
+              </button>
+            </div>
+            <div class="bg-glass border-bg-300 rounded-xl border p-6 shadow">
+              <h2 class="text-text mb-2 text-lg font-semibold">History</h2>
+              <p class="text-muted mb-3">View previous requests</p>
+              <button
+                class="bg-accent-500 hover:bg-accent-300 rounded-lg px-4 py-2 text-white shadow transition"
+              >
+                View
+              </button>
+            </div>
+            <div class="bg-glass border-bg-300 rounded-xl border p-6 shadow">
+              <h2 class="text-text mb-2 text-lg font-semibold">Variables</h2>
+              <p class="text-muted mb-3">Manage your environment variables</p>
+              <button
+                class="bg-accent-500 hover:bg-accent-300 rounded-lg px-4 py-2 text-white shadow transition"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+          <!-- or Quick Actions -->
+          <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div class="bg-glass border-bg-300 rounded-xl border p-6 shadow">
+              <h2 class="text-text mb-2 text-lg font-semibold">New Request</h2>
+              <p class="text-muted mb-3">Create a new REST request</p>
+              <button
+                class="bg-accent-500 hover:bg-accent-300 rounded-lg px-4 py-2 text-white shadow transition"
+              >
+                Open
+              </button>
+            </div>
+
+            <div class="bg-glass border-bg-300 rounded-xl border p-6 shadow">
+              <h2 class="text-text mb-2 text-lg font-semibold">Import Collection</h2>
+              <p class="text-muted mb-3">Upload a saved API collection</p>
+              <button
+                class="bg-accent-500 hover:bg-accent-300 rounded-lg px-4 py-2 text-white shadow transition"
+              >
+                Import
+              </button>
+            </div>
+          </div>
+        </main>
       </div>
+
+      <!-- Footer -->
+      <footer
+        class="bg-glass border-bg-300 text-muted w-full border-t py-4 text-center text-sm backdrop-blur-md"
+      >
+        &copy; 2025 REST Client App | <a href="#" class="hover:text-accent-500">GitHub</a>
+      </footer>
     </div>
-  </header>
-
-  <div class="flex flex-1">
-    <!-- Sidebar -->
-    <aside class="w-64 bg-glass backdrop-blur-md p-4 flex flex-col gap-3 border-r border-bg-300">
-      <a href="#" class="px-3 py-2 rounded-lg hover:bg-accent-300 hover:text-white text-text transition">REST Client</a>
-      <a href="#" class="px-3 py-2 rounded-lg hover:bg-accent-300 hover:text-white text-text transition">History</a>
-      <a href="#" class="px-3 py-2 rounded-lg hover:bg-accent-300 hover:text-white text-text transition">Variables</a>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="flex-1 p-8 space-y-6">
-      <!-- Welcome Card -->
-      <div class="bg-glass backdrop-blur-lg p-6 rounded-2xl shadow border border-bg-300">
-        <h1 class="text-2xl font-bold text-text mb-2">Welcome Back!</h1>
-        <p class="text-muted">Use the sidebar to navigate through your workspace.</p>
-      </div>
-
-      <!-- Quick Actions -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-glass p-6 rounded-xl shadow border border-bg-300">
-          <h2 class="text-lg font-semibold text-text mb-2">New Request</h2>
-          <p class="text-muted mb-3">Create a new REST request</p>
-          <button class="px-4 py-2 bg-accent-500 text-white rounded-lg hover:bg-accent-300 transition shadow">Open</button>
-        </div>
-        <div class="bg-glass p-6 rounded-xl shadow border border-bg-300">
-          <h2 class="text-lg font-semibold text-text mb-2">History</h2>
-          <p class="text-muted mb-3">View previous requests</p>
-          <button class="px-4 py-2 bg-accent-500 text-white rounded-lg hover:bg-accent-300 transition shadow">View</button>
-        </div>
-        <div class="bg-glass p-6 rounded-xl shadow border border-bg-300">
-          <h2 class="text-lg font-semibold text-text mb-2">Variables</h2>
-          <p class="text-muted mb-3">Manage your environment variables</p>
-          <button class="px-4 py-2 bg-accent-500 text-white rounded-lg hover:bg-accent-300 transition shadow">Edit</button>
-        </div>
-      </div>
-      <!-- or Quick Actions -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-glass p-6 rounded-xl shadow border border-bg-300">
-          <h2 class="text-lg font-semibold text-text mb-2">New Request</h2>
-          <p class="text-muted mb-3">Create a new REST request</p>
-          <button class="px-4 py-2 bg-accent-500 text-white rounded-lg hover:bg-accent-300 transition shadow">
-            Open
-          </button>
-        </div>
-
-        <div class="bg-glass p-6 rounded-xl shadow border border-bg-300">
-          <h2 class="text-lg font-semibold text-text mb-2">Import Collection</h2>
-          <p class="text-muted mb-3">Upload a saved API collection</p>
-          <button class="px-4 py-2 bg-accent-500 text-white rounded-lg hover:bg-accent-300 transition shadow">
-            Import
-          </button>
-        </div>
-      </div>
-
-    </main>
-  </div>
-
-  <!-- Footer -->
-  <footer class="w-full bg-glass backdrop-blur-md border-t border-bg-300 py-4 text-center text-muted text-sm">
-    &copy; 2025 REST Client App | <a href="#" class="hover:text-accent-500">GitHub</a>
-  </footer>
-</div>
-
-</body>
+  </body>
 </html>

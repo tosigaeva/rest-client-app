@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         destination: '/en',
         permanent: true,
       },
-    ]
+    ];
   },
 };
 

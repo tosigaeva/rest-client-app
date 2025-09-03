@@ -1,6 +1,4 @@
-
-
-@import "tailwindcss";
+@import 'tailwindcss';
 @theme {
   /* Нейтральные светлые оттенки */
   --color-bg-50: hsl(210 20% 98% / 0.6);
@@ -19,5 +17,4 @@
   --color-accent-300: hsl(200 90% 70% / 0.8);
 
   --color-error: hsl(0 75% 55% / 0.9);
-
 }

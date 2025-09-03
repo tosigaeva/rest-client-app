@@ -1,41 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Auth</title>
-  <link href="/layout-6/output.css" rel="stylesheet">
-</head>
-<body>
-<div class="flex flex-col min-h-screen bg-bg-50 backdrop-blur-sm">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Auth</title>
+    <link href="/layout-6/output.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="bg-bg-50 flex min-h-screen flex-col backdrop-blur-sm">
+      <!-- Header -->
+      <header class="bg-glass sticky top-0 z-10 w-full shadow-md backdrop-blur-md">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <div class="text-text text-xl font-semibold">REST Client</div>
+          <div class="flex gap-3">
+            <select class="bg-bg-100 text-text rounded border px-2 py-1">
+              EN
+            </select>
+          </div>
+        </div>
+      </header>
 
-  <!-- Header -->
-  <header class="w-full bg-glass backdrop-blur-md shadow-md sticky top-0 z-10">
-    <div class="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-      <div class="text-xl font-semibold text-text">REST Client</div>
-      <div class="flex gap-3">
-        <select class="border rounded px-2 py-1 bg-bg-100 text-text">EN</select>
-      </div>
+      <!-- Main -->
+      <main class="flex flex-1 items-center justify-center">
+        <div
+          class="bg-glass border-bg-300 max-w-md rounded-2xl border p-8 shadow-xl backdrop-blur-lg"
+        >
+          <h1 class="text-text mb-4 text-center text-2xl font-bold">Sign In</h1>
+          <input
+            type="email"
+            placeholder="Email"
+            class="border-bg-300 bg-bg-100 text-text mb-4 w-full rounded-lg border px-3 py-2"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            class="border-bg-300 bg-bg-100 text-text mb-5 w-full rounded-lg border px-3 py-2"
+          />
+          <button
+            class="bg-accent-500 hover:bg-accent-300 w-full rounded-xl py-2 text-white shadow transition"
+          >
+            Login
+          </button>
+          <p class="text-muted mt-4 text-center text-sm">
+            Don't have an account? <a href="#" class="text-accent-500 hover:underline">Register</a>
+          </p>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer
+        class="bg-glass border-bg-300 text-muted w-full border-t py-4 text-center text-sm backdrop-blur-md"
+      >
+        &copy; 2025 REST Client App
+      </footer>
     </div>
-  </header>
-
-  <!-- Main -->
-  <main class="flex-1 flex items-center justify-center">
-    <div class="bg-glass backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-bg-300 max-w-md">
-      <h1 class="text-2xl font-bold text-text mb-4 text-center">Sign In</h1>
-      <input type="email" placeholder="Email" class="w-full mb-4 px-3 py-2 rounded-lg border border-bg-300 bg-bg-100 text-text" />
-      <input type="password" placeholder="Password" class="w-full mb-5 px-3 py-2 rounded-lg border border-bg-300 bg-bg-100 text-text" />
-      <button class="w-full py-2 bg-accent-500 text-white rounded-xl shadow hover:bg-accent-300 transition">Login</button>
-      <p class="mt-4 text-center text-muted text-sm">
-        Don't have an account? <a href="#" class="text-accent-500 hover:underline">Register</a>
-      </p>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="w-full bg-glass backdrop-blur-md border-t border-bg-300 py-4 text-center text-muted text-sm">
-    &copy; 2025 REST Client App
-  </footer>
-</div>
-
-</body>
+  </body>
 </html>
