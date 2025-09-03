@@ -1,4 +1,3 @@
-import { Footer } from '@/components';
 import type { Locale } from '@/constants';
 
 import type { ReactNode } from 'react';
@@ -12,9 +11,7 @@ export default async function LocaleLayout({
 }) {
   return (
     <html lang={(await params).locale || 'en'}>
-      <body>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
