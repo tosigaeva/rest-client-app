@@ -1,6 +1,6 @@
-import type { Locale } from '@/constants';
-
 import type { ReactNode } from 'react';
+
+import type { Locale } from '@/constants';
 
 export default async function LocaleLayout({
   children,

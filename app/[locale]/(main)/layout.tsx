@@ -1,5 +1,6 @@
-import { Footer } from '@/components';
 import type { ReactNode } from 'react';
+
+import { Footer } from '@/components';
 
 export default async function LocaleLayout({ children }: { children: ReactNode }) {
   return (
