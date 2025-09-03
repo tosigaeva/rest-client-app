@@ -5,6 +5,12 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { Button } from '../ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
 
 export const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -39,6 +45,24 @@ export const Header = () => {
           >
             Main
           </Link>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button className="cursor-pointer" variant="outline">
+                Language Toggle
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onSelect={() => alert('Selected: Russian')}>
+                Russian
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => alert('Selected: English')}>
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => alert('Selected: English')}>
+                Belarusian
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button className="cursor-pointer">Sing In</Button>
           <Button className="cursor-pointer">Sing Up</Button>
         </div>

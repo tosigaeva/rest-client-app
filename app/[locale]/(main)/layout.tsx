@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
-import { Footer } from '@/components/footer/footer';
-import { Header } from '@/components/header/header';
+import { Footer } from '@/components';
+import { Header } from '@/components';
 
 export default async function LocaleLayout({ children }: { children: ReactNode }) {
   return (
