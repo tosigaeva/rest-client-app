@@ -22,7 +22,7 @@ export const Footer = () => {
         <span className="text-sm">&copy; 2025 REST Client App </span>
 
         <Link href={RSS_LINK} target="_blank">
-          <img src=".logos/rss-logo.svg" alt="RS School"/>
+          <Image src="rss-logo.svg" alt="RS School logo" width={50} height={50} />
         </Link>
       </div>
     </footer>
