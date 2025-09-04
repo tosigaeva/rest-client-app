@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { flexRow } from '@/constants/css-constants';
 
 import { Input } from '../ui/input';
 
@@ -18,9 +17,9 @@ export const RestMain = () => {
   const [url, setUrl] = useState<string>('');
 
   return (
-    <div className={flexRow}>
+    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
       <Select>
-        <SelectTrigger className="mb-4 flex w-[180px] gap-3">
+        <SelectTrigger className="w-[140px] rounded-md border-neutral-300 dark:border-neutral-700">
           <SelectValue placeholder="Method" />
         </SelectTrigger>
         <SelectContent>
@@ -32,7 +31,7 @@ export const RestMain = () => {
         </SelectContent>
       </Select>
       <Input
-        className=""
+        className="min-w-[200px] flex-1"
         onChange={(e) => setUrl(e.target.value)}
         placeholder="Endpoint URL"
         type="text"
