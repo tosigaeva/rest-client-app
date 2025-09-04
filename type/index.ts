@@ -1,3 +1,5 @@
+import { HTTP_METHODS } from '@/constants';
+
 export const locales = ['en', 'ru', 'be'] as const;
 export interface Header {
   headerKey: string;
@@ -5,8 +7,13 @@ export interface Header {
 }
 
 export interface Headers {
+  body: string;
   header: Header;
   headers: Header[];
+  method: HttpMethod;
+  url: string;
 }
+
+export type HttpMethod = (typeof HTTP_METHODS)[number];
 
 export type Locale = (typeof locales)[number];
