@@ -1,4 +1,11 @@
-import { LANGUAGES } from '@/constants';
+'use client';
+
+import { useLocale } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
+import { GrLanguage } from 'react-icons/gr';
+
+import { usePathname, useRouter } from '@/i18n/navigation';
+import { routing } from '@/i18n/routing';
 
 import { Button } from '../ui/button';
 import {
@@ -9,17 +16,31 @@ import {
 } from '../ui/dropdown-menu';
 
 export const LanguageSelect = () => {
+  const locale = useLocale();
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const locales = routing.locales;
+
+  const handleLanguageChange = (language: typeof locale): void => {
+    const params = searchParams.toString();
+    const url = params ? `${pathname}?${params}` : pathname;
+    router.push(url, { locale: language });
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button className="cursor-pointer" variant="outline">
-          Language Toggle
+          <GrLanguage className="mr-1 h-5 w-5" />
+          {locale.toUpperCase()}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {LANGUAGES.map((lang) => (
-          <DropdownMenuItem key={lang.code} onSelect={() => alert(`Selected: ${lang.name}`)}>
-            {lang.name}
+        {locales.map((lang) => (
+          <DropdownMenuItem key={lang} onSelect={() => handleLanguageChange(lang)}>
+            {lang}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
