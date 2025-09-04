@@ -12,6 +12,8 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+import { Wrapper } from '@/components/wrapper/wrapper';
+
 export const metadata: Metadata = {
   description: 'The REST client for using and building APIs',
   title: 'RestCafé',
@@ -31,7 +33,8 @@ export default async function RootLayout({
   return (
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider><Wrapper>{children}</Wrapper></NextIntlClientProvider>
+        
       </body>
     </html>
   );

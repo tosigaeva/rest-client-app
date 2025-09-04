@@ -1,3 +1,5 @@
+import { Header } from '@/type';
+
 export const AUTHOR_GITHUBS: { name: string; url: string }[] = [
   { name: 'Anastasiia', url: 'https://github.com/tosigaeva' },
   { name: 'Ekaterina', url: 'https://github.com/ekaterina-cat' },
@@ -32,3 +34,7 @@ export const DEVELOPERS = [
     name: 'Katsiaryna',
   },
 ];
+export const locales = ['en', 'ru', 'be'] as const;
+export type Locale = (typeof locales)[number];
+
+export const EMPTY_HEADER: Header = { headerKey: '', value: '' };
