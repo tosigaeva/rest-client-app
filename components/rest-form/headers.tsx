@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EMPTY_HEADER } from '@/constants';
-import { flexRow } from '@/constants/css-constants';
 import { addHeader, removeHeader } from '@/store/header-slice';
 import { RootState } from '@/store/store';
 import { Header } from '@/type';
@@ -23,16 +22,18 @@ export const RestHeaders = () => {
   }
 
   return (
-    <div className="headers-section">
-      <div className={flexRow}>
-        <h3>Headers:</h3>
+    <div className="space-y-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
+      <div className="flex flex-wrap items-center gap-3">
+        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Headers</h3>
         <Input
+          className="w-40"
           onChange={(e) => setHeader((prev) => ({ ...prev, headerKey: e.target.value }))}
           placeholder="Key"
           type="text"
           value={header.headerKey}
         />
         <Input
+          className="w-40"
           onChange={(e) => {
             setHeader((prev) => ({ ...prev, value: e.target.value }));
           }}
@@ -40,19 +41,23 @@ export const RestHeaders = () => {
           type="text"
           value={header.value}
         />
-        <Button onClick={() => handlerAddHeader(header)}>Add Header</Button>
+        <Button onClick={() => handlerAddHeader(header)} size="sm">
+          Add Header
+        </Button>
       </div>
-      {headers.map((header, i) => (
-        <div key={i}>
-          {
-            <HeaderItem
-              header={header}
-              key={`${header.headerKey}${header.value}`}
-              onDelete={() => dispatch(removeHeader(header))}
-            />
-          }
-        </div>
-      ))}
+      <div className="space-y-2">
+        {headers.map((header, i) => (
+          <div key={i}>
+            {
+              <HeaderItem
+                header={header}
+                key={`${header.headerKey}${header.value}`}
+                onDelete={() => dispatch(removeHeader(header))}
+              />
+            }
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
