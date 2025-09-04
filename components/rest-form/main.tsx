@@ -10,10 +10,7 @@ import {
 } from '@/components/ui/select';
 import { flexRow } from '@/constants/css-constants';
 
-import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-
-function handleSendRequest() {}
 
 const HTTP_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
 
@@ -41,8 +38,6 @@ export const RestMain = () => {
         type="text"
         value={url}
       />
-
-      <Button onClick={handleSendRequest}>Send</Button>
     </div>
   );
 };
