@@ -35,16 +35,18 @@ export const Header = () => {
         <Image alt="logo-app" height={20} src="/icon1.png" width={33} />
         <h1 className="text-3xl font-bold">RestCafé</h1>
       </div>
-      <div className="container mx-auto flex h-full items-center justify-between gap-3.5 px-4">
-        <Link
-          className="text-lg font-bold text-black transition-colors hover:text-orange-600"
-          href="/"
-        >
-          Main
-        </Link>
-        <LanguageSelect />
-        <Button className="cursor-pointer">Sign In</Button>
-        <Button className="cursor-pointer">Sign Up</Button>
+      <div>
+        <div className="container mx-auto flex h-full items-center justify-between gap-3.5 px-4">
+          <Link
+            className="text-lg font-bold text-black transition-colors hover:text-orange-600"
+            href="/"
+          >
+            Main
+          </Link>
+          <LanguageSelect />
+          <Button className="cursor-pointer">Sign In</Button>
+          <Button className="cursor-pointer">Sign Up</Button>
+        </div>
       </div>
     </header>
   );
