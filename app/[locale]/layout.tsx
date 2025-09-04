@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 
 import type { Locale } from '@/constants';
 
+import { Wrapper } from '@/components/wrapper/wrapper';
+
 export default async function LocaleLayout({
   children,
   params,
@@ -11,7 +13,9 @@ export default async function LocaleLayout({
 }) {
   return (
     <html lang={(await params).locale || 'en'}>
-      <body className="flex min-h-screen flex-col">{children}</body>
+      <body className="flex min-h-screen flex-col">
+        <Wrapper>{children}</Wrapper>
+      </body>
     </html>
   );
 }
