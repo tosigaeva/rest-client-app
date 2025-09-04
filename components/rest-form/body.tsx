@@ -1,9 +1,6 @@
 import { BodyEditor } from './json-editor';
 
-import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
-
-function handleSendRequest() {}
 
 export const Body = () => {
   return (
