@@ -38,3 +38,5 @@ export const locales = ['en', 'ru', 'be'] as const;
 export type Locale = (typeof locales)[number];
 
 export const EMPTY_HEADER: Header = { headerKey: '', value: '' };
+
+export const HTTP_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] as const;
