@@ -1,6 +1,6 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { GrLanguage } from 'react-icons/gr';
 
@@ -16,6 +16,8 @@ import {
 } from '../ui/dropdown-menu';
 
 export const LanguageSelect = () => {
+  const t = useTranslations('languageSwitcher');
+
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -40,7 +42,7 @@ export const LanguageSelect = () => {
       <DropdownMenuContent align="end">
         {locales.map((lang) => (
           <DropdownMenuItem key={lang} onSelect={() => handleLanguageChange(lang)}>
-            {lang}
+            {t(`${lang}`)}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
