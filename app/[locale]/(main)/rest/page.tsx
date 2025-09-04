@@ -1,30 +1,18 @@
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-
-const HTTP_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'];
+import { Body } from '@/components/rest-form/body';
+import { GeneratedCode } from '@/components/rest-form/generated-code';
+import { RestHeaders } from '@/components/rest-form/headers';
+import { RestMain } from '@/components/rest-form/main';
+import { RestResponce } from '@/components/rest-form/responce';
 
 export default function RestClientPage() {
   return (
     <div className="rest-client-page">
-      <div className="client-header">
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Method" />
-          </SelectTrigger>
-          <SelectContent>
-            {HTTP_METHODS.map((item) => (
-              <SelectItem key={item} value={item}>
-                {item}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      </div>
+      <h2 className="text-text mb-4 text-xl font-semibold">REST Client</h2>
+      <RestMain />
+      <RestHeaders />
+      <GeneratedCode />
+      <Body />
+      <RestResponce />
     </div>
   );
 }

@@ -9,6 +9,8 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
+import { Wrapper } from '@/components/wrapper/wrapper';
+
 export default async function LocaleLayout({
   children,
   params,
@@ -23,7 +25,8 @@ export default async function LocaleLayout({
   return (
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider><Wrapper>{children}</Wrapper></NextIntlClientProvider>
+        
       </body>
     </html>
   );
