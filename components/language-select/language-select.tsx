@@ -4,16 +4,15 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { GrLanguage } from 'react-icons/gr';
 
-import { usePathname, useRouter } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
-
-import { Button } from '../ui/button';
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '../ui/dropdown-menu';
+} from '@/components/ui';
+import { usePathname, useRouter } from '@/i18n/navigation';
+import { routing } from '@/i18n/routing';
 
 export const LanguageSelect = () => {
   const t = useTranslations('languageSwitcher');
