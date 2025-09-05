@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { EMPTY_HEADER } from '@/constants';
-import { addHeader, removeHeader } from '@/store/header-slice';
+import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
 import { Header } from '@/type';
 
