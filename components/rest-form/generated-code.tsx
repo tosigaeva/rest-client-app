@@ -2,7 +2,7 @@
 
 import { useDispatch } from 'react-redux';
 
-import { sendRequest } from '@/store/header-slice';
+import { sendRequest } from '@/store/rest-slice';
 
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';

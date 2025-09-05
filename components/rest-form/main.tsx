@@ -10,7 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { HTTP_METHODS } from '@/constants';
-import { setMethod, setUrl as setStateUrl } from '@/store/header-slice';
+import { setMethod, setUrl as setStateUrl } from '@/store/rest-slice';
 import { HttpMethod } from '@/type';
 
 import { Input } from '../ui/input';
