@@ -8,7 +8,8 @@ const initialState: Headers = {
   header: EMPTY_HEADER,
   headers: [],
   method: 'GET',
-  url: '',
+  requestUrl: '',
+  url: 'GET',
 };
 
 export const headersSlice = createSlice({
@@ -31,8 +32,6 @@ export const headersSlice = createSlice({
       );
     },
 
-    sendRequest: () => {},
-
     setBody: (state, action: PayloadAction<string>) => {
       state.body = action.payload;
     },
@@ -41,13 +40,22 @@ export const headersSlice = createSlice({
       state.method = action.payload;
     },
 
-    setUrl: (state, action: PayloadAction<string>) => {
-      state.url = action.payload;
+    setRequest: () => {},
+
+    setRequestUrl: (state, action: PayloadAction<string>) => {
+      state.requestUrl = action.payload;
     },
   },
 });
 
-export const { addHeader, clearHeaders, removeHeader, sendRequest, setBody, setMethod, setUrl } =
-  headersSlice.actions;
+export const {
+  addHeader,
+  clearHeaders,
+  removeHeader,
+  setBody,
+  setMethod,
+  setRequest,
+  setRequestUrl,
+} = headersSlice.actions;
 
 export default headersSlice.reducer;
