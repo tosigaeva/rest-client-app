@@ -4,10 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { LanguageSelect } from '@/components/language-select';
+import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
-
-import { LanguageSelect } from '..';
-import { Button } from '../ui/button';
 
 export const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
