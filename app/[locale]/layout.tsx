@@ -10,6 +10,7 @@ export function generateStaticParams() {
 }
 
 import { Wrapper } from '@/components/wrapper/wrapper';
+import { Wrapper } from '@/components/wrapper/wrapper';
 
 export default async function LocaleLayout({
   children,
@@ -25,8 +26,9 @@ export default async function LocaleLayout({
   return (
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
-        <NextIntlClientProvider><Wrapper>{children}</Wrapper></NextIntlClientProvider>
-        
+        <NextIntlClientProvider>
+          <Wrapper>{children}</Wrapper>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
