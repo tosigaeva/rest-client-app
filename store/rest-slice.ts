@@ -21,9 +21,7 @@ export const headersSlice = createSlice({
       state.header = EMPTY_HEADER;
     },
 
-    clearHeaders: (state) => {
-      state.headers = [];
-    },
+    clearData: () => initialState,
 
     removeHeader: (state, action: PayloadAction<Header>) => {
       state.headers = state.headers.filter(
@@ -40,22 +38,13 @@ export const headersSlice = createSlice({
       state.method = action.payload;
     },
 
-    setRequest: () => {},
-
     setRequestUrl: (state, action: PayloadAction<string>) => {
       state.requestUrl = action.payload;
     },
   },
 });
 
-export const {
-  addHeader,
-  clearHeaders,
-  removeHeader,
-  setBody,
-  setMethod,
-  setRequest,
-  setRequestUrl,
-} = headersSlice.actions;
+export const { addHeader, clearData, removeHeader, setBody, setMethod, setRequestUrl } =
+  headersSlice.actions;
 
 export default headersSlice.reducer;

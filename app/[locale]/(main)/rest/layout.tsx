@@ -3,8 +3,30 @@ import { GeneratedCode } from '@/components/rest-form/generated-code';
 import { RestHeaders } from '@/components/rest-form/headers';
 import { RestMain } from '@/components/rest-form/main';
 import { SendButton } from '@/components/rest-form/send-button';
+import { HTTP_METHODS } from '@/constants';
+import { Locale, locales } from '@/type';
 
-export default function RestClientPage({ children }: { children: React.ReactNode }) {
+export function generateStaticParams() {
+  const params: { locale: string; method: string }[] = [];
+
+  locales.forEach((locale) => {
+    HTTP_METHODS.forEach((method) => {
+      params.push({ locale, method });
+    });
+  });
+
+  return params;
+}
+
+export default function RestClientPage({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: string; method: string };
+}) {
+  const { locale } = params;
+
   return (
     <div className="flex flex-col gap-6 rounded-2xl bg-white p-6">
       <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-gray-100">REST Client</h2>
@@ -12,7 +34,7 @@ export default function RestClientPage({ children }: { children: React.ReactNode
       <RestHeaders />
       <Body />
       <GeneratedCode />
-      <SendButton />
+      <SendButton locale={locale as Locale} />
       {children}
     </div>
   );
