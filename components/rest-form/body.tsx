@@ -1,7 +1,5 @@
 import { BodyEditor } from './json-editor';
 
-import { Textarea } from '../ui/textarea';
-
 export const Body = () => {
   return (
     <div className="space-y-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
