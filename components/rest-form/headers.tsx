@@ -13,7 +13,7 @@ import { HeaderItem } from './header-item';
 
 export const RestHeaders = () => {
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);
-  const headers: Header[] = useSelector((state: RootState) => state.headers.headers);
+  const headers: Header[] = useSelector((state: RootState) => state.restData.headers);
   const dispatch = useDispatch();
 
   function handlerAddHeader(header: Header) {
