@@ -18,14 +18,14 @@ export function generateStaticParams() {
   return params;
 }
 
-export default function RestClientPage({
+export default async function RestClientPage({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string; method: string };
+  params: Promise<{ locale: string; method: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   return (
     <div className="flex flex-col gap-6 rounded-2xl bg-white p-6">

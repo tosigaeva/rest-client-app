@@ -10,7 +10,6 @@ export function generateStaticParams() {
 }
 
 import { Wrapper } from '@/components/wrapper/wrapper';
-import { Wrapper } from '@/components/wrapper/wrapper';
 
 export default async function LocaleLayout({
   children,

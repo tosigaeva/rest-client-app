@@ -18,7 +18,7 @@ export function setQueryParams(
   }
 
   const query = new URLSearchParams();
-  headers.forEach(({ headerKey, value }) => query.append(headerKey, encode(value)));
+  headers.forEach(({ headerKey, value }) => query.append(headerKey, encodeURIComponent(value)));
 
   return `${path}?${query.toString()}`;
 }
