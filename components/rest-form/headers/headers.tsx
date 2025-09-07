@@ -7,9 +7,9 @@ import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
 import { Header } from '@/type';
 
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { HeaderItem } from './header-item';
+import { Button } from '../../ui/button';
+import { Input } from '../../ui/input';
+import { HeaderItem } from '../header-item/header-item';
 
 export const RestHeaders = () => {
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);
