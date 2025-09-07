@@ -3,5 +3,26 @@
     "be": "BE Беларуская",
     "en": "EN English",
     "ru": "RU Русский"
+  },
+  "signIn": "Войти",
+  "signUp": "Регистрация",
+  "welcomeBlock": {
+    "welcome": "Добро пожаловать в",
+    "welcomeBack": "С возвращением",
+    "restClient": {
+      "title": "RESTful Клиент",
+      "description": "Описание для RESTful Клиента",
+      "btn": "Открыть"
+    },
+    "history": {
+      "title": "История",
+      "description": "Просмотреть предыдущие запросы",
+      "btn": "Просмотр"
+    },
+    "variables": {
+      "title": "Переменные",
+      "description": "Управление переменными окружения",
+      "btn": "Редактировать"
+  }
   }
 }

@@ -1,3 +1,5 @@
+import { WelcomeBlock } from '@/components/welcome-block';
+
 export default function Page() {
-  return <>page in main</>;
+  return <WelcomeBlock username={'Pavel'} />;
 }
