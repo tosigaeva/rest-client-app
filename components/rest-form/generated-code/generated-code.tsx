@@ -3,9 +3,9 @@
 import { useDispatch } from 'react-redux';
 
 import { sendRequest } from '@/store/rest-slice';
+import { Textarea } from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
 
-import { Button } from '../ui/button';
-import { Textarea } from '../ui/textarea';
 
 export const GeneratedCode = () => {
   const dispatch = useDispatch();
