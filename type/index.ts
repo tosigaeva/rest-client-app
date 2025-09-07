@@ -12,6 +12,7 @@ export interface Headers {
   headers: Header[];
   method: HttpMethod;
   requestUrl: string;
+  responce: string;
   url: string;
 }
 
