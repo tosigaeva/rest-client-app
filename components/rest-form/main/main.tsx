@@ -13,7 +13,7 @@ import { HTTP_METHODS } from '@/constants';
 import { setMethod, setRequestUrl as setStateUrl } from '@/store/rest-slice';
 import { HttpMethod } from '@/type';
 
-import { Input } from '../ui/input';
+import { Input } from '../../ui/input';
 
 export const RestMain = () => {
   const [url, setUrl] = useState<string>('');

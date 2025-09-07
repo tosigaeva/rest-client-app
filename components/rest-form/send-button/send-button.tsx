@@ -9,7 +9,7 @@ import { Locale } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
 import { setQueryParams } from '@/utils/set-query-params';
 
-import { Button } from '../ui/button';
+import { Button } from '../../ui/button';
 
 export const SendButton = ({ locale }: { locale: Locale }) => {
   const dispatch = useAppDispatch();
