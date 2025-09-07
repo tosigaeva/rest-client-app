@@ -3,27 +3,18 @@ import { GeneratedCode } from '@/components/rest-form/generated-code';
 import { RestHeaders } from '@/components/rest-form/headers';
 import { RestMain } from '@/components/rest-form/main';
 import { SendButton } from '@/components/rest-form/send-button';
-import { HTTP_METHODS } from '@/constants';
-import { Locale, locales } from '@/type';
+import { Locale } from '@/type';
 
-export function generateStaticParams() {
-  const params: { locale: string; method: string }[] = [];
+import { generateStaticParams } from '../../layout';
 
-  locales.forEach((locale) => {
-    HTTP_METHODS.forEach((method) => {
-      params.push({ locale, method });
-    });
-  });
-
-  return params;
-}
+generateStaticParams();
 
 export default async function RestClientPage({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string; method: string }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
 
