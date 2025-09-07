@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
+import RestRequestReducer from './request-slice';
 import RestDataReducer from './rest-slice';
 
 export const store = configureStore({
-  reducer: { restData: RestDataReducer },
+  reducer: { restData: RestDataReducer, restRequest: RestRequestReducer },
 });
 
 export type AppDispatch = typeof store.dispatch;
