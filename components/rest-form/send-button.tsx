@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { sendRequestThunk } from '@/store/request-slice';
-import { clearData } from '@/store/rest-slice';
 import { RootState, useAppDispatch } from '@/store/store';
 import { Locale } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
@@ -22,7 +21,6 @@ export const SendButton = ({ locale }: { locale: Locale }) => {
   async function setUrl() {
     const query = setQueryParams(locale || 'en', method, requestUrl, body, headers);
     router.push(query);
-    dispatch(clearData());
   }
 
   const sendRequest = () => {

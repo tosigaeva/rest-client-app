@@ -57,7 +57,7 @@ export const BodyEditor = ({
         value={body}
       />
       <div
-        className={`rounded-md px-2 py-1 text-sm transition-colors duration-500 ${'bg-transparent text-red-600'}`}
+        className={`rounded-md px-2 py-1 text-sm transition-colors duration-500 ${'bg-transparent text-yellow-600'}`}
       >
         {!isJson && body && !readOnly && 'Invalid JSON; prettify skipped'}
       </div>
