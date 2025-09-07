@@ -13,4 +13,14 @@ export type Locale = (typeof locales)[number];
 
 export const EMPTY_HEADER: Header = { headerKey: '', value: '' };
 
-export const HTTP_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'] as const;
+export const HTTP_METHODS = [
+  'GET',
+  'POST',
+  'PUT',
+  'PATCH',
+  'DELETE',
+  'HEAD',
+  'OPTIONS',
+  'CONNECT',
+  'TRACE',
+] as const;
