@@ -1,4 +1,4 @@
-import { BodyEditor } from './json-editor';
+import { BodyEditor } from '../json-editor/json-editor';
 
 export const Body = () => {
   return (

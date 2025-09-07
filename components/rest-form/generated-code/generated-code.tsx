@@ -1,6 +1,6 @@
 'use client';
 
-import { Textarea } from '../ui/textarea';
+import { Textarea } from '@/components/ui/textarea';
 
 export const GeneratedCode = () => {
   return (
