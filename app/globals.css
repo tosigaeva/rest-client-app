@@ -124,8 +124,8 @@
 .developers-grid {
   display: grid;
   grid-template-areas:
-    "A A"
-    "B C";
+    'A A'
+    'B C';
   justify-items: center;
   gap: 1rem;
   width: 100%;
