@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 
 import { FloatingInput } from '@/components/floating-input';
 import { Button, Form } from '@/components/ui';
+import { ROUTES } from '@/constants';
 import { Link, useRouter } from '@/i18n/navigation';
 import { handleFirebaseError, signInUser } from '@/lib/firebase-auth';
 import { SignInFormData, useValidationSchemas } from '@/lib/validation-auth';
@@ -28,7 +29,7 @@ export default function SignUpPage() {
     try {
       await signInUser(data.email, data.password);
       toast.success(t('signin_success'));
-      router.push('/');
+      router.push(ROUTES.MAIN);
     } catch (error) {
       handleFirebaseError(error as { code?: string; message?: string }, t, form.setError);
     }
@@ -66,7 +67,7 @@ export default function SignUpPage() {
         </Form>
         <div className="mt-5 text-center text-lg">
           {t('signin_page.no_account')}
-          <Link className="ml-2 cursor-pointer underline" href="sign-up">
+          <Link className="ml-2 cursor-pointer underline" href={ROUTES.SIGN_UP}>
             {t('singup')}
           </Link>
         </div>

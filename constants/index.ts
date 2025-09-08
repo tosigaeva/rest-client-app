@@ -62,3 +62,9 @@ export enum PROGRAMMING_LANGUAGES {
   'NodeJS' = 'node',
   'Python' = 'python',
 }
+
+export const ROUTES = {
+  MAIN: '/',
+  SIGN_IN: '/signin',
+  SIGN_UP: '/signup',
+};
