@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { FloatingInput } from '@/components/floating-input';
 import { PasswordChecklist } from '@/components/password-checklist';
 import { Button, Form } from '@/components/ui';
-import { useRouter } from '@/i18n/navigation';
+import { Link, useRouter } from '@/i18n/navigation';
 import { registerUser } from '@/lib/firebase-auth';
 import { SignUpFormData, useValidationSchemas } from '@/lib/validation-auth';
 
@@ -70,6 +70,12 @@ export default function SignUpPage() {
             </Button>
           </form>
         </Form>
+        <div className="mt-5 text-center text-lg">
+          Already have an account?
+          <Link className="ml-2 cursor-pointer underline" href="sign-in">
+            Sign in
+          </Link>
+        </div>
       </div>
     </main>
   );
