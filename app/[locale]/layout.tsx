@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
@@ -5,11 +6,18 @@ import { notFound } from 'next/navigation';
 
 import { routing } from '@/i18n/routing';
 
+import '../globals.css';
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function LocaleLayout({
+export const metadata: Metadata = {
+  description: 'The REST client for using and building APIs',
+  title: 'RestCafé',
+};
+
+export default async function RootLayout({
   children,
   params,
 }: {
