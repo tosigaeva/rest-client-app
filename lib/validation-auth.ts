@@ -20,6 +20,16 @@ const passwordStrengthTest = (value: string) => {
 
 export const useValidationSchemas = () => {
   return {
+    signInSchema: z.object({
+      email: z
+        .string()
+        .nonempty({ message: 'Email is required' })
+        .email({ message: 'Invalid email address' }),
+      password: z
+        .string()
+        .nonempty({ message: 'Password is required' })
+        .refine(passwordStrengthTest, 'Invalid Password'),
+    }),
     signUpSchema: z.object({
       email: z
         .string()
@@ -34,4 +44,5 @@ export const useValidationSchemas = () => {
   };
 };
 
+export type SignInFormData = z.infer<ReturnType<typeof useValidationSchemas>['signInSchema']>;
 export type SignUpFormData = z.infer<ReturnType<typeof useValidationSchemas>['signUpSchema']>;
