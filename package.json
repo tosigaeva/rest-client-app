@@ -13,8 +13,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@codemirror/lang-json": "^6.0.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.3",
     "@reduxjs/toolkit": "^2.9.0",
@@ -22,6 +22,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "clsx-for-tailwind": "^1.0.0",
+    "httpsnippet": "^2.0.0",
     "js-base64": "^3.7.8",
     "lucide-react": "^0.542.0",
     "next": "15.5.2",
