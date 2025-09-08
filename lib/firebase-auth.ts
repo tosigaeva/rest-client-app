@@ -17,13 +17,12 @@ export const handleFirebaseError = <T extends FieldValues>(
       setError?.('email' as Path<T>, { message: 'Email is already in use' });
       toast.error('Email is already in use');
       break;
+    case 'auth/invalid-credential':
     case 'auth/user-not-found':
-      setError?.('email' as Path<T>, { message: 'User not found' });
-      toast.error('User not found');
-      break;
     case 'auth/wrong-password':
-      setError?.('password' as Path<T>, { message: 'Wrong password' });
-      toast.error('Wrong password');
+      setError?.('email' as Path<T>, { message: 'Check your email and password.' });
+      setError?.('password' as Path<T>, { message: 'Check your email and password.' });
+      toast.error('Check your email and password.');
       break;
     default:
       toast.error(message || 'Something went wrong');
