@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { z } from 'zod';
 
 import {
@@ -19,27 +20,28 @@ const passwordStrengthTest = (value: string) => {
 };
 
 export const useValidationSchemas = () => {
+  const t = useTranslations('auth.validation');
   return {
     signInSchema: z.object({
       email: z
         .string()
-        .nonempty({ message: 'Email is required' })
-        .email({ message: 'Invalid email address' }),
+        .nonempty({ message: t('email_required') })
+        .email({ message: t('email_invalid') }),
       password: z
         .string()
-        .nonempty({ message: 'Password is required' })
-        .refine(passwordStrengthTest, 'Invalid Password'),
+        .nonempty({ message: t('password_required') })
+        .refine(passwordStrengthTest, t('password_invalid')),
     }),
     signUpSchema: z.object({
       email: z
         .string()
-        .nonempty({ message: 'Email is required' })
-        .email({ message: 'Invalid email address' }),
-      name: z.string().nonempty({ message: 'Name is required' }),
+        .nonempty({ message: t('email_required') })
+        .email({ message: t('email_invalid') }),
+      name: z.string().nonempty({ message: t('name_required') }),
       password: z
         .string()
-        .nonempty({ message: 'Password is required' })
-        .refine(passwordStrengthTest, 'Invalid Password'),
+        .nonempty({ message: t('password_required') })
+        .refine(passwordStrengthTest, t('password_invalid')),
     }),
   };
 };

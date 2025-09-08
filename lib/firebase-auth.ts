@@ -8,24 +8,25 @@ type FirebaseError = { code?: string; message?: string };
 
 export const handleFirebaseError = <T extends FieldValues>(
   error: FirebaseError,
+  t: (key: string) => string,
   setError?: UseFormSetError<T>,
 ) => {
   const { code, message } = error;
 
   switch (code) {
     case 'auth/email-already-in-use':
-      setError?.('email' as Path<T>, { message: 'Email is already in use' });
-      toast.error('Email is already in use');
+      setError?.('email' as Path<T>, { message: t('toasts.in-use') });
+      toast.error(t('toasts.in-use'));
       break;
     case 'auth/invalid-credential':
     case 'auth/user-not-found':
     case 'auth/wrong-password':
-      setError?.('email' as Path<T>, { message: 'Check your email and password.' });
-      setError?.('password' as Path<T>, { message: 'Check your email and password.' });
-      toast.error('Check your email and password.');
+      setError?.('email' as Path<T>, { message: t('toasts.invalid') });
+      setError?.('password' as Path<T>, { message: t('toasts.invalid') });
+      toast.error(t('toasts.invalid'));
       break;
     default:
-      toast.error(message || 'Something went wrong');
+      toast.error(message || t('toasts.unknown'));
       break;
   }
 };

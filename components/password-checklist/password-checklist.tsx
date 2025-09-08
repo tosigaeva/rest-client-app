@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { MdDone, MdFiberManualRecord } from 'react-icons/md';
 
 import {
@@ -13,12 +14,13 @@ type Props = {
 };
 
 export function PasswordChecklist({ password }: Props) {
+  const t = useTranslations('auth.password_checks');
   const checks = [
-    { label: 'One uppercase letter', valid: hasUppercase(password) },
-    { label: 'One lowercase letter', valid: hasLowercase(password) },
-    { label: 'One special character', valid: hasSpecialChar(password) },
-    { label: '8 characters minimum', valid: hasMinLength(password) },
-    { label: 'One number', valid: hasNumber(password) },
+    { label: t('uppercase'), valid: hasUppercase(password) },
+    { label: t('lowercase'), valid: hasLowercase(password) },
+    { label: t('special_char'), valid: hasSpecialChar(password) },
+    { label: t('min_length'), valid: hasMinLength(password) },
+    { label: t('number'), valid: hasNumber(password) },
   ];
 
   return (

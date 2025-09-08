@@ -28,6 +28,42 @@
     }
   },
   "notFound": {
-    "btn": "Back to the Beginning"
+    "btn": "Back to the Beginning"},
+  "auth": {
+    "signin": "Sign In",
+    "singup": "Sign Up",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "signup_page": {
+      "title": "New Account",
+      "have_account": "Already have an account?"
+    },
+    "signin_page": {
+      "title": "Sign in",
+      "subtitle": "Hey there... Welcome back!",
+      "no_account": "New User?"
+    },
+    "validation": {
+      "name_required": "Name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email address",
+      "password_required": "Password is required",
+      "password_invalid": "Invalid Password"
+    },
+    "password_checks": {
+      "uppercase": "One uppercase letter",
+      "lowercase": "One lowercase letter",
+      "special_char": "One special character",
+      "min_length": "8 characters minimum",
+      "number": "One number"
+    },
+    "toasts": {
+      "signup_success": "Account created successfully!",
+      "signin_success": "Logged in successfully!",
+      "in-use": "Email is already in use",
+      "invalid": "Check your email and password",
+      "unknown": "Something went wrong"
+    }
   }
 }

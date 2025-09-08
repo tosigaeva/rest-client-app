@@ -34,8 +34,7 @@ export default async function RootLayout({
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
-          <Wrapper>
-          {children}</Wrapper>
+          <Wrapper>{children}</Wrapper>
           <Toaster />
         </NextIntlClientProvider>
       </body>
