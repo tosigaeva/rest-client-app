@@ -2,9 +2,8 @@
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
+import { Button } from '@/components/ui';
 import { Link } from '@/i18n/navigation';
-
-import { Button } from '../ui';
 
 interface WelcomeBlockProps {
   username: string;
