@@ -27,3 +27,4 @@ export {
   FormMessage,
   useFormField,
 } from './form';
+export { Toaster } from './toaster';
