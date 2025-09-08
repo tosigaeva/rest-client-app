@@ -5,10 +5,12 @@
     "ru": "RU Русский"
   },
   "signIn": "Sign In",
-  "signUp": "Sign Up",
+  "signUp": "Sign up free",
   "welcomeBlock": {
     "welcome": "Welcome to",
     "welcomeBack": "Welcome back",
+    "descriptionApp": "RestCafé is a modern and user-friendly API testing tool inspired by Postman, designed for developers, testers, and teams who want to streamline their workflow.",
+    "textUnderBtn": "Get started for free – no credit card required",
     "restClient": {
       "title": "RESTful Client",
       "description": "Description for RESTful Client",

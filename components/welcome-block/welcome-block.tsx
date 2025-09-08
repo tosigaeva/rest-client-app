@@ -29,12 +29,7 @@ export const WelcomeBlock = ({ username }: WelcomeBlockProps) => {
   const t = useTranslations('welcomeBlock');
 
   // Локальное состояние для тестирования
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Функция для переключения состояния (для теста)
-  const toggleAuth = () => {
-    setIsAuthenticated(!isAuthenticated);
-  };
+  const [isAuthenticated] = useState(false);
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
       {isAuthenticated ? (
@@ -61,18 +56,18 @@ export const WelcomeBlock = ({ username }: WelcomeBlockProps) => {
           </div>
         </div>
       ) : (
-        <div className="text-center">
+        <div className="flex w-3/4 flex-col justify-center gap-8 text-center">
           <h2 className="mb-4 text-5xl font-bold">{t('welcome')} RestCafé!</h2>
-          <div className="flex justify-center gap-4">
-            <Button className="cursor-pointer">{tBtn('signIn')}</Button>
-            <Button className="cursor-pointer">{tBtn('signUp')}</Button>
+          <h3 className="text-3xl">{t('descriptionApp')}</h3>
+          <div className="flex flex-col gap-1">
+            <div className="flex justify-center gap-4">
+              <Button className="cursor-pointer uppercase">{tBtn('signIn')}</Button>
+              <Button className="cursor-pointer uppercase">{tBtn('signUp')}</Button>
+            </div>
+            <h4 className="text-1xl">{t('textUnderBtn')}</h4>
           </div>
         </div>
       )}
-      {/* Кнопка для ручного переключения состояния (только для теста) */}
-      <Button className="mt-4" onClick={toggleAuth}>
-        {isAuthenticated ? 'Logout (Test)' : 'Login (Test)'}
-      </Button>
     </div>
   );
 };
