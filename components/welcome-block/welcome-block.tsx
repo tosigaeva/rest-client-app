@@ -1,8 +1,9 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
 
 import { Button } from '@/components/ui';
+import { ROUTES } from '@/constants';
+import { useAuth } from '@/context/auth-context';
 import { Link } from '@/i18n/navigation';
 
 interface WelcomeBlockProps {
@@ -28,11 +29,16 @@ export const WelcomeBlock = ({ username }: WelcomeBlockProps) => {
   const tBtn = useTranslations();
   const t = useTranslations('welcomeBlock');
 
-  // Локальное состояние для тестирования
-  const [isAuthenticated] = useState(false);
+  const { loading, user } = useAuth();
+
+  if (loading) {
+    // TODO: replace Loading line to Component
+    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">
-      {isAuthenticated ? (
+      {user ? (
         <div className="flex flex-col gap-7 text-center">
           <h2 className="mb-4 text-5xl font-bold">
             {t('welcomeBack')}, {username}!
@@ -61,8 +67,12 @@ export const WelcomeBlock = ({ username }: WelcomeBlockProps) => {
           <h3 className="text-3xl">{t('descriptionApp')}</h3>
           <div className="flex flex-col gap-1">
             <div className="flex justify-center gap-4">
-              <Button className="cursor-pointer uppercase">{tBtn('signIn')}</Button>
-              <Button className="cursor-pointer uppercase">{tBtn('signUp')}</Button>
+              <Button asChild className="uppercase">
+                <Link href={ROUTES.SIGN_IN}>{tBtn('signIn')}</Link>
+              </Button>
+              <Button asChild className="uppercase">
+                <Link href={ROUTES.SIGN_UP}>{tBtn('signUp')}</Link>
+              </Button>
             </div>
             <h4 className="text-1xl">{t('textUnderBtn')}</h4>
           </div>
