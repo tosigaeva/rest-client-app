@@ -65,6 +65,6 @@ export enum PROGRAMMING_LANGUAGES {
 
 export const ROUTES = {
   MAIN: '/',
-  SIGN_IN: '/signin',
-  SIGN_UP: '/signup',
+  SIGN_IN: '/sign-in',
+  SIGN_UP: '/sign-up',
 };
