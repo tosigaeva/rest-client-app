@@ -4,6 +4,7 @@ import { LanguageSelect } from '@components';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { GrGroup } from 'react-icons/gr';
 import { MdLogout } from 'react-icons/md';
 
@@ -34,6 +35,7 @@ export const Header = () => {
   const onSignOut = async () => {
     try {
       await signOut();
+      toast.success(t('toasts.signout_success'));
       router.push(ROUTES.MAIN);
     } catch (error) {
       // TODO: delete console.error()
