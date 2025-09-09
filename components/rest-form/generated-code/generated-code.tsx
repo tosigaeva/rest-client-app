@@ -19,7 +19,7 @@ import { prepareHeaders } from '@/utils/prepare-headers';
 
 export const GeneratedCode = () => {
   const [settings, setSettings] = useState({ client: 'curl', language: 'shell' });
-  const { body, headers, method, url } = useSelector((state: RootState) => state.restData);
+  const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
   if (!method) {
     return (
@@ -29,7 +29,7 @@ export const GeneratedCode = () => {
     );
   }
 
-  if (!url) {
+  if (!requestUrl) {
     return (
       <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Enter url</h3>
     );
@@ -37,7 +37,7 @@ export const GeneratedCode = () => {
 
   const request: RequestData = {
     method,
-    url,
+    url: requestUrl,
   };
 
   if (headers) {
@@ -72,37 +72,46 @@ export const GeneratedCode = () => {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
-      <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-        Generated Code
-      </h3>
-      <Select
-        onValueChange={(value: ProgrammingLanguages) =>
-          setSettings((prev) => ({ ...prev, ...setLangAndCli(value) }))
-        }
-        value={settings.language}
-      >
-        <SelectTrigger className="w-[140px] rounded-md border-neutral-300 dark:border-neutral-700">
-          <SelectValue placeholder="Programming language" />
-        </SelectTrigger>
-        <SelectContent>
-          {(Object.keys(PROGRAMMING_LANGUAGES) as (keyof typeof PROGRAMMING_LANGUAGES)[]).map(
-            (item) => (
-              <SelectItem key={item} value={item}>
-                {item}
-              </SelectItem>
-            ),
-          )}
-        </SelectContent>
-      </Select>
-      <SyntaxHighlighter
-        customStyle={{ borderRadius: '1rem', padding: '1rem' }}
-        language={settings.language}
-        style={vscDarkPlus}
-        wrapLongLines
-      >
-        {code}
-      </SyntaxHighlighter>
+    <div className="flex flex-row gap-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
+      <div className="flex flex-col items-start gap-2">
+        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+          Generated Code
+        </h3>
+        <Select
+          onValueChange={(value: ProgrammingLanguages) =>
+            setSettings((prev) => ({ ...prev, ...setLangAndCli(value) }))
+          }
+          value={
+            Object.keys(PROGRAMMING_LANGUAGES).find(
+              (key) => PROGRAMMING_LANGUAGES[key as ProgrammingLanguages] === settings.language,
+            ) ?? ''
+          }
+        >
+          <SelectTrigger className="w-[180px] rounded-md border-neutral-300 dark:border-neutral-700">
+            <SelectValue placeholder="Programming language" />
+          </SelectTrigger>
+          <SelectContent>
+            {(Object.keys(PROGRAMMING_LANGUAGES) as (keyof typeof PROGRAMMING_LANGUAGES)[]).map(
+              (item) => (
+                <SelectItem key={item} value={item}>
+                  {item}
+                </SelectItem>
+              ),
+            )}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="flex-1">
+        <SyntaxHighlighter
+          customStyle={{ borderRadius: '1rem', padding: '1rem', width: '100%' }}
+          language={settings.language}
+          style={vscDarkPlus}
+          wrapLongLines
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 };
