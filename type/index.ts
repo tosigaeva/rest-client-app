@@ -1,4 +1,11 @@
-import { HTTP_METHODS } from '@/constants';
+import { HTTP_METHODS, PROGRAMMING_LANGUAGES } from '@/constants';
+
+export type GeneratedCodeArguments = {
+  body?: string;
+  headers?: Header[];
+  method: string;
+  url: string;
+};
 
 export interface Header {
   headerKey: string;
@@ -11,10 +18,19 @@ export interface Headers {
   headers: Header[];
   method: HttpMethod;
   requestUrl: string;
-  responce: string;
+  response: string;
   url: string;
 }
 
+export type { Locale } from '@/i18n/routing';
+
 export type HttpMethod = (typeof HTTP_METHODS)[number];
 
-export type { Locale } from '@/i18n/routing';
+export type ProgrammingLanguages = keyof typeof PROGRAMMING_LANGUAGES;
+
+export type RequestData = {
+  body?: string;
+  headers?: Record<string, string>;
+  method: string;
+  url: string;
+};

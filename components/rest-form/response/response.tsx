@@ -6,7 +6,7 @@ import { RootState } from '@/store/store';
 
 import { BodyEditor } from '../json-editor/json-editor';
 
-export const RestResponce = () => {
+export const RestResponse = () => {
   const { error, loading, response } = useSelector((state: RootState) => state.restRequest);
 
   if (loading) return <p>Loading...</p>;
