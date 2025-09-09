@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 import { FloatingInput } from '@/components/floating-input';
+import { ProtectedRoutes } from '@/components/protected-routes';
 import { Button, Form } from '@/components/ui';
 import { ROUTES } from '@/constants';
 import { Link, useRouter } from '@/i18n/navigation';
@@ -36,42 +37,44 @@ export default function SignUpPage() {
   };
 
   return (
-    <main>
-      <div className="m-full mx-auto mt-24 mb-auto max-w-lg px-8 pt-0 pb-8">
-        <h2 className="mb-3 text-center text-[40px]">{t('signin_page.title')}</h2>{' '}
-        {/*text-4xl = 36px*/}
-        <p className="mb-7 text-center text-xl font-light">{t('signin_page.subtitle')}</p>
-        <Form {...form}>
-          <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-            <FloatingInput
-              control={form.control}
-              error={form.formState.errors.email}
-              label={t('email')}
-              name="email"
-              type="email"
-            />
-            <FloatingInput
-              control={form.control}
-              error={form.formState.errors.password}
-              label={t('password')}
-              name="password"
-              type="password"
-            />
-            <Button
-              className="mt-8 h-12 cursor-pointer rounded-sm bg-black text-center text-lg text-white"
-              type="submit"
-            >
-              {t('signin')}
-            </Button>
-          </form>
-        </Form>
-        <div className="mt-5 text-center text-lg">
-          {t('signin_page.no_account')}
-          <Link className="ml-2 cursor-pointer underline" href={ROUTES.SIGN_UP}>
-            {t('singup')}
-          </Link>
+    <ProtectedRoutes>
+      <main>
+        <div className="m-full mx-auto mt-24 mb-auto max-w-lg px-8 pt-0 pb-8">
+          <h2 className="mb-3 text-center text-[40px]">{t('signin_page.title')}</h2>{' '}
+          {/*text-4xl = 36px*/}
+          <p className="mb-7 text-center text-xl font-light">{t('signin_page.subtitle')}</p>
+          <Form {...form}>
+            <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
+              <FloatingInput
+                control={form.control}
+                error={form.formState.errors.email}
+                label={t('email')}
+                name="email"
+                type="email"
+              />
+              <FloatingInput
+                control={form.control}
+                error={form.formState.errors.password}
+                label={t('password')}
+                name="password"
+                type="password"
+              />
+              <Button
+                className="mt-8 h-12 cursor-pointer rounded-sm bg-black text-center text-lg text-white"
+                type="submit"
+              >
+                {t('signin')}
+              </Button>
+            </form>
+          </Form>
+          <div className="mt-5 text-center text-lg">
+            {t('signin_page.no_account')}
+            <Link className="ml-2 cursor-pointer underline" href={ROUTES.SIGN_UP}>
+              {t('singup')}
+            </Link>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </ProtectedRoutes>
   );
 }

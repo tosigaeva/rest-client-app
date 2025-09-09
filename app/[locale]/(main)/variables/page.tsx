@@ -1,3 +1,9 @@
+import { ProtectedRoutes } from '@/components/protected-routes';
+
 export default function Variables() {
-  return <div>Variables</div>;
+  return (
+    <ProtectedRoutes>
+      <div>Variables</div>;
+    </ProtectedRoutes>
+  );
 }

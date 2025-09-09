@@ -64,7 +64,10 @@ export enum PROGRAMMING_LANGUAGES {
 }
 
 export const ROUTES = {
+  HISTORY: '/history',
   MAIN: '/',
+  REST: '/rest',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
+  VARIABLES: '/variables',
 };
