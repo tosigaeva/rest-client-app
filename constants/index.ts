@@ -21,3 +21,15 @@ export const HTTP_METHODS = [
   'CONNECT',
   'TRACE',
 ] as const;
+
+export enum PROGRAMMING_LANGUAGES {
+  'C#' = 'csharp',
+  'curl' = 'shell',
+  'Go' = 'go',
+  'Java' = 'java',
+  'JavaScript (Fetch api)' = 'javascript',
+  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
+  'JavaScript (XHR)' = 'javascript',
+  'NodeJS' = 'node',
+  'Python' = 'python',
+}

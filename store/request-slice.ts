@@ -15,7 +15,7 @@ export const sendRequestThunk = createAsyncThunk(
     });
 
     const result = await res.json();
-    console.log('---------> result: ', result);
+
     return {
       data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
       status: result.status,

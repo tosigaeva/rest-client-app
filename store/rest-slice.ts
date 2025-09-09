@@ -9,7 +9,7 @@ const initialState: Headers = {
   headers: [],
   method: 'GET',
   requestUrl: '',
-  responce: '',
+  response: '',
   url: 'GET',
 };
 
@@ -43,8 +43,8 @@ export const headersSlice = createSlice({
       state.requestUrl = action.payload;
     },
 
-    setResponce: (state, action: PayloadAction<string>) => {
-      state.responce = action.payload;
+    setResponse: (state, action: PayloadAction<string>) => {
+      state.response = action.payload;
     },
   },
 });
@@ -56,7 +56,7 @@ export const {
   setBody,
   setMethod,
   setRequestUrl,
-  setResponce,
+  setResponse,
 } = headersSlice.actions;
 
 export default headersSlice.reducer;
