@@ -30,8 +30,8 @@ export default function SignUpPage() {
 
   const onSubmit = async (data: SignUpFormData) => {
     try {
-      await registerUser(data.email, data.password);
-      toast.success(t('toast.signup_success'));
+      await registerUser(data.email, data.password, data.name);
+      toast.success(t('toasts.signup_success'));
       router.push(ROUTES.MAIN);
     } catch (error) {
       handleFirebaseError(error as { code?: string; message?: string }, t, form.setError);

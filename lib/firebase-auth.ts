@@ -1,4 +1,8 @@
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from '@firebase/auth';
 import { FieldValues, Path, UseFormSetError } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
@@ -31,8 +35,9 @@ export const handleFirebaseError = <T extends FieldValues>(
   }
 };
 
-export const registerUser = async (email: string, password: string) => {
+export const registerUser = async (email: string, password: string, name: string) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(userCredential.user, { displayName: name });
   return userCredential.user;
 };
 
