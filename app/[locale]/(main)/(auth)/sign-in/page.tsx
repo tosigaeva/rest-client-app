@@ -29,7 +29,7 @@ export default function SignUpPage() {
   const onSubmit = async (data: SignInFormData) => {
     try {
       await signInUser(data.email, data.password);
-      toast.success(t('signin_success'));
+      toast.success(t('toasts.signin_success'));
       router.push(ROUTES.MAIN);
     } catch (error) {
       handleFirebaseError(error as { code?: string; message?: string }, t, form.setError);
