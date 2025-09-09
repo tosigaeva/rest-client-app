@@ -6,9 +6,10 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 
 import { Toaster } from '@/components/ui';
-import { routing } from '@/i18n/routing';
+import { AuthProvider } from '@/context/auth-context';
 
 import '../globals.css';
+import { routing } from '@/i18n/routing';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -34,8 +35,12 @@ export default async function RootLayout({
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
-          <Wrapper>{children}</Wrapper>
-          <Toaster />
+          <AuthProvider>
+            <Wrapper>
+              {children}
+              <Toaster />
+            </Wrapper>
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>
