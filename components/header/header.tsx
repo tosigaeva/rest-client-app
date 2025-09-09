@@ -1,16 +1,23 @@
 'use client';
 
 import { LanguageSelect } from '@components';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { GrGroup } from 'react-icons/gr';
+import { MdLogout } from 'react-icons/md';
 
 import { Button } from '@/components/ui';
+import { ROUTES } from '@/constants';
+import { useAuth } from '@/context/auth-context';
+import { Link, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 export const Header = () => {
+  const t = useTranslations('auth');
   const [isSticky, setIsSticky] = useState(false);
+  const { signOut, user } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +30,16 @@ export const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const onSignOut = async () => {
+    try {
+      await signOut();
+      router.push(ROUTES.MAIN);
+    } catch (error) {
+      // TODO: delete console.error()
+      console.error('Error sign out:', error);
+    }
+  };
 
   return (
     <header
@@ -47,8 +64,20 @@ export const Header = () => {
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />
           </Link>
           <LanguageSelect />
-          <Button className="cursor-pointer">Sign In</Button>
-          <Button className="cursor-pointer">Sign Up</Button>
+          {user ? (
+            <Button className="cursor-pointer" onClick={onSignOut}>
+              <MdLogout />
+            </Button>
+          ) : (
+            <>
+              <Button asChild>
+                <Link href={ROUTES.SIGN_IN}>{t('signin')}</Link>
+              </Button>
+              <Button asChild>
+                <Link href={ROUTES.SIGN_UP}>{t('singup')}</Link>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
