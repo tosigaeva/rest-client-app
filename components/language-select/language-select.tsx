@@ -26,7 +26,7 @@ export const LanguageSelect = () => {
 
   const handleLanguageChange = (language: typeof locale): void => {
     const params = searchParams.toString();
-    const url = params ? `${pathname}?${params}` : pathname;
+    const url = params ? `/${pathname}?${params}` : `/${pathname}`;
     router.push(url, { locale: language });
   };
 
