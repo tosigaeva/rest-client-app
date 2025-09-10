@@ -1,5 +1,5 @@
-import { GeneratedCode } from '@/components/rest-form/generated-code/generated-code';
+import { RestResponse } from '@/components/rest-form/response/response';
 
 export default function RestClientPage() {
-  return <GeneratedCode />;
+  return <RestResponse />;
 }

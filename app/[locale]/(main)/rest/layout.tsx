@@ -1,4 +1,5 @@
 import { Body } from '@/components/rest-form/body/body';
+import { GeneratedCode } from '@/components/rest-form/generated-code/generated-code';
 import { RestHeaders } from '@/components/rest-form/headers/headers';
 import { RestMain } from '@/components/rest-form/main/main';
 import { SendButton } from '@/components/rest-form/send-button/send-button';
@@ -23,6 +24,7 @@ export default async function RestClientPage({
       <RestMain />
       <RestHeaders />
       <Body />
+      <GeneratedCode />
       <SendButton locale={locale as Locale} />
       {children}
     </div>
