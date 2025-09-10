@@ -33,8 +33,9 @@ export default async function RootLayout({
   return (
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
-        <NextIntlClientProvider><Wrapper>{children}</Wrapper></NextIntlClientProvider>
-        
+        <NextIntlClientProvider>
+          <Wrapper>{children}</Wrapper>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
