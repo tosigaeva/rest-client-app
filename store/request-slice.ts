@@ -13,7 +13,6 @@ export const sendRequestThunk = createAsyncThunk<
     });
 
     const result = await res.json();
-    console.log('------> ', result.status);
 
     if (!res.ok) {
       return rejectWithValue({

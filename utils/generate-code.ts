@@ -23,7 +23,6 @@ export function generateCode(req: RequestData, target: string, client?: string) 
     url: req.url,
   };
 
-  console.log('--------> ', request);
   const snippet = new HTTPSnippet(request);
   return snippet.convert(target, client) || 'Not enough data to generate code';
 }
