@@ -3,13 +3,12 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import { Button } from '@/components/ui/button';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
 import { Locale } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
 import { setQueryParams } from '@/utils/set-query-params';
-
-import { Button } from '../../ui/button';
 
 export const SendButton = ({ locale }: { locale: Locale }) => {
   const dispatch = useAppDispatch();

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -12,8 +13,6 @@ import {
 import { HTTP_METHODS } from '@/constants';
 import { setMethod, setRequestUrl } from '@/store/rest-slice';
 import { HttpMethod } from '@/type';
-
-import { Input } from '../../ui/input';
 
 export const RestMain = () => {
   const [url, setUrl] = useState<string>('');

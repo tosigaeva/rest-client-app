@@ -1,11 +1,7 @@
-import { Body } from '@/components/rest-form/body/body';
-import { GeneratedCode } from '@/components/rest-form/generated-code/generated-code';
-import { RestHeaders } from '@/components/rest-form/headers/headers';
-import { RestMain } from '@/components/rest-form/main/main';
-import { SendButton } from '@/components/rest-form/send-button/send-button';
-import { Locale } from '@/type';
+import { Body, GeneratedCode, RestHeaders, RestMain, SendButton } from '@components';
 
-import { generateStaticParams } from '../../layout';
+import { generateStaticParams } from '@/app/[locale]/layout';
+import { Locale } from '@/type';
 
 generateStaticParams();
 

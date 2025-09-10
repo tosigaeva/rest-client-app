@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
+import { Wrapper } from '@components';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 
@@ -11,8 +12,6 @@ import '../globals.css';
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
-
-import { Wrapper } from '@/components/wrapper/wrapper';
 
 export const metadata: Metadata = {
   description: 'The REST client for using and building APIs',

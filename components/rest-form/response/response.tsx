@@ -1,10 +1,9 @@
 'use client';
 
+import { BodyEditor } from '@components';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@/store/store';
-
-import { BodyEditor } from '../json-editor/json-editor';
 
 export const RestResponse = () => {
   const { loading, response } = useSelector((state: RootState) => state.restRequest);

@@ -1,11 +1,11 @@
 'use client';
 
+import { LanguageSelect } from '@components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { GrGroup } from 'react-icons/gr';
 
-import { LanguageSelect } from '@/components/language-select';
 import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
 

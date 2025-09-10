@@ -1,15 +1,14 @@
 'use client';
+import { HeaderItem } from '@components';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { EMPTY_HEADER } from '@/constants';
 import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
 import { Header } from '@/type';
-
-import { Button } from '../../ui/button';
-import { Input } from '../../ui/input';
-import { HeaderItem } from '../header-item/header-item';
 
 export const RestHeaders = () => {
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);

@@ -1,6 +1,5 @@
+import { Button } from '@/components/ui/button';
 import { Header } from '@/type';
-
-import { Button } from '../../ui/button';
 
 export const HeaderItem = ({
   header,
