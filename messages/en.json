@@ -26,5 +26,8 @@
       "description": "Manage your environment variables",
       "btn": "Edit"
     }
+  },
+  "notFound": {
+    "btn": "Back to the Beginning"
   }
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import './globals.css';
+import { NextIntlClientProvider } from 'next-intl';
 import { Inter } from 'next/font/google';
 
 import { NotFoundPage } from '@/components/not-found-page';
@@ -16,7 +17,9 @@ export default function GlobalNotFound() {
   return (
     <html className={inter.className} lang="en">
       <body>
-        <NotFoundPage />
+        <NextIntlClientProvider>
+          <NotFoundPage />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { GrFormPreviousLink } from 'react-icons/gr';
@@ -7,6 +8,8 @@ import { GrFormPreviousLink } from 'react-icons/gr';
 import { cn } from '@/lib/utils';
 
 export const NotFoundPage = () => {
+  const t = useTranslations('notFound');
+  const locale = useLocale();
   return (
     <div className="flex min-h-screen w-full flex-col items-center gap-20">
       <Image alt={'non-found'} height={600} src="/non-found.png" width={600} />
@@ -19,10 +22,10 @@ export const NotFoundPage = () => {
           'hover:scale-105 active:scale-95',
           'focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none',
         )}
-        href={'/'}
+        href={'/' + locale}
       >
         <GrFormPreviousLink className="h-8 w-8" />
-        Back to the Beginning
+        {t('btn')}
       </Link>
     </div>
   );
