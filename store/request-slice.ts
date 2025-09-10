@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const sendRequestThunk = createAsyncThunk(
-  'restClient/sendRequest',
-  async (args: {
-    body?: string;
-    headers?: Record<string, string>;
-    method: string;
-    url: string;
-  }) => {
+export const sendRequestThunk = createAsyncThunk<
+  { data: string; status: number; statusText: string },
+  { body?: string; headers?: Record<string, string>; method: string; url: string },
+  { rejectValue: { data: string; status: number; statusText: string } }
+>('restClient/sendRequest', async (args, { rejectWithValue }) => {
+  try {
     const res = await fetch('/api/proxy', {
       body: JSON.stringify(args),
       headers: { 'Content-Type': 'application/json' },
@@ -15,14 +13,28 @@ export const sendRequestThunk = createAsyncThunk(
     });
 
     const result = await res.json();
+    console.log('------> ', result.status);
 
+    if (!res.ok) {
+      return rejectWithValue({
+        data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
+        status: res.status,
+        statusText: res.statusText,
+      });
+    }
     return {
       data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
-      status: result.status,
-      statusText: result.ok ? 'OK' : 'Error',
+      status: res.status,
+      statusText: res.statusText,
     };
-  },
-);
+  } catch (err) {
+    return rejectWithValue({
+      data: '',
+      status: 0,
+      statusText: err + 'Network error',
+    });
+  }
+});
 
 interface RestClientState {
   error: null | string;
@@ -54,6 +66,9 @@ const restClientSlice = createSlice({
       })
       .addCase(sendRequestThunk.rejected, (state, action) => {
         state.loading = false;
+        if (action.payload) {
+          state.response = action.payload;
+        }
         state.error = action.error.message ?? 'Unknown error';
       });
   },

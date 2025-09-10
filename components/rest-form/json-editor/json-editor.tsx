@@ -49,7 +49,14 @@ export const BodyEditor = ({
   return (
     <>
       <CodeMirror
-        className="min-h-[120px] rounded-lg border border-neutral-300 dark:border-neutral-700"
+        basicSetup={{
+          allowMultipleSelections: true,
+          foldGutter: true,
+          highlightActiveLine: !readOnly,
+          highlightActiveLineGutter: !readOnly,
+          lineNumbers: true,
+        }}
+        className="max-h-[400px] min-h-[120px] w-full overflow-auto rounded-lg border border-neutral-300 dark:border-neutral-700"
         editable={!readOnly}
         extensions={extensions}
         onBlur={!readOnly ? handleBlur : undefined}
