@@ -68,5 +68,10 @@
       "invalid": "Check your email and password",
       "unknown": "Something went wrong"
     }
+  },
+  "variablesBlock": {
+    "variables": "Variables",
+    "value": "Value",
+    "btnSave": "Save"
   }
 }
