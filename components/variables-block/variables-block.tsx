@@ -1,12 +1,14 @@
 'use client';
 
-import { GrSave, GrTrash } from 'react-icons/gr';
+import { GrTrash } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
 import { Button } from '../ui';
 import { Input } from '../ui/input';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 import { getVariables, setVariables } from './storage/storage';
 import { useVariables } from './ui-handles/ui-handles';
+import { VariablesHeader } from './variables-header/variables-header';
 
 export const VariablesBlock = () => {
   const t = useTranslations('variablesBlock');
@@ -17,36 +19,27 @@ export const VariablesBlock = () => {
 
   return (
     <section className="mt-35 flex flex-col items-center justify-center gap-10 p-4">
-      <div className="flex w-full justify-between">
-        <h3 className="mb-4 text-5xl font-semibold">{t('variables')}</h3>
-        <Button
-          className="cursol-pointer flex justify-between self-end"
-          onClick={handleSave}
-          title={`Click To SAVE Variables`}
-        >
-          {t('btnSave')} <GrSave />
-        </Button>
-      </div>
+      <VariablesHeader onSave={handleSave} />
       <div className="w-full">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr>
-              <th className="border p-2 text-left">{t('variables')}</th>
-              <th className="border p-2 text-left">{t('value')}</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table className="w-full border-collapse">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="border p-2 text-left text-2xl">{t('variables')}</TableHead>
+              <TableHead className="border p-2 text-left text-2xl">{t('value')}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
             {rows.map((row, index) => (
-              <tr key={index}>
-                <td className="border p-2">
+              <TableRow key={index}>
+                <TableCell className="border p-2">
                   <Input
                     className="w-full rounded border p-1"
                     onChange={(e) => handleInputChange(index, 'variable', e.target.value)}
                     type="text"
                     value={row.variable}
                   />
-                </td>
-                <td className="border p-2">
+                </TableCell>
+                <TableCell className="border p-2">
                   <div className="flex justify-between gap-2">
                     <Input
                       className="w-full rounded border p-1"
@@ -58,11 +51,11 @@ export const VariablesBlock = () => {
                       <GrTrash />
                     </Button>
                   </div>
-                </td>
-              </tr>
+                </TableCell>
+              </TableRow>
             ))}
-          </tbody>
-        </table>
+          </TableBody>
+        </Table>
       </div>
     </section>
   );
