@@ -16,6 +16,8 @@ import { HTTP_METHODS } from '@/constants';
 import { setMethod, setRequestUrl } from '@/store/rest-slice';
 import { HttpMethod } from '@/type';
 
+const DEBOUNCE_DELAY = 1000;
+
 export const RestMain = () => {
   const dispatch = useDispatch();
   const pathname = usePathname();
@@ -29,8 +31,16 @@ export const RestMain = () => {
   });
   useEffect(() => {
     dispatch(setRequestUrl(url));
-    dispatch(setMethod(segments[2] as HttpMethod));
+    dispatch(setMethod((segments[2] as HttpMethod) || 'GET'));
   }, []);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      dispatch(setRequestUrl(url));
+    }, DEBOUNCE_DELAY);
+
+    return () => clearTimeout(handler);
+  }, [url, dispatch]);
 
   return (
     <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">

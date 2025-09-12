@@ -21,18 +21,8 @@ export const GeneratedCode = () => {
   const [settings, setSettings] = useState({ client: 'curl', language: 'shell' });
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
-  if (!method) {
-    return (
-      <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-        Select HTTP method
-      </h3>
-    );
-  }
-
   if (!requestUrl) {
-    return (
-      <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Enter url</h3>
-    );
+    return <></>;
   }
 
   const request: RequestData = {
