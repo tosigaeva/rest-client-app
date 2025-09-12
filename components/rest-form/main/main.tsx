@@ -20,7 +20,13 @@ export const RestMain = () => {
   const dispatch = useDispatch();
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
-  const [url, setUrl] = useState<string>(decode(segments[3]) || '');
+  const [url, setUrl] = useState<string>(() => {
+    try {
+      return segments[3] ? decode(segments[3]) : '';
+    } catch {
+      return '';
+    }
+  });
   useEffect(() => {
     dispatch(setRequestUrl(url));
     dispatch(setMethod(segments[2] as HttpMethod));

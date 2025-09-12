@@ -1,6 +1,5 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
@@ -15,7 +14,6 @@ export const SendButton = ({ locale }: { locale: Locale }) => {
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
   const router = useRouter();
-  const [isValid, setIsValid] = useState(!!(method && requestUrl));
 
   async function setUrl() {
     const query = setQueryParams(locale || 'en', method, requestUrl, body, headers);
@@ -34,20 +32,20 @@ export const SendButton = ({ locale }: { locale: Locale }) => {
   };
 
   async function handleOnClick() {
-    setUrl();
-    sendRequest();
+    if (requestUrl) {
+      setUrl();
+      sendRequest();
+    }
   }
-
-  useEffect(() => setIsValid(!!(method && requestUrl)), [method, requestUrl]);
 
   return (
     <>
       <div
         className={`rounded-md px-2 py-1 text-sm transition-colors duration-500 ${'bg-transparent text-red-600'}`}
       >
-        {!isValid && 'Please select HTTP method and enter url'}
+        {!requestUrl && 'Please enter url'}
       </div>
-      <Button disabled={!isValid} onClick={handleOnClick} size="sm">
+      <Button onClick={handleOnClick} size="sm">
         Send Request
       </Button>
     </>

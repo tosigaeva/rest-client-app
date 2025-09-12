@@ -40,7 +40,7 @@ export const headersSlice = createSlice({
     },
 
     setRequestUrl: (state, action: PayloadAction<string>) => {
-      state.requestUrl = action.payload;
+      state.requestUrl = action.payload.trim();
     },
 
     setResponse: (state, action: PayloadAction<string>) => {
