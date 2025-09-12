@@ -18,16 +18,18 @@ export default async function History() {
 
               return (
                 <li
-                  className="flex cursor-pointer gap-3 rounded-md bg-neutral-100 px-2.5 py-3 text-sm hover:bg-neutral-200"
+                  className="cursor-pointer rounded-md bg-neutral-100 px-2.5 py-3 text-sm hover:bg-neutral-200"
                   key={doc.id}
                 >
-                  <span>
-                    {date} {time}
-                  </span>
-                  <span>
-                    <strong>{doc.method}</strong>
-                  </span>
-                  <span>{doc.baseUrl}</span>
+                  <a className="flex gap-3" href={doc.url}>
+                    <span>
+                      {date} {time}
+                    </span>
+                    <span>
+                      <strong>{doc.method}</strong>
+                    </span>
+                    <span>{doc.baseUrl}</span>
+                  </a>
                 </li>
               );
             })}
