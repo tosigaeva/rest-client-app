@@ -3,11 +3,12 @@
 import { GrTrash } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
+import { useVariables } from '@/hooks/use-variables';
+import { getVariables, setVariables } from '@/utils/storage-variables';
+
 import { Button } from '../ui';
 import { Input } from '../ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
-import { getVariables, setVariables } from './storage/storage';
-import { useVariables } from './ui-handles/ui-handles';
 import { VariablesHeader } from './variables-header/variables-header';
 
 export const VariablesBlock = () => {
