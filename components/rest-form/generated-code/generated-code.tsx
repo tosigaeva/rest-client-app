@@ -61,6 +61,15 @@ export const GeneratedCode = () => {
     code = `Failed to generate code ( ${e} )`;
   }
 
+  const isValidUrl = (() => {
+    try {
+      new URL(requestUrl);
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
   return (
     <div className="flex flex-row gap-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
       <div className="flex flex-col items-start gap-2">
@@ -90,6 +99,11 @@ export const GeneratedCode = () => {
             )}
           </SelectContent>
         </Select>
+        <div
+          className={`rounded-md px-2 py-1 text-sm transition-colors duration-500 ${'bg-transparent text-red-600'}`}
+        >
+          {!isValidUrl && 'Please enter valid url'}
+        </div>
       </div>
 
       <div className="flex-1">
