@@ -11,15 +11,23 @@ export default async function History() {
           <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
             History Requests
           </h3>
-          <ul>
+          <ul className="flex flex-col gap-2">
             {history.map((doc) => (
-              <li key={doc.id}>
+              <li
+                className="flex cursor-pointer gap-3 rounded-md bg-neutral-100 px-2.5 py-3 text-sm hover:bg-neutral-200"
+                key={doc.id}
+              >
                 <span>{doc.timestamp}</span>
-                <span>{doc.method}</span>
+                <span>
+                  <strong>{doc.method}</strong>
+                </span>
                 <span>{doc.baseUrl}</span>
               </li>
             ))}
           </ul>
+          <p className="font-light text-gray-500">
+            Click on a request to restore it in the REST Client.
+          </p>
         </div>
       </div>
     </section>
