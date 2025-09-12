@@ -1,6 +1,8 @@
 'use client';
 import { json } from '@codemirror/lang-json';
 import CodeMirror from '@uiw/react-codemirror';
+import { decode } from 'js-base64';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -13,9 +15,18 @@ export const BodyEditor = ({
   initialBody?: string;
   readOnly?: boolean;
 }) => {
-  const [body, setBody] = useState('');
+  const pathname = usePathname();
+  const segments = pathname.split('/').filter(Boolean);
+  const [body, setBody] = useState(!readOnly ? decode(segments[4] ?? '') : '');
   const dispatch = useDispatch();
-  const [isJson, setIsJson] = useState<boolean>(false);
+  const [isJson, setIsJson] = useState<boolean>(() => {
+    try {
+      JSON.parse(body);
+      return true;
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
     if (readOnly && initialBody) {

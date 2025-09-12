@@ -1,6 +1,7 @@
 'use client';
 import { HeaderItem } from '@components';
-import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
@@ -14,6 +15,12 @@ export const RestHeaders = () => {
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);
   const headers: Header[] = useSelector((state: RootState) => state.restData.headers);
   const dispatch = useDispatch();
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    searchParams
+      ?.entries()
+      .forEach(([key, value]) => dispatch(addHeader({ headerKey: key, value })));
+  }, []);
 
   function handlerAddHeader(header: Header) {
     dispatch(addHeader(header));

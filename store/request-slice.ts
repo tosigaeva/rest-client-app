@@ -13,19 +13,16 @@ export const sendRequestThunk = createAsyncThunk<
     });
 
     const result = await res.json();
-
-    if (!res.ok) {
-      return rejectWithValue({
-        data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
-        status: res.status,
-        statusText: res.statusText,
-      });
-    }
-    return {
+    const returnValue = {
       data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
       status: res.status,
       statusText: res.statusText,
     };
+
+    if (!res.ok) {
+      return rejectWithValue(returnValue);
+    }
+    return returnValue;
   } catch (err) {
     return rejectWithValue({
       data: '',

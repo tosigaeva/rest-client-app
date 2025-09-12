@@ -1,5 +1,7 @@
 'use client';
-import { useState } from 'react';
+import { decode } from 'js-base64';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { Input } from '@/components/ui/input';
@@ -15,12 +17,21 @@ import { setMethod, setRequestUrl } from '@/store/rest-slice';
 import { HttpMethod } from '@/type';
 
 export const RestMain = () => {
-  const [url, setUrl] = useState<string>('');
   const dispatch = useDispatch();
+  const pathname = usePathname();
+  const segments = pathname.split('/').filter(Boolean);
+  const [url, setUrl] = useState<string>(decode(segments[3]) || '');
+  useEffect(() => {
+    dispatch(setRequestUrl(url));
+    dispatch(setMethod(segments[2] as HttpMethod));
+  }, []);
 
   return (
     <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
-      <Select onValueChange={(value: HttpMethod) => dispatch(setMethod(value))}>
+      <Select
+        defaultValue={segments[2] || 'GET'}
+        onValueChange={(value: HttpMethod) => dispatch(setMethod(value))}
+      >
         <SelectTrigger className="w-[140px] rounded-md border-neutral-300 dark:border-neutral-700">
           <SelectValue placeholder="Method" />
         </SelectTrigger>
