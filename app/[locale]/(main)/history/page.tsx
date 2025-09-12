@@ -12,18 +12,25 @@ export default async function History() {
             History Requests
           </h3>
           <ul className="flex flex-col gap-2">
-            {history.map((doc) => (
-              <li
-                className="flex cursor-pointer gap-3 rounded-md bg-neutral-100 px-2.5 py-3 text-sm hover:bg-neutral-200"
-                key={doc.id}
-              >
-                <span>{doc.timestamp}</span>
-                <span>
-                  <strong>{doc.method}</strong>
-                </span>
-                <span>{doc.baseUrl}</span>
-              </li>
-            ))}
+            {history.map((doc) => {
+              const date = new Date(doc.timestamp).toDateString();
+              const time = new Date(doc.timestamp).toLocaleTimeString();
+
+              return (
+                <li
+                  className="flex cursor-pointer gap-3 rounded-md bg-neutral-100 px-2.5 py-3 text-sm hover:bg-neutral-200"
+                  key={doc.id}
+                >
+                  <span>
+                    {date} {time}
+                  </span>
+                  <span>
+                    <strong>{doc.method}</strong>
+                  </span>
+                  <span>{doc.baseUrl}</span>
+                </li>
+              );
+            })}
           </ul>
           <p className="font-light text-gray-500">
             Click on a request to restore it in the REST Client.
