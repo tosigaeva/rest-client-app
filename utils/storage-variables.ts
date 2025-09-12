@@ -11,7 +11,3 @@ export const setVariables = (variables: Record<string, string>) => {
     localStorage.setItem('variables', JSON.stringify(variables));
   }
 };
-
-export const replaceVariables = (text: string, variables: Record<string, string>): string => {
-  return text.replace(/\{\{(\w+)\}\}/g, (_, key) => variables[key] || `{{${key}}}`);
-};

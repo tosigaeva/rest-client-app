@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { EMPTY_HEADER } from '@/constants';
 import { Header, Headers, HttpMethod } from '@/type';
+import { replaceVariables } from '@/utils/replace-variables';
 
 const initialState: Headers = {
   body: '',
@@ -18,7 +19,12 @@ export const headersSlice = createSlice({
   name: 'headers',
   reducers: {
     addHeader: (state, action: PayloadAction<Header>) => {
-      state.headers.push(action.payload);
+      const variables = JSON.parse(localStorage.getItem('variables') || '{}');
+      const processedHeader = {
+        headerKey: action.payload.headerKey,
+        value: replaceVariables(action.payload.value, variables),
+      };
+      state.headers.push(processedHeader);
       state.header = EMPTY_HEADER;
     },
 
@@ -32,7 +38,8 @@ export const headersSlice = createSlice({
     },
 
     setBody: (state, action: PayloadAction<string>) => {
-      state.body = action.payload;
+      const variables = JSON.parse(localStorage.getItem('variables') || '{}');
+      state.body = replaceVariables(action.payload, variables);
     },
 
     setMethod: (state, action: PayloadAction<HttpMethod>) => {
@@ -40,7 +47,8 @@ export const headersSlice = createSlice({
     },
 
     setRequestUrl: (state, action: PayloadAction<string>) => {
-      state.requestUrl = action.payload.trim();
+      const variables = JSON.parse(localStorage.getItem('variables') || '{}');
+      state.requestUrl = replaceVariables(action.payload, variables).trim();
     },
 
     setResponse: (state, action: PayloadAction<string>) => {
