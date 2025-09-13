@@ -57,6 +57,12 @@ export const Header = () => {
       </Link>
       <div>
         <div className="container mx-auto flex h-full items-center justify-between gap-3.5 px-4">
+          <Link
+            className="text-lg font-bold text-black transition-colors hover:text-orange-600"
+            href="/"
+          >
+            {t('main')}
+          </Link>
           <Link href="/about-us">
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />
           </Link>
