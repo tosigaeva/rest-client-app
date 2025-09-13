@@ -29,5 +29,12 @@
   },
   "notFound": {
     "btn": "Back to the Beginning"
+  },
+  "footer": {
+    "client": " Client App",
+    "Anastasiia": "Anastasiia",
+    "Ekaterina": "Ekaterina",
+    "Yulia": "Yulia",
+    "logo": "RS School logo"
   }
 }

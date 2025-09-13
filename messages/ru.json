@@ -29,5 +29,12 @@
   },
   "notFound": {
     "btn": "Вернуться В Начало"
+  },
+  "footer": {
+    "client": "-клиент",
+    "Anastasiia": "Анастасия",
+    "Ekaterina": "Екатерина",
+    "Yulia": "Юлия",
+    "logo": "RS School логотип"
   }
 }
