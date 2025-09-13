@@ -1,6 +1,7 @@
 'use client';
 
 import { LanguageSelect } from '@components';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -10,6 +11,7 @@ import { Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 export const Header = () => {
+  const t = useTranslations('header');
   const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
@@ -41,14 +43,14 @@ export const Header = () => {
             className="text-lg font-bold text-black transition-colors hover:text-orange-600"
             href="/"
           >
-            Main
+            {t('main')}
           </Link>
           <Link href="/about-us">
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />
           </Link>
           <LanguageSelect />
-          <Button className="cursor-pointer">Sign In</Button>
-          <Button className="cursor-pointer">Sign Up</Button>
+          <Button className="cursor-pointer">{t('si')}</Button>
+          <Button className="cursor-pointer">{t('su')}</Button>
         </div>
       </div>
     </header>
