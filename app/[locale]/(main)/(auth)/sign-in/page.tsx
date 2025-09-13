@@ -21,7 +21,7 @@ export default function SignUpPage() {
       email: '',
       password: '',
     },
-    mode: 'onBlur',
+    mode: 'all',
     resolver: zodResolver(signInSchema),
   });
   const router = useRouter();

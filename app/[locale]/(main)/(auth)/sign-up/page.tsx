@@ -23,7 +23,7 @@ export default function SignUpPage() {
       name: '',
       password: '',
     },
-    mode: 'onBlur',
+    mode: 'all',
     resolver: zodResolver(signUpSchema),
   });
   const router = useRouter();
