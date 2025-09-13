@@ -37,9 +37,8 @@ export const Header = () => {
       await signOut();
       toast.success(t('toasts.signout_success'));
       router.push(ROUTES.MAIN);
-    } catch (error) {
-      // TODO: delete console.error()
-      console.error('Error sign out:', error);
+    } catch {
+      toast.error(t('toasts.signout_error'));
     }
   };
 

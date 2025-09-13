@@ -62,6 +62,7 @@
       "signup_success": "Account created successfully!",
       "signin_success": "Logged in successfully!",
       "signout_success": "Goodbye! See you soon...",
+      "signout_error": "Sign out failed. Please try again.",
       "in-use": "Email is already in use",
       "invalid": "Check your email and password",
       "unknown": "Something went wrong"
