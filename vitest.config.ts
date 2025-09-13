@@ -1,0 +1,25 @@
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
+
+export default defineConfig({
+  plugins: [tsconfigPaths(), react()],
+  test: {
+    coverage: {
+      all: true,
+      exclude: ['**/*.d.ts', '**/node_modules/**', '**/vitest.setup.ts'],
+      include: ['**/components/**/*.{ts,tsx}', '**/pages/**/*.{ts,tsx}'],
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      thresholds: {
+        branches: 70,
+        functions: 75,
+        lines: 80,
+        statements: 80,
+      },
+    },
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: './vitest.setup.ts',
+  },
+});
