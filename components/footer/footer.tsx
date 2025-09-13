@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="flex gap-4">
           {AUTHOR_GITHUBS.map((author) => (
             <Link
-              className="hover:text-gray-900"
+              className="text-gray-900 hover:text-orange-600"
               href={author.url}
               key={author.name}
               target="_blank"
@@ -20,10 +20,10 @@ export const Footer = () => {
           ))}
         </div>
 
-        <span className="text-sm">&copy; 2025 REST Client App </span>
+        <span className="text-sm text-gray-900">&copy; 2025 REST Client App </span>
 
         <Link href={RSS_LINK} target="_blank">
-          <Image alt="RS School logo" height={40} src="rss-logo.svg" width={40} />
+          <Image alt="RS School logo" height={40} src="/rss-logo.svg" width={40} />
         </Link>
       </div>
     </footer>
