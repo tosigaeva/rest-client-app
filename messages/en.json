@@ -30,6 +30,13 @@
   "notFound": {
     "btn": "Back to the Beginning"
   },
+  "history": {
+    "empty_title": "You haven't executed any requests yet",
+    "empty_description": "It's empty here. Try those options:",
+    "open_rest_client": "Open REST Client",
+    "title": "History Requests",
+    "description": "Click on a request to restore it in the REST Client."
+  },
   "auth": {
     "signin": "Sign In",
     "singup": "Sign Up",
