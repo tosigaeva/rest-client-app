@@ -121,6 +121,10 @@
   }
 }
 
+@theme {
+  --text-xxl: 40px;
+}
+
 .developers-grid {
   display: grid;
   grid-template-areas:

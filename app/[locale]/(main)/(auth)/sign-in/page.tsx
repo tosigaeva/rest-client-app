@@ -40,8 +40,7 @@ export default function SignUpPage() {
     <ProtectedRoutes>
       <main>
         <div className="m-full mx-auto mt-24 mb-auto max-w-lg px-8 pt-0 pb-8">
-          <h2 className="mb-3 text-center text-[40px]">{t('signin_page.title')}</h2>{' '}
-          {/*text-4xl = 36px*/}
+          <h2 className="text-xxl mb-3 text-center">{t('signin_page.title')}</h2>
           <p className="mb-7 text-center text-xl font-light">{t('signin_page.subtitle')}</p>
           <Form {...form}>
             <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
