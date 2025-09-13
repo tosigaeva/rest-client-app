@@ -1,3 +1,5 @@
+import { HistoryList } from '@components';
+
 import { getUserRequestHistory, RequestLog } from '@/lib/history';
 
 export default async function History() {
@@ -5,39 +7,15 @@ export default async function History() {
   const history: RequestLog[] = await getUserRequestHistory(userId);
 
   return (
-    <section>
-      <div className="m-full mx-auto mt-24 mb-auto px-8 pt-0 pb-8">
-        <div className="space-y-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
-          <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-            History Requests
-          </h3>
-          <ul className="flex flex-col gap-2">
-            {history.map((doc) => {
-              const date = new Date(doc.timestamp).toDateString();
-              const time = new Date(doc.timestamp).toLocaleTimeString();
-
-              return (
-                <li
-                  className="cursor-pointer rounded-md bg-neutral-100 px-2.5 py-3 text-sm hover:bg-neutral-200"
-                  key={doc.id}
-                >
-                  <a className="flex gap-3" href={doc.url}>
-                    <span>
-                      {date} {time}
-                    </span>
-                    <span>
-                      <strong>{doc.method}</strong>
-                    </span>
-                    <span>{doc.baseUrl}</span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-          <p className="font-light text-gray-500">
-            Click on a request to restore it in the REST Client.
-          </p>
-        </div>
+    <section className="m-full mx-auto mt-24 mb-auto px-8 pt-0 pb-8">
+      <div className="space-y-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
+        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+          History Requests
+        </h3>
+        <HistoryList history={history} />
+        <p className="font-light text-gray-500">
+          Click on a request to restore it in the REST Client.
+        </p>
       </div>
     </section>
   );
