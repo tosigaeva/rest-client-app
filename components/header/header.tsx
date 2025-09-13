@@ -59,7 +59,7 @@ export const Header = () => {
             className="text-lg font-bold text-black transition-colors hover:text-orange-600"
             href="/"
           >
-            Main
+            {t('main')}
           </Link>
           <Link href="/about-us">
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />

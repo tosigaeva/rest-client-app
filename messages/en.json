@@ -75,5 +75,10 @@
     "Ekaterina": "Ekaterina",
     "Yulia": "Yulia",
     "logo": "RS School logo"
+  },
+  "header": {
+    "main": "Main",
+    "si": "Sign In",
+    "su": "Sign Up"
   }
 }
