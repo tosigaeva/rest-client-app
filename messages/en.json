@@ -66,6 +66,14 @@
       "in-use": "Email is already in use",
       "invalid": "Check your email and password",
       "unknown": "Something went wrong"
-    }
+    },
+    "btn": "Back to the Beginning"
+  },
+  "footer": {
+    "client": " Client App",
+    "Anastasiia": "Anastasiia",
+    "Ekaterina": "Ekaterina",
+    "Yulia": "Yulia",
+    "logo": "RS School logo"
   }
 }
