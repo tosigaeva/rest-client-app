@@ -17,7 +17,7 @@ export function ProtectedRoutes({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (loading) return;
 
-    const isAuthRoute = authRoutes.includes(pathname);
+    const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
     const isNoAuthRoute = noAuthRoutes.includes(pathname);
 
     if (user && isNoAuthRoute) {
