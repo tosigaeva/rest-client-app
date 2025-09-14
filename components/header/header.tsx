@@ -49,18 +49,14 @@ export const Header = () => {
         'h-16 bg-transparent py-4': !isSticky,
       })}
     >
-      <div className="flex justify-between gap-1.5">
-        <Image alt="logo-app" height={20} src="/icon1.png" width={33} />
-        <h1 className="text-3xl font-bold">RestCafé</h1>
-      </div>
+      <Link className="ml-2" href={'/'}>
+        <div className="flex justify-between gap-1.5">
+          <Image alt="logo-app" height={20} src="/icon1.png" width={35} />
+          <h1 className="text-3xl font-bold">RestCafé</h1>
+        </div>
+      </Link>
       <div>
         <div className="container mx-auto flex h-full items-center justify-between gap-3.5 px-4">
-          <Link
-            className="text-lg font-bold text-black transition-colors hover:text-orange-600"
-            href="/"
-          >
-            Main
-          </Link>
           <Link href="/about-us">
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />
           </Link>

@@ -121,37 +121,6 @@
   }
 }
 
-@theme {
-  --text-xxl: 40px;
-}
-
-.developers-grid {
-  display: grid;
-  grid-template-areas:
-    'A A'
-    'B C';
-  justify-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 80vw;
-  margin: 0 auto;
-}
-
-.top-center {
-  grid-area: A;
-  width: 100%;
-}
-
-.bottom-left {
-  grid-area: B;
-  width: 100%;
-}
-
-.bottom-right {
-  grid-area: C;
-  width: 100%;
-}
-
 .image-container {
   margin: 0 auto;
   display: flex;

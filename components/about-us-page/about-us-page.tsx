@@ -6,25 +6,24 @@ import { cn } from '@/lib/utils';
 
 export const AboutUsPage = () => {
   return (
-    <section className="min-h-screen bg-white px-4 py-12 sm:px-6 lg:px-8">
+    <section className="bg-white px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <h2 className="mb-12 text-center text-4xl font-bold tracking-tight capitalize">
           a team that cooks with love
         </h2>
-        <div className="developers-grid">
-          {DEVELOPERS.map((developer, index) => (
+        <div className="flex gap-3.5">
+          {DEVELOPERS.map((developer) => (
             <div
               className={cn(
                 'developer-card',
                 'shadow-lg',
                 'transform transition-transform hover:-translate-y-1',
-                index === 0 ? 'top-center' : index === 1 ? 'bottom-left' : 'bottom-right',
               )}
               key={developer.name}
             >
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-white to-gray-50 p-6">
-                <h4 className="mb-4 text-center text-2xl font-semibold">{developer.name}</h4>
-                <div className="mb-4 flex justify-center">
+              <div className="relative flex gap-3.5 overflow-hidden rounded-xl bg-gradient-to-br from-white to-gray-50 p-6">
+                <div className="flex h-45 flex-col items-center justify-center gap-2">
+                  <h4 className="text-center text-2xl font-semibold">{developer.name}</h4>
                   <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-gray-200 shadow-md">
                     <Image
                       alt={developer.name}
@@ -34,17 +33,19 @@ export const AboutUsPage = () => {
                       width={80}
                     />
                   </div>
+                  <div
+                    className={cn(
+                      'flex cursor-pointer items-center justify-center gap-2',
+                      'transition-colors duration-300 hover:text-orange-600',
+                    )}
+                  >
+                    <GrGithub />
+                    <a href={developer.git}>GitHub_{developer.name}</a>
+                  </div>
                 </div>
-                <p className="mb-2 text-center text-sm text-gray-600">Role: {developer.major}</p>
-                <p className="mb-6 text-center text-sm text-gray-800">{developer.description}</p>
-                <div
-                  className={cn(
-                    'mt-auto flex cursor-pointer items-center justify-center gap-2',
-                    'transition-colors duration-300 hover:text-orange-600',
-                  )}
-                >
-                  <GrGithub />
-                  <a href={developer.git}>GitHub_{developer.name}</a>
+                <div className="flex flex-col items-start">
+                  <p className="mb-2 text-left text-sm text-gray-600">Role: {developer.major}</p>
+                  <p className="mb-6 text-left text-sm text-gray-800">{developer.description}</p>
                 </div>
               </div>
             </div>
