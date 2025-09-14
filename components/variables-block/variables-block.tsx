@@ -13,14 +13,14 @@ import { VariablesHeader } from './variables-header/variables-header';
 
 export const VariablesBlock = () => {
   const t = useTranslations('variablesBlock');
-  const { handleDelete, handleInputChange, handleSave, rows } = useVariables(
+  const { handleAddRow, handleDelete, handleInputChange, handleSave, rows } = useVariables(
     getVariables,
     setVariables,
   );
 
   return (
     <section className="mt-35 flex flex-col items-center justify-center gap-10 p-4">
-      <VariablesHeader onSave={handleSave} />
+      <VariablesHeader onAddRow={handleAddRow} onSave={handleSave} />
       <div className="w-full">
         <Table className="w-full border-collapse">
           <TableHeader>

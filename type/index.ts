@@ -34,3 +34,9 @@ export type RequestData = {
   method: string;
   url: string;
 };
+
+export type RowType = {
+  saved: boolean;
+  value: string;
+  variable: string;
+};

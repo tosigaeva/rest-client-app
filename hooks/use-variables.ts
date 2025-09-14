@@ -1,66 +1,44 @@
 import { useEffect, useState } from 'react';
 
-export type RowType = {
-  saved: boolean;
-  value: string;
-  variable: string;
-};
+import { useAuth } from '@/context/auth-context';
+import { addRow } from '@/lib/variables/add-row-variables';
+import { deleteRowVariables } from '@/lib/variables/delete-row-variables';
+import { initializeVariables } from '@/lib/variables/initialize-variables';
+import { saveVariables } from '@/lib/variables/save-variables';
+import { updateRowInputVariables } from '@/lib/variables/update-row-input-variables';
+import { RowType } from '@/type';
 
 export const useVariables = (
-  getVariables: () => Record<string, string>,
-  setVariables: (variables: Record<string, string>) => void,
+  getVariables: (user: string) => Record<string, string>,
+  setVariables: (user: string, variables: Record<string, string>) => void,
 ) => {
   const [rows, setRows] = useState<RowType[]>([{ saved: false, value: '', variable: '' }]);
   const [variables, setVariablesState] = useState<Record<string, string>>({});
+  const { user } = useAuth();
+  const username = user?.displayName || 'Guest';
 
   useEffect(() => {
-    setVariablesState(getVariables());
-  }, [getVariables]);
+    initializeVariables(username, getVariables, setRows, setVariablesState);
+  }, [username, getVariables]);
 
   const handleSave = () => {
-    const newVariables = { ...variables };
-    const newRows = rows.map((row) => {
-      if (row.variable && row.value) {
-        newVariables[row.variable] = row.value;
-        return { ...row, saved: true };
-      }
-      return row;
-    });
-
-    setVariables(newVariables);
-    setVariablesState(newVariables);
-    setRows(newRows);
+    saveVariables(rows, variables, username, setVariables, setVariablesState, setRows);
   };
 
   const handleInputChange = (index: number, field: keyof RowType, value: string) => {
-    const newRows = rows.map((row, i) => {
-      if (i === index) {
-        return { ...row, [field]: value };
-      }
-      return row;
-    });
-
-    setRows(newRows);
-    if (index === rows.length - 1 && value !== '') {
-      setRows([...newRows, { saved: false, value: '', variable: '' }]);
-    }
+    updateRowInputVariables(index, field, value, rows, setRows);
   };
 
   const handleDelete = (index: number) => {
-    const row = rows[index];
-    if (row.saved) {
-      const newVariables = { ...variables };
-      delete newVariables[row.variable];
-      setVariables(newVariables);
-      setVariablesState(newVariables);
-    }
+    deleteRowVariables(index, rows, variables, username, setVariables, setVariablesState, setRows);
+  };
 
-    const newRows = [...rows];
-    newRows.splice(index, 1);
-    setRows(newRows);
+  const handleAddRow = () => {
+    addRow(rows, setRows);
   };
 
   return {
+    handleAddRow,
     handleDelete,
     handleInputChange,
     handleSave,
