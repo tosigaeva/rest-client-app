@@ -23,9 +23,11 @@ export const AboutUsPage = () => {
               )}
               key={developer.name}
             >
-              <div className="relative flex gap-3.5 overflow-hidden rounded-xl bg-gradient-to-br from-white to-gray-50 p-6">
-                <div className="flex h-45 flex-col items-center justify-center gap-2">
-                  <h4 className="text-center text-2xl font-semibold">{t(`${developer.name}.name`)}</h4>
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-white to-gray-50 p-6">
+                <h4 className="mb-4 text-center text-2xl font-semibold">
+                  {t(`${developer.name}.name`)}
+                </h4>
+                <div className="mb-4 flex justify-center">
                   <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-gray-200 shadow-md">
                     <Image
                       alt={t(`${developer.name}.name`)}
