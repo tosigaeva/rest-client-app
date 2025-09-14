@@ -45,9 +45,20 @@ export const AboutUsPage = () => {
                     <a href={developer.git}>GitHub_{developer.name}</a>
                   </div>
                 </div>
-                <div className="flex flex-col items-start">
-                  <p className="mb-2 text-left text-sm text-gray-600">Role: {t(`${developer.name}.major`)}</p>
-                  <p className="mb-6 text-left text-sm text-gray-800">{t(`${developer.name}.descr`)}</p>
+                <p className="mb-2 text-center text-sm text-gray-600">
+                  Role: {t(`${developer.name}.major`)}
+                </p>
+                <p className="mb-6 text-center text-sm text-gray-800">
+                  {t(`${developer.name}.descr`)}
+                </p>
+                <div
+                  className={cn(
+                    'mt-auto flex cursor-pointer items-center justify-center gap-2',
+                    'transition-colors duration-300 hover:text-orange-600',
+                  )}
+                >
+                  <GrGithub data-testid="github-icon" />
+                  <a href={developer.git}>GitHub_{developer.name}</a>
                 </div>
               </div>
             </div>
