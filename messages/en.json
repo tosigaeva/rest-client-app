@@ -72,7 +72,7 @@
   "footer": {
     "client": " Client App",
     "Anastasiia": "Anastasiia",
-    "Ekaterina": "Ekaterina",
+    "Katsiaryna": "Katsiaryna",
     "Yulia": "Yulia",
     "logo": "RS School logo"
   },
@@ -80,5 +80,23 @@
     "main": "Main",
     "si": "Sign In",
     "su": "Sign Up"
+  },
+  "about": {
+    "team": "a team that cooks with love",
+    "Yulia": {
+      "name": "Yulia",
+      "descr": "Master of transforming code into culinary masterpieces. Each line is an ingredient in the perfect solution.",
+      "major": "Captain of the Kitchen | Team Lead, Developer"
+    },
+    "Anastasiia": {
+      "name": "Anastasiia",
+      "descr": "Digital chef who turns complex problems into delicious solutions, serving innovation one line of code at a time.",
+      "major": "Master Chef of Solutions, Developer"
+    },
+    "Katsiaryna": {
+      "name": "Katsiaryna",
+      "descr": "Master of digital presentation, where every style is an ingredient of the perfect UI",
+      "major": "Cooking Code, Developer"
+    }    
   }
 }
