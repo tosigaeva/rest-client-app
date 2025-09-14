@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-// AboutUsPage.test.tsx
 import React from 'react';
 import { vi } from 'vitest';
 
