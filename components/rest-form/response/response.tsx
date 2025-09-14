@@ -31,7 +31,7 @@ export const RestResponse = () => {
       </div>
       <div className="flex items-start gap-2 text-sm">
         <h3 className="font-semibold text-neutral-800 dark:text-neutral-100">Body:</h3>
-        <div className="flex-1">
+        <div className="flex-1 overflow-scroll">
           <BodyEditor initialBody={response.data} readOnly />
         </div>
       </div>
