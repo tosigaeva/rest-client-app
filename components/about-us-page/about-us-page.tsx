@@ -51,7 +51,7 @@ export const AboutUsPage = () => {
                     'transition-colors duration-300 hover:text-orange-600',
                   )}
                 >
-                  <GrGithub />
+                  <GrGithub data-testid="github-icon" />
                   <a href={developer.git}>GitHub_{developer.name}</a>
                 </div>
               </div>
