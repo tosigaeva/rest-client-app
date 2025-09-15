@@ -50,13 +50,13 @@ describe('SendButton', () => {
   });
 
   it('renders button enabled when method and url are set', () => {
-    render(<SendButton locale="en" />);
+    render(<SendButton />);
     const button = screen.getByRole('button', { name: /send request/i });
     expect(button).toBeEnabled();
   });
 
   it('calls dispatch and router.push on click', () => {
-    render(<SendButton locale="en" />);
+    render(<SendButton />);
     const button = screen.getByRole('button', { name: /send request/i });
     fireEvent.click(button);
 

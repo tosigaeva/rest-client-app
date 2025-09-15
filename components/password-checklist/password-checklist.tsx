@@ -31,7 +31,9 @@ export function PasswordChecklist({ password }: Props) {
           key={check.label}
           style={{ color: check.valid ? '#9ca3af' : 'black' }}
         >
-          <span className="font-bold">{check.valid ? <MdDone /> : <MdFiberManualRecord />}</span>
+          <span className="font-bold" data-testid={check.valid ? 'icon-done' : 'icon-pending'}>
+            {check.valid ? <MdDone /> : <MdFiberManualRecord />}
+          </span>
           {check.label}
         </div>
       ))}

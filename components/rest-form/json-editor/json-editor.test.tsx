@@ -17,6 +17,10 @@ vi.mock('react-redux', async () => {
   };
 });
 
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/rest/GET',
+}));
+
 vi.mock('@uiw/react-codemirror', () => ({
   default: ({ onChange, value }: { onChange: (v: string) => void; value: string }) => (
     <textarea data-testid="codemirror" onChange={(e) => onChange(e.target.value)} value={value} />
