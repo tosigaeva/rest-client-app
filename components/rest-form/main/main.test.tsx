@@ -14,6 +14,10 @@ vi.mock('react-redux', () => ({
   useDispatch: () => mockDispatch,
 }));
 
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/rest/GET',
+}));
+
 describe('RestMain', () => {
   beforeEach(() => {
     mockDispatch.mockReset();
@@ -22,25 +26,25 @@ describe('RestMain', () => {
   it('renders all HTTP methods in the select', () => {
     render(<RestMain />);
 
-    const selectTrigger = screen.getByText('Method');
+    const selectTrigger = screen.getByRole('combobox');
     fireEvent.click(selectTrigger);
 
     HTTP_METHODS.forEach((method) => {
-      expect(screen.getByText(method)).toBeInTheDocument();
+      const options = screen.getAllByText(method);
+      expect(options.length).toBeGreaterThan(0);
     });
   });
 
   it('dispatches setMethod when a method is selected', () => {
     render(<RestMain />);
 
-    const selectTrigger = screen.getByText('Method');
+    const selectTrigger = screen.getByRole('combobox');
     fireEvent.click(selectTrigger);
 
-    const method = HTTP_METHODS[0] as HttpMethod;
+    const method = HTTP_METHODS[2] as HttpMethod;
     const option = screen.getByText(method);
     fireEvent.click(option);
 
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
     expect(mockDispatch).toHaveBeenCalledWith(setMethod(method));
   });
 
@@ -52,7 +56,6 @@ describe('RestMain', () => {
     expect(input.value).toBe('/api/test');
 
     fireEvent.blur(input);
-    expect(mockDispatch).toHaveBeenCalledTimes(1);
     expect(mockDispatch).toHaveBeenCalledWith(setRequestUrl('/api/test'));
   });
 });

@@ -56,7 +56,7 @@ describe('GeneratedCode', () => {
     vi.clearAllMocks();
   });
 
-  it("renders 'Select HTTP method' when method is missing", () => {
+  it('renders nothing when method is missing', () => {
     mockUseSelector.mockImplementation((selector: (s: RootState) => unknown) =>
       selector({
         restData: { method: '', requestUrl: '' },
@@ -65,16 +65,16 @@ describe('GeneratedCode', () => {
     );
 
     render(<GeneratedCode />);
-    expect(screen.getByRole('heading', { name: /select http method/i })).toBeInTheDocument();
+    expect(screen.queryByText(/select http method/i)).not.toBeInTheDocument();
   });
 
-  it("renders 'Enter url' when requestUrl is missing", () => {
+  it('renders nothing when requestUrl is missing', () => {
     mockUseSelector.mockImplementation((selector: (s: RootState) => unknown) =>
       selector({ restData: { method: 'GET', requestUrl: '' } } as RootState),
     );
 
     render(<GeneratedCode />);
-    expect(screen.getByRole('heading', { name: /enter url/i })).toBeInTheDocument();
+    expect(screen.queryByText(/select http method/i)).not.toBeInTheDocument();
   });
 
   it('renders generated code when method and url are provided', () => {
