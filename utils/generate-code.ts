@@ -4,8 +4,8 @@ import { RequestData } from '@/type';
 
 import { replaceVariables } from './replace-variables';
 
-export function generateCode(req: RequestData, target: string, client?: string) {
-  const variables = JSON.parse(localStorage.getItem('variables') || '{}');
+export function generateCode(req: RequestData, target: string, client?: string, username?: string) {
+  const variables = JSON.parse(localStorage.getItem(`variables-${username}`) || '{}');
   const processedUrl = replaceVariables(req.url, variables);
   const processedHeaders = Object.entries(req.headers ?? {}).map(([name, value]) => ({
     name,

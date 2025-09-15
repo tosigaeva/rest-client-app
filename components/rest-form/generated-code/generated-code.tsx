@@ -12,6 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { PROGRAMMING_LANGUAGES } from '@/constants';
+import { useAuth } from '@/context/auth-context';
 import { RootState } from '@/store/store';
 import { ProgrammingLanguages, RequestData } from '@/type';
 import { generateCode } from '@/utils/generate-code';
@@ -20,6 +21,8 @@ import { prepareHeaders } from '@/utils/prepare-headers';
 export const GeneratedCode = () => {
   const [settings, setSettings] = useState({ client: 'curl', language: 'shell' });
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
+  const { user } = useAuth();
+  const username = user?.displayName || 'Guest';
 
   if (!requestUrl) {
     return <></>;
@@ -56,7 +59,7 @@ export const GeneratedCode = () => {
 
   let code = '';
   try {
-    code = generateCode(request, settings.language, settings.client);
+    code = generateCode(request, settings.language, settings.client, username);
   } catch (e) {
     code = `Failed to generate code ( ${e} )`;
   }
