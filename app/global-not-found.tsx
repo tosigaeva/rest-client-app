@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 
 import './globals.css';
+import { NotFoundPage } from '@components';
 import { NextIntlClientProvider } from 'next-intl';
 import { Inter } from 'next/font/google';
-
-import { NotFoundPage } from '@/components/not-found-page';
 
 const inter = Inter({ subsets: ['latin'] });
 
