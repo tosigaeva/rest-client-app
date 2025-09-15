@@ -6,11 +6,10 @@ import { useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
-import { Locale } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
 import { setQueryParams } from '@/utils/set-query-params';
 
-export const SendButton = ({ locale }: { locale: Locale }) => {
+export const SendButton = () => {
   const dispatch = useAppDispatch();
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
@@ -18,7 +17,7 @@ export const SendButton = ({ locale }: { locale: Locale }) => {
   const [isValid, setIsValid] = useState(!!(method && requestUrl));
 
   async function setUrl() {
-    const query = setQueryParams(locale || 'en', method, requestUrl, body, headers);
+    const query = setQueryParams(method, requestUrl, body, headers);
     router.push(query);
   }
 
