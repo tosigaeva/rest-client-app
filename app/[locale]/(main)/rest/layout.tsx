@@ -1,9 +1,5 @@
 import { Body, GeneratedCode, RestHeaders, RestMain, SendButton } from '@components';
 
-import { generateStaticParams } from '@/app/[locale]/layout';
-
-generateStaticParams();
-
 export default async function RestClientPage({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-6 rounded-2xl bg-white p-6">

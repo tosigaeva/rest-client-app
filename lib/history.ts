@@ -4,8 +4,15 @@ import { db } from '@/lib/firebase-admin';
 
 export interface RequestLog {
   baseUrl: string;
+  body?: string;
+  error: null | string;
+  headers?: Record<string, string>;
   id: string;
+  latency: number;
   method: string;
+  requestSize: number;
+  responseSize: number;
+  status: number;
   timestamp: string;
   url: string;
   userId: string;
@@ -27,4 +34,17 @@ export async function getUserRequestHistory(userId: string): Promise<RequestLog[
       timestamp: data.timestamp.toDate().toISOString(),
     };
   });
+}
+
+export async function saveRequestLog(
+  userId: string,
+  log: Omit<RequestLog, 'id' | 'timestamp' | 'userId'>,
+) {
+  const ref = await db.collection('requests').add({
+    ...log,
+    timestamp: Timestamp.now(),
+    userId,
+  });
+
+  return ref.id;
 }

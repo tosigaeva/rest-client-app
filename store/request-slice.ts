@@ -2,7 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const sendRequestThunk = createAsyncThunk<
   { data: string; status: number; statusText: string },
-  { body?: string; headers?: Record<string, string>; method: string; url: string },
+  {
+    body?: string;
+    headers?: Record<string, string>;
+    method: string;
+    query?: string;
+    token?: string;
+    url: string;
+  },
   { rejectValue: { data: string; status: number; statusText: string } }
 >('restClient/sendRequest', async (args, { rejectWithValue }) => {
   try {

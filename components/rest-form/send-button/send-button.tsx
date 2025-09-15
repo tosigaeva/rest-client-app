@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/auth-context';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
 import { prepareHeaders } from '@/utils/prepare-headers';
@@ -12,29 +13,33 @@ import { setQueryParams } from '@/utils/set-query-params';
 export const SendButton = () => {
   const dispatch = useAppDispatch();
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
+  const { user } = useAuth();
 
   const router = useRouter();
   const [isValid, setIsValid] = useState(!!(method && requestUrl));
 
-  async function setUrl() {
-    const query = setQueryParams(method, requestUrl, body, headers);
+  async function setUrl(query: string) {
     router.push(query);
   }
 
-  const sendRequest = () => {
+  const sendRequest = async (query: string) => {
+    console.log(body);
     dispatch(
       sendRequestThunk({
         body,
         headers: prepareHeaders(headers),
         method,
+        query,
+        token: user ? await user.getIdToken() : undefined,
         url: requestUrl,
       }),
     );
   };
 
   async function handleOnClick() {
-    setUrl();
-    sendRequest();
+    const query = setQueryParams(method, requestUrl, body, headers);
+    setUrl(query);
+    sendRequest(query);
   }
 
   useEffect(() => setIsValid(!!(method && requestUrl)), [method, requestUrl]);
