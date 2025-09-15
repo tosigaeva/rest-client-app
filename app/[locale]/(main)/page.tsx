@@ -1,5 +1,6 @@
 'use client';
 import { WelcomeBlock } from '@components';
+
 import { useAuth } from '@/context/auth-context';
 
 export default function Page() {
