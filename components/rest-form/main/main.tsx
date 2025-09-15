@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { HTTP_METHODS } from '@/constants';
+import { useAuth } from '@/context/auth-context';
 import { setMethod, setRequestUrl } from '@/store/rest-slice';
 import { HttpMethod } from '@/type';
 
@@ -22,6 +23,8 @@ export const RestMain = () => {
   const dispatch = useDispatch();
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
+  const { user } = useAuth();
+  const username = user?.displayName || 'Guest';
   const [url, setUrl] = useState<string>(() => {
     try {
       return segments[3] ? decode(segments[3]) : '';
@@ -30,13 +33,13 @@ export const RestMain = () => {
     }
   });
   useEffect(() => {
-    dispatch(setRequestUrl(url));
+    dispatch(setRequestUrl({ requestUrl: url, username }));
     dispatch(setMethod((segments[2] as HttpMethod) || 'GET'));
   }, []);
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      dispatch(setRequestUrl(url));
+      dispatch(setRequestUrl({ requestUrl: url, username }));
     }, DEBOUNCE_DELAY);
 
     return () => clearTimeout(handler);
@@ -61,7 +64,7 @@ export const RestMain = () => {
       </Select>
       <Input
         className="min-w-[200px] flex-1"
-        onBlur={(e) => dispatch(setRequestUrl(e.target.value))}
+        onBlur={(e) => dispatch(setRequestUrl({ requestUrl: e.target.value, username }))}
         onChange={(e) => setUrl(e.target.value)}
         placeholder="Endpoint URL"
         type="text"

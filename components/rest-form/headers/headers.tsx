@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { EMPTY_HEADER } from '@/constants';
+import { useAuth } from '@/context/auth-context';
 import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
 import { Header } from '@/type';
@@ -16,14 +17,18 @@ export const RestHeaders = () => {
   const headers: Header[] = useSelector((state: RootState) => state.restData.headers);
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
+  const { user } = useAuth();
+  const username = user?.displayName || 'Guest';
   useEffect(() => {
     searchParams
       ?.entries()
-      .forEach(([key, value]) => dispatch(addHeader({ headerKey: key, value })));
-  }, []);
+      .forEach(([key, value]) =>
+        dispatch(addHeader({ header: { headerKey: key, value }, username })),
+      );
+  }, [searchParams, dispatch, username]);
 
-  function handlerAddHeader(header: Header) {
-    dispatch(addHeader(header));
+  function handlerAddHeader() {
+    dispatch(addHeader({ header, username }));
     setHeader(EMPTY_HEADER);
   }
 
@@ -47,7 +52,7 @@ export const RestHeaders = () => {
           type="text"
           value={header.value}
         />
-        <Button onClick={() => handlerAddHeader(header)} size="sm">
+        <Button onClick={handlerAddHeader} size="sm">
           Add Header
         </Button>
       </div>

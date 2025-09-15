@@ -18,11 +18,12 @@ export const headersSlice = createSlice({
   initialState,
   name: 'headers',
   reducers: {
-    addHeader: (state, action: PayloadAction<Header>) => {
-      const variables = JSON.parse(localStorage.getItem('variables') || '{}');
+    addHeader: (state, action: PayloadAction<{ header: Header; username: string }>) => {
+      const { header, username } = action.payload;
+      const variables = JSON.parse(localStorage.getItem(`variables-${username}`) || '{}');
       const processedHeader = {
-        headerKey: action.payload.headerKey,
-        value: replaceVariables(action.payload.value, variables),
+        headerKey: header.headerKey,
+        value: replaceVariables(header.value, variables),
       };
       state.headers.push(processedHeader);
       state.header = EMPTY_HEADER;
@@ -37,18 +38,20 @@ export const headersSlice = createSlice({
       );
     },
 
-    setBody: (state, action: PayloadAction<string>) => {
-      const variables = JSON.parse(localStorage.getItem('variables') || '{}');
-      state.body = replaceVariables(action.payload, variables);
+    setBody: (state, action: PayloadAction<{ body: string; username: string }>) => {
+      const { body, username } = action.payload;
+      const variables = JSON.parse(localStorage.getItem(`variables-${username}`) || '{}');
+      state.body = replaceVariables(body, variables);
     },
 
     setMethod: (state, action: PayloadAction<HttpMethod>) => {
       state.method = action.payload;
     },
 
-    setRequestUrl: (state, action: PayloadAction<string>) => {
-      const variables = JSON.parse(localStorage.getItem('variables') || '{}');
-      state.requestUrl = replaceVariables(action.payload, variables).trim();
+    setRequestUrl: (state, action: PayloadAction<{ requestUrl: string; username: string }>) => {
+      const { requestUrl, username } = action.payload;
+      const variables = JSON.parse(localStorage.getItem(`variables-${username}`) || '{}');
+      state.requestUrl = replaceVariables(requestUrl, variables).trim();
     },
 
     setResponse: (state, action: PayloadAction<string>) => {
