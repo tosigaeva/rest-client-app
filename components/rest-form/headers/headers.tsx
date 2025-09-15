@@ -25,7 +25,7 @@ export const RestHeaders = () => {
       .forEach(([key, value]) =>
         dispatch(addHeader({ header: { headerKey: key, value }, username })),
       );
-  }, [searchParams, dispatch, username]);
+  }, []);
 
   function handlerAddHeader() {
     dispatch(addHeader({ header, username }));
