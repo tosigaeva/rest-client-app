@@ -4,6 +4,7 @@ import { GrTrash } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
 import { useVariables } from '@/hooks/use-variables';
+import { cn } from '@/lib/utils';
 import { getVariables, setVariables } from '@/utils/storage-variables';
 
 import { Button } from '../ui';
@@ -25,20 +26,35 @@ export const VariablesBlock = () => {
         <Table className="w-full border-collapse">
           <TableHeader>
             <TableRow>
-              <TableHead className="border p-2 text-left text-2xl">{t('variables')}</TableHead>
-              <TableHead className="border p-2 text-left text-2xl">{t('value')}</TableHead>
+              <TableHead className="h-16 w-1/2 border p-2 text-left text-2xl">
+                {t('variables')}
+              </TableHead>
+              <TableHead className="h-16 w-1/2 border p-2 text-left text-2xl">
+                {t('value')}
+              </TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="min-h-16">
             {rows.map((row, index) => (
               <TableRow key={index}>
                 <TableCell className="border p-2">
-                  <Input
-                    className="w-full rounded border p-1"
-                    onChange={(e) => handleInputChange(index, 'variable', e.target.value)}
-                    type="text"
-                    value={row.variable}
-                  />
+                  <div className="flex items-center justify-between gap-2">
+                    <Input
+                      checked={row.saved}
+                      className={cn(
+                        'h-5 w-5 accent-green-500',
+                        'disabled:cursor-default disabled:accent-green-500 disabled:opacity-100',
+                      )}
+                      readOnly
+                      type="checkbox"
+                    ></Input>
+                    <Input
+                      className="w-full rounded border p-1"
+                      onChange={(e) => handleInputChange(index, 'variable', e.target.value)}
+                      type="text"
+                      value={row.variable}
+                    />
+                  </div>
                 </TableCell>
                 <TableCell className="border p-2">
                   <div className="flex justify-between gap-2">
