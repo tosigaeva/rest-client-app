@@ -28,7 +28,8 @@
     }
   },
   "notFound": {
-    "btn": "Back to the Beginning"},
+    "btn": "Back to the Beginning"
+  },
   "auth": {
     "signin": "Sign In",
     "singup": "Sign Up",
