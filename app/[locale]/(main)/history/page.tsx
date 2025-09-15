@@ -1,4 +1,4 @@
-import { ProtectedRoutes } from '@/components/protected-routes';
+import { ProtectedRoutes } from '@components';
 
 export default function History() {
   return (
