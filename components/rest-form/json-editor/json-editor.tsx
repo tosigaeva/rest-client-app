@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useAuth } from '@/context/auth-context';
 import { setBody as setStateBody } from '@/store/rest-slice';
 
 export const BodyEditor = ({
@@ -19,6 +20,8 @@ export const BodyEditor = ({
   const segments = pathname.split('/').filter(Boolean);
   const [body, setBody] = useState(!readOnly ? decode(segments[4] ?? '') : '');
   const dispatch = useDispatch();
+  const { user } = useAuth();
+  const username = user?.displayName || 'Guest';
   const [isJson, setIsJson] = useState<boolean>(() => {
     try {
       JSON.parse(body);
@@ -41,7 +44,7 @@ export const BodyEditor = ({
   }, [readOnly, initialBody]);
 
   const handleBlur = () => {
-    dispatch(setStateBody(body));
+    dispatch(setStateBody({ body, username }));
     prettifyJson();
   };
 
