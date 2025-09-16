@@ -2,13 +2,13 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGE_SENDER_ID,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  apiKey: 'AIzaSyDD3V4Avo0aa7o-e-4c5tU8PxDIWDAjdBo',
+  appId: '1:981917200623:web:32834d783ab9af2d002b1a',
+  authDomain: 'restcafe-3cc28.firebaseapp.com',
+  measurementId: 'G-VTM069TR23',
+  messagingSenderId: '981917200623',
+  projectId: 'restcafe-3cc28',
+  storageBucket: 'restcafe-3cc28.firebasestorage.app',
 };
 
 const app = initializeApp(firebaseConfig);

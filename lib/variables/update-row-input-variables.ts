@@ -15,8 +15,4 @@ export const updateRowInputVariables = (
   });
 
   setRows(newRows);
-
-  if (index === rows.length - 1 && value !== '') {
-    setRows([...newRows, { saved: false, value: '', variable: '' }]);
-  }
 };

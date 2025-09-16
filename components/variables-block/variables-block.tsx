@@ -50,6 +50,7 @@ export const VariablesBlock = () => {
                     ></Input>
                     <Input
                       className="w-full rounded border p-1"
+                      disabled={row.saved}
                       onChange={(e) => handleInputChange(index, 'variable', e.target.value)}
                       type="text"
                       value={row.variable}

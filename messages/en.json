@@ -70,8 +70,15 @@
     }
   },
   "variablesBlock": {
-    "variables": "Variables",
+    "variablesHeader": "Variables",
+    "variables": "Key_Variable",
     "value": "Value",
-    "btnSave": "Save"
+    "btnSave": "Save",
+    "btnAdd": "Add Row",
+    "messageError": "Please fill in the ",
+    "messageErrorVariables": "'Key_Variable' field",
+    "messageErrorValue": "'Value' field",
+    "messageErrorUnknown": "An unknown error occurred!",
+    "messageSuccessful": "Data saved successfully!"
   }
 }
