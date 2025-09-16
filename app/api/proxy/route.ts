@@ -5,11 +5,14 @@ export async function POST(req: Request) {
     const { body, headers, method, url } = await req.json();
 
     const res = await fetch(url, {
-      body: body ? JSON.stringify(body) : undefined,
+      body: body && !['GET', 'HEAD'].includes(method) ? JSON.stringify(body) : undefined,
       headers,
       method,
     });
 
+    if (res.status < 200 || res.status >= 400 || [204, 205, 304].includes(res.status)) {
+      return new NextResponse(null, { status: res.status });
+    }
     let data;
     let isJson = false;
 
@@ -20,16 +23,18 @@ export async function POST(req: Request) {
       data = await res.text();
     }
 
-    return NextResponse.json({
-      data,
-      isJson,
-      ok: res.ok,
-      status: res.status,
-    });
+    return NextResponse.json(
+      {
+        data,
+        isJson,
+        ok: res.ok,
+      },
+      { status: res.status },
+    );
   } catch (e: unknown) {
-    if (e instanceof Error) {
-      return NextResponse.json({ error: e.message }, { status: 500 });
-    }
-    return NextResponse.json({ error: 'Unknown error' }, { status: 500 });
+    return NextResponse.json(
+      { error: e instanceof Error ? e.message : 'Unknown error' },
+      { status: 502 },
+    );
   }
 }
