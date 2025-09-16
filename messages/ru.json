@@ -101,8 +101,15 @@
     }
   },
   "variablesBlock": {
-    "variables": "Переменные",
+    "variablesHeader": "Переменные",
+    "variables": "Ключ_Переменной",
     "value": "Значение",
-    "btnSave": "Сохранить"
+    "btnSave": "Сохранить",
+    "btnAdd": "Добавить строку",
+    "messageError": "Пожалуйста, заполните ",
+    "messageErrorVariables": "поле 'Ключ_Переменной'",
+    "messageErrorValue": "поле 'Значение'",
+    "messageErrorUnknown": "Произошла неизвестная ошибка!",
+    "messageSuccessful": "Данные успешно сохранены!"
   }
 }

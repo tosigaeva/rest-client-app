@@ -14,7 +14,7 @@ export const VariablesHeader = ({ onAddRow, onSave }: VariablesHeaderProps) => {
 
   return (
     <div className="flex w-full justify-between">
-      <h3 className="mb-4 text-5xl font-semibold">{t('variables')}</h3>
+      <h3 className="mb-4 text-5xl font-semibold">{t('variablesHeader')}</h3>
       <div className="flex gap-4">
         <Button
           className="flex cursor-pointer justify-between self-end"
@@ -22,7 +22,7 @@ export const VariablesHeader = ({ onAddRow, onSave }: VariablesHeaderProps) => {
           title="Click to Add a Row to write Variables"
         >
           <GrAdd />
-          Add Row
+          {t('btnAdd')}
         </Button>
         <Button
           className="flex cursor-pointer justify-between self-end"

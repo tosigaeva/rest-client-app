@@ -1,4 +1,6 @@
+import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { useAuth } from '@/context/auth-context';
 import { addRow } from '@/lib/variables/add-row-variables';
@@ -16,13 +18,27 @@ export const useVariables = (
   const [variables, setVariablesState] = useState<Record<string, string>>({});
   const { user } = useAuth();
   const username = user?.displayName || 'Guest';
+  const t = useTranslations('variablesBlock');
 
   useEffect(() => {
     initializeVariables(username, getVariables, setRows, setVariablesState);
   }, [username, getVariables]);
 
   const handleSave = () => {
-    saveVariables(rows, variables, username, setVariables, setVariablesState, setRows);
+    const result = saveVariables(
+      rows,
+      variables,
+      username,
+      setVariables,
+      setVariablesState,
+      setRows,
+      t,
+    );
+    if (!result.success) {
+      toast.error(result.message || t('messageErrorUnknown'));
+      return;
+    }
+    toast.success(t('messageSuccessful'));
   };
 
   const handleInputChange = (index: number, field: keyof RowType, value: string) => {

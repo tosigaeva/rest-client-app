@@ -105,8 +105,15 @@
 }
     ,
   "variablesBlock": {
-    "variables": "Зменныя",
+    "variablesHeader": "Зменныя",
+    "variables": "Ключ_Зменнай",
     "value": "Значэнне",
-    "btnSave": "Захаваць"
+    "btnSave": "Захаваць",
+    "btnAdd": "Дадаць радок",
+    "messageError": "Калі ласка, запоўніце ",
+    "messageErrorVariables": "поле 'Ключ_Зменнай'",
+    "messageErrorValue": "поле 'Значэнне'",
+    "messageErrorUnknown": "Адбылася невядомая памылка!",
+    "messageSuccessful": "Даныя паспяхова захаваны!"
   }
 }
