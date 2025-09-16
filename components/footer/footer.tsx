@@ -2,11 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { AUTHOR_GITHUBS, RSS_LINK } from '@/constants';
+import { cn } from '@/lib/utils';
 
 export const Footer = () => {
   return (
-    <footer className="bg-glass border-bg-300 text-muted w-full border-t py-1 text-center text-sm backdrop-blur-md">
-      <div className="container mx-auto flex flex-col items-center justify-between px-6 py-1 md:flex-row">
+    <footer
+      className={cn(
+        'bg-glass border-bg-300 text-muted w-full border-t py-1 text-center text-sm backdrop-blur-md',
+        'md:w-[calc(100vw-16rem-20px)]',
+      )}
+    >
+      <div className="flex flex-col items-center justify-between px-6 py-1 md:flex-row">
         <div className="flex gap-4">
           {AUTHOR_GITHUBS.map((author) => (
             <Link
