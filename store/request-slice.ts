@@ -12,9 +12,16 @@ export const sendRequestThunk = createAsyncThunk<
       method: 'POST',
     });
 
-    const result = await res.json();
+    let data;
+    try {
+      const result = await res.json();
+      data = typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2);
+    } catch {
+      data = '';
+    }
+
     const returnValue = {
-      data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
+      data,
       status: res.status,
       statusText: res.statusText,
     };
