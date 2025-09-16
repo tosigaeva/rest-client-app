@@ -4,29 +4,28 @@ import { adminAuth } from '@/lib/firebase-admin';
 import { saveRequestLog } from '@/lib/history';
 
 export async function POST(req: Request) {
+  const start = Date.now();
+
   try {
     const { body, headers, method, query, token, url } = await req.json();
-    let userId = 'anonymous';
+
+    let userId: null | string = null;
     if (token) {
       try {
         const decoded = await adminAuth.verifyIdToken(token);
         userId = decoded.uid;
       } catch (error) {
-        console.warn('Token verification failed:', error);
+        console.warn('Invalid Firebase token', error);
       }
     }
 
-    const start = Date.now();
     const requestParams = {
-      body:
-        method !== 'GET' && method !== 'DELETE' && method !== 'HEAD'
-          ? JSON.stringify(body ?? {})
-          : undefined,
+      body: body ? JSON.stringify(body) : undefined,
       headers,
       method,
     };
     const res = await fetch(url, requestParams);
-    const end = Date.now();
+    const latency = Date.now() - start;
 
     if (res.status < 200 || res.status >= 400 || [204, 205, 304].includes(res.status)) {
       return new NextResponse(null, { status: res.status });
@@ -42,21 +41,24 @@ export async function POST(req: Request) {
     }
 
     const requestSize = body ? new TextEncoder().encode(JSON.stringify(body)).length : 0;
-    const responseSize = new TextEncoder().encode(
-      typeof data === 'string' ? data : JSON.stringify(data),
-    ).length;
-    await saveRequestLog(userId, {
-      baseUrl: url,
-      body,
-      error: res.ok ? null : res.statusText,
-      headers,
-      latency: end - start,
-      method,
-      requestSize,
-      responseSize,
-      status: res.status,
-      url: query,
-    });
+    const responseSize = data
+      ? new TextEncoder().encode(isJson ? JSON.stringify(data) : data).length
+      : 0;
+
+    if (userId) {
+      await saveRequestLog(userId, {
+        baseUrl: new URL(url).origin,
+        body,
+        error: res.ok ? null : res.statusText,
+        headers,
+        latency,
+        method,
+        requestSize,
+        responseSize,
+        status: res.status,
+        url: query,
+      });
+    }
 
     return NextResponse.json({
       data,
@@ -65,21 +67,37 @@ export async function POST(req: Request) {
       status: res.status,
     });
   } catch (e: unknown) {
-    let errorMessage = 'Unknown error';
-    if (e instanceof Error) {
-      errorMessage = e.message;
+    const latency = Date.now() - start;
+
+    const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+
+    const { body, headers, method, token, url } = await req.json().catch(() => ({}));
+
+    let userId: null | string = null;
+    if (token) {
+      try {
+        const decoded = await adminAuth.verifyIdToken(token);
+        userId = decoded.uid;
+      } catch (error) {
+        console.warn('Invalid Firebase token', error);
+      }
     }
 
-    await saveRequestLog('anonymous', {
-      baseUrl: '',
-      error: errorMessage,
-      latency: 0,
-      method: 'UNKNOWN',
-      requestSize: 0,
-      responseSize: 0,
-      status: 0,
-      url: 'unknown',
-    });
+    if (userId && url && method) {
+      await saveRequestLog(userId, {
+        baseUrl: url ? new URL(url).origin : '',
+        body,
+        error: errorMessage,
+        headers,
+        latency,
+        method,
+        requestSize: body ? new TextEncoder().encode(JSON.stringify(body)).length : 0,
+        responseSize: 0,
+        status: 0,
+        url,
+      });
+    }
+
     return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }
