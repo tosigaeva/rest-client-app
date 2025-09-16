@@ -44,19 +44,23 @@ export const Header = () => {
 
   return (
     <header
-      className={cn('fixed top-0 z-50 flex w-full justify-between transition-all duration-300', {
-        'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
-        'h-16 bg-transparent py-4': !isSticky,
-      })}
+      className={cn(
+        'fixed top-0 z-50 flex justify-between transition-all duration-300',
+        'w-full md:left-64 md:w-[calc(100vw-16rem)]',
+        {
+          'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
+          'h-16 bg-transparent py-4': !isSticky,
+        },
+      )}
     >
       <Link className="ml-2" href={'/'}>
-        <div className="flex justify-between gap-1.5">
+        <div className="flex justify-between gap-1.5 pl-4 md:pl-8">
           <Image alt="logo-app" height={20} src="/icon1.png" width={35} />
           <h1 className="text-3xl font-bold">RestCafé</h1>
         </div>
       </Link>
-      <div>
-        <div className="container mx-auto flex h-full items-center justify-between gap-3.5 px-4">
+      <div className="pr-4 md:pr-8">
+        <div className="flex h-full items-center justify-between gap-3.5">
           <Link href="/about-us">
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />
           </Link>
