@@ -1,14 +1,9 @@
-'use client';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
+import { getCurrentUser } from '@/actions/auth-actions';
 import { Button } from '@/components/ui';
 import { ROUTES } from '@/constants';
-import { useAuth } from '@/context/auth-context';
 import { Link } from '@/i18n/navigation';
-
-interface WelcomeBlockProps {
-  username: string;
-}
 
 const navItems = [
   {
@@ -25,16 +20,12 @@ const navItems = [
   },
 ];
 
-export const WelcomeBlock = ({ username }: WelcomeBlockProps) => {
-  const tBtn = useTranslations();
-  const t = useTranslations('welcomeBlock');
+export const WelcomeBlock = async () => {
+  const user = await getCurrentUser();
+  const username = user?.displayName || user?.email || 'Guest';
 
-  const { loading, user } = useAuth();
-
-  if (loading) {
-    // TODO: replace Loading line to Component
-    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
-  }
+  const tBtn = await getTranslations();
+  const t = await getTranslations('welcomeBlock');
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center p-4">

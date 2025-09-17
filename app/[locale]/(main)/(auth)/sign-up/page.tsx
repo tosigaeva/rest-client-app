@@ -1,6 +1,6 @@
 'use client';
 
-import { FloatingInput, PasswordChecklist, ProtectedRoutes } from '@components';
+import { FloatingInput, PasswordChecklist } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
@@ -37,49 +37,47 @@ export default function SignUpPage() {
   };
 
   return (
-    <ProtectedRoutes>
-      <main>
-        <div className="m-full mx-auto mt-24 mb-auto max-w-lg px-8 pt-0 pb-8">
-          <h2 className="text-xxl mb-10 text-center">{t('signup_page.title')}</h2>{' '}
-          <Form {...form}>
-            <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
-              <FloatingInput
-                control={form.control}
-                error={form.formState.errors.name}
-                label={t('name')}
-                name="name"
-              />
-              <FloatingInput
-                control={form.control}
-                error={form.formState.errors.email}
-                label={t('email')}
-                name="email"
-                type="email"
-              />
-              <FloatingInput
-                control={form.control}
-                error={form.formState.errors.password}
-                label={t('password')}
-                name="password"
-                type="password"
-              />
-              <PasswordChecklist password={form.watch('password') || ''} />
-              <Button
-                className="mt-8 h-12 cursor-pointer rounded-sm bg-black text-center text-lg text-white"
-                type="submit"
-              >
-                {t('singup')}
-              </Button>
-            </form>
-          </Form>
-          <div className="mt-5 text-center text-lg">
-            {t('signup_page.have_account')}
-            <Link className="ml-2 cursor-pointer underline" href={ROUTES.SIGN_IN}>
-              {t('signin')}
-            </Link>
-          </div>
+    <main>
+      <div className="m-full mx-auto mt-24 mb-auto max-w-lg px-8 pt-0 pb-8">
+        <h2 className="text-xxl mb-10 text-center">{t('signup_page.title')}</h2>
+        <Form {...form}>
+          <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
+            <FloatingInput
+              control={form.control}
+              error={form.formState.errors.name}
+              label={t('name')}
+              name="name"
+            />
+            <FloatingInput
+              control={form.control}
+              error={form.formState.errors.email}
+              label={t('email')}
+              name="email"
+              type="email"
+            />
+            <FloatingInput
+              control={form.control}
+              error={form.formState.errors.password}
+              label={t('password')}
+              name="password"
+              type="password"
+            />
+            <PasswordChecklist password={form.watch('password') || ''} />
+            <Button
+              className="mt-8 h-12 cursor-pointer rounded-sm bg-black text-center text-lg text-white"
+              type="submit"
+            >
+              {t('singup')}
+            </Button>
+          </form>
+        </Form>
+        <div className="mt-5 text-center text-lg">
+          {t('signup_page.have_account')}
+          <Link className="ml-2 cursor-pointer underline" href={ROUTES.SIGN_IN}>
+            {t('signin')}
+          </Link>
         </div>
-      </main>
-    </ProtectedRoutes>
+      </div>
+    </main>
   );
 }
