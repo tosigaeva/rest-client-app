@@ -1,12 +1,10 @@
-'use client';
-
 import { RequestLog } from '@/lib/history';
 
 type Props = {
   doc: RequestLog;
 };
 
-export function HistoryItem({ doc }: Props) {
+export async function HistoryItem({ doc }: Props) {
   const date = new Date(doc.timestamp).toDateString();
   const time = new Date(doc.timestamp).toLocaleTimeString();
 
