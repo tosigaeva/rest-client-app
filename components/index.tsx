@@ -2,7 +2,6 @@ export { AboutUsPage } from './about-us-page/about-us-page';
 export { Footer } from './footer/footer';
 export { Header } from './header/header';
 export { HistoryItem } from './history/item/history-item';
-export { HistoryList } from './history/list/history-list';
 export { LanguageSelect } from './language-select/language-select';
 export { Body } from './rest-form/body/body';
 export { GeneratedCode } from './rest-form/generated-code/generated-code';
