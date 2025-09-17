@@ -2,10 +2,16 @@ import { HistoryItem } from '@components';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
+import { getCurrentUser } from '@/actions/auth-actions';
 import { getUserRequestHistory, RequestLog } from '@/lib/history';
 
-export async function HistoryList({ userId }: { userId: string }) {
+export default async function HistoryList() {
   const t = await getTranslations('history');
+  const user = await getCurrentUser();
+  if (!user) {
+    return 'User not found';
+  }
+  const userId = user.uid;
   const history: RequestLog[] = await getUserRequestHistory(userId);
 
   if (history.length === 0) {

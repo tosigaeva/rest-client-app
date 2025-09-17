@@ -1,23 +1,10 @@
 import { NextRequest } from 'next/server';
 
-export function createLocaleAwareRedirect(
-  request: NextRequest,
-  targetPath: string,
-  locale?: string,
-): URL {
-  const currentLocale = locale || extractLocale(request.nextUrl.pathname);
-  const baseUrl = new URL(request.url);
-  baseUrl.pathname = `/${currentLocale}${targetPath}`;
-  return baseUrl;
-}
-
-export function extractLocale(pathname: string): string {
-  const segments = pathname.split('/');
-  return segments[1] || 'en';
-}
-
 export function matchesRoute(pathname: string, routes: string[]): boolean {
-  return routes.some((route) => pathname.includes(route));
+  return routes.some((route) => {
+    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}\//, '/');
+    return pathWithoutLocale.startsWith(route);
+  });
 }
 
 export function validateSession(request: NextRequest): boolean {

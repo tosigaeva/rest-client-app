@@ -1,12 +1,8 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 
-import {
-  AUTH_ROUTES,
-  createLocaleAwareRedirect,
-  matchesRoute,
-  validateSession,
-} from '@/lib/auth-middleware';
+import { ROUTES } from '@/constants';
+import { AUTH_ROUTES, matchesRoute, validateSession } from '@/lib/auth-middleware';
 
 import { routing } from './i18n/routing';
 
@@ -37,13 +33,15 @@ function authMiddleware(request: NextRequest) {
   const isAuthenticated = validateSession(request);
 
   if (isProtectedRoute && !isAuthenticated) {
-    const signInUrl = createLocaleAwareRedirect(request, '/sign-in');
-    return NextResponse.redirect(signInUrl);
+    const url = request.nextUrl.clone();
+    url.pathname = ROUTES.SIGN_IN;
+    return NextResponse.redirect(url, 301);
   }
 
   if (isAuthenticated && isPublicRoute) {
-    const mainUrl = createLocaleAwareRedirect(request, '/');
-    return NextResponse.redirect(mainUrl);
+    const url = request.nextUrl.clone();
+    url.pathname = ROUTES.MAIN;
+    return NextResponse.redirect(url, 301);
   }
 
   return NextResponse.next();
