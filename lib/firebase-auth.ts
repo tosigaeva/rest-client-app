@@ -6,6 +6,7 @@ import {
 import { FieldValues, Path, UseFormSetError } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
+import { createSession, removeSession } from '@/actions/auth-actions';
 import { auth } from '@/lib/firebase';
 
 type FirebaseError = { code?: string; message?: string };
@@ -38,10 +39,16 @@ export const handleFirebaseError = <T extends FieldValues>(
 export const registerUser = async (email: string, password: string, name: string) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(userCredential.user, { displayName: name });
+  await createSession(userCredential.user.uid);
   return userCredential.user;
 };
 
 export const signInUser = async (email: string, password: string) => {
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  await createSession(userCredential.user.uid);
   return userCredential.user;
+};
+
+export const signOutUser = async () => {
+  await removeSession();
 };
