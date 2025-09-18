@@ -17,7 +17,7 @@ export const useVariables = (
   const [rows, setRows] = useState<RowType[]>([{ saved: false, value: '', variable: '' }]);
   const [variables, setVariablesState] = useState<Record<string, string>>({});
   const { user } = useAuth();
-  const username = user?.displayName || 'Guest';
+  const username = user?.uid || 'Guest';
   const t = useTranslations('variablesBlock');
 
   useEffect(() => {

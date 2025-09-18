@@ -24,7 +24,7 @@ export const RestMain = () => {
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
   const { user } = useAuth();
-  const username = user?.displayName || 'Guest';
+  const username = user?.uid || 'Guest';
   const [url, setUrl] = useState<string>(() => {
     try {
       return segments[3] ? decode(segments[3]) : '';
