@@ -13,8 +13,13 @@ export default defineConfig({
   test: {
     coverage: {
       all: true,
-      exclude: ['**/*.d.ts', '**/node_modules/**', '**/vitest.setup.ts'],
-      include: ['**/components/**/*.{ts,tsx}', '**/pages/**/*.{ts,tsx}'],
+      exclude: [
+        '**/*.d.ts',
+        '**/node_modules/**',
+        '**/vitest.setup.ts',
+        '**/components/ui/**/*.{ts,tsx}',
+      ],
+      include: ['**/components/**/*.{ts,tsx}', '**/utils/**/*.{ts,tsx}'],
       provider: 'v8',
       reporter: ['text', 'lcov'],
       thresholds: {

@@ -32,26 +32,4 @@ describe('LanguageSelect', () => {
     const button = screen.getByRole('button', { name: /EN/i });
     expect(button).toBeInTheDocument();
   });
-
-  /*it("renders all available languages in dropdown", () => {
-    render(<LanguageSelect />);
-    const button = screen.getByRole("button", { name: /EN/i });
-    fireEvent.click(button);
-
-    routing.locales.forEach((lang) => {
-      const item = screen.getByText(lang.toUpperCase());
-      expect(item).toBeInTheDocument();
-    });
-  });*/
-
-  /*it("calls router.push with correct URL and locale when language is selected", () => {
-    render(<LanguageSelect />);
-    const button = screen.getByRole("button", { name: /EN/i });
-    fireEvent.click(button);
-
-    const ruItem = screen.getByText(/RU/i);
-    fireEvent.click(ruItem);
-
-    expect(pushMock).toHaveBeenCalledWith("/test-path?param=1", { locale: "ru" });
-  });*/
 });
