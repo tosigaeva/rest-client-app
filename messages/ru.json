@@ -111,7 +111,7 @@
     "btnAdd": "Добавить строку",
     "messageError": "Пожалуйста, заполните ",
     "messageErrorVariables": "поле 'Ключ_Переменной'",
-    "and": "and",
+    "and": " и ",
     "messageErrorValue": "поле 'Значение'",
     "messageErrorUnknown": "Произошла неизвестная ошибка!",
     "messageSuccessful": "Данные успешно сохранены!"

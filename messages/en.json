@@ -111,7 +111,7 @@
     "btnAdd": "Add Row",
     "messageError": "Please fill in the ",
     "messageErrorVariables": "'Key_Variable' field",
-    "and": "and",
+    "and": " and ",
     "messageErrorValue": "'Value' field",
     "messageErrorUnknown": "An unknown error occurred!",
     "messageSuccessful": "Data saved successfully!"
