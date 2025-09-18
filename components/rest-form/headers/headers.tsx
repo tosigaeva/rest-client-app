@@ -18,7 +18,7 @@ export const RestHeaders = () => {
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
   const { user } = useAuth();
-  const username = user?.displayName || 'Guest';
+  const username = user?.uid || 'Guest';
   useEffect(() => {
     searchParams
       ?.entries()

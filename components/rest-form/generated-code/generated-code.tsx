@@ -22,7 +22,7 @@ export const GeneratedCode = () => {
   const [settings, setSettings] = useState({ client: 'curl', language: 'shell' });
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
   const { user } = useAuth();
-  const username = user?.displayName || 'Guest';
+  const username = user?.uid || 'Guest';
 
   if (!requestUrl) {
     return <></>;
