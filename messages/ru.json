@@ -102,12 +102,16 @@
   },
   "variablesBlock": {
     "variablesHeader": "Переменные",
+    "hintSaveBtn": "Нажмите, чтобы СОХРАНИТЬ переменные",
+    "hintAddRowBtn": "Нажмите, чтобы добавить строку для ввода переменных",
+    "hintDelBtn": "Нажмите, чтобы УДАЛИТЬ переменную",
     "variables": "Ключ_Переменной",
     "value": "Значение",
     "btnSave": "Сохранить",
     "btnAdd": "Добавить строку",
     "messageError": "Пожалуйста, заполните ",
     "messageErrorVariables": "поле 'Ключ_Переменной'",
+    "and": "and",
     "messageErrorValue": "поле 'Значение'",
     "messageErrorUnknown": "Произошла неизвестная ошибка!",
     "messageSuccessful": "Данные успешно сохранены!"

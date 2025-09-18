@@ -27,7 +27,7 @@ export const VariablesHeader = ({ onAddRow, onSave }: VariablesHeaderProps) => {
         <Button
           className="flex cursor-pointer justify-between self-end"
           onClick={onSave}
-          title="Click To SAVE Variables"
+          title={t('hintSaveBtn')}
         >
           {t('btnSave')} <GrSave />
         </Button>

@@ -102,12 +102,16 @@
   },
   "variablesBlock": {
     "variablesHeader": "Variables",
+    "hintSaveBtn": "Click To SAVE Variables",
+    "hintAddRowBtn": "Click to Add a Row to write Variables",
+    "hintDelBtn": "Click To DELETE Variable",
     "variables": "Key_Variable",
     "value": "Value",
     "btnSave": "Save",
     "btnAdd": "Add Row",
     "messageError": "Please fill in the ",
     "messageErrorVariables": "'Key_Variable' field",
+    "and": "and",
     "messageErrorValue": "'Value' field",
     "messageErrorUnknown": "An unknown error occurred!",
     "messageSuccessful": "Data saved successfully!"

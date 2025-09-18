@@ -1,11 +1,17 @@
-import { ProtectedRoutes } from '@components';
+import { ProtectedRoutes, Spinner } from '@components';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 
-import { VariablesBlock } from '@/components/variables-block';
+const Variable = dynamic(() =>
+  import('@/components/variables-block/variables-block').then((mod) => mod.VariablesBlock),
+);
 
 export default function Variables() {
   return (
     <ProtectedRoutes>
-      <VariablesBlock />;
+      <Suspense fallback={<Spinner />}>
+        <Variable />
+      </Suspense>
     </ProtectedRoutes>
   );
 }

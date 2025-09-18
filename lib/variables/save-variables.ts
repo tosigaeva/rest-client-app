@@ -34,7 +34,7 @@ export const saveVariables = (
       messages.push(`${t('messageErrorValue')}`);
     }
 
-    message += messages.join(' и ');
+    message += messages.join(t('and'));
     return { message, success: false };
   }
 

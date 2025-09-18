@@ -14,5 +14,8 @@ export { BodyEditor } from './rest-form/json-editor/json-editor';
 export { RestMain } from './rest-form/main/main';
 export { RestResponse } from './rest-form/response/response';
 export { SendButton } from './rest-form/send-button/send-button';
+export { Spinner } from './spinner/spinner';
+export { VariablesBlock } from './variables-block/variables-block';
+export { VariablesHeader } from './variables-block/variables-header/variables-header';
 export { WelcomeBlock } from './welcome-block/welcome-block';
 export { Wrapper } from './wrapper/wrapper';

@@ -106,12 +106,16 @@
     ,
   "variablesBlock": {
     "variablesHeader": "Зменныя",
+    "hintSaveBtn": "Націсніце, каб ЗАХАВАЦЬ зменныя",
+    "hintAddRowBtn": "Націсніце, каб дадаць радок для ўводу зменных",
+    "hintDelBtn": "Націсніце, каб ВЫДАЛІЦЬ зменную",
     "variables": "Ключ_Зменнай",
     "value": "Значэнне",
     "btnSave": "Захаваць",
     "btnAdd": "Дадаць радок",
     "messageError": "Калі ласка, запоўніце ",
     "messageErrorVariables": "поле 'Ключ_Зменнай'",
+    "and": "і",
     "messageErrorValue": "поле 'Значэнне'",
     "messageErrorUnknown": "Адбылася невядомая памылка!",
     "messageSuccessful": "Даныя паспяхова захаваны!"

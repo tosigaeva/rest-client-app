@@ -1,5 +1,6 @@
 'use client';
 
+import { VariablesHeader } from '@components';
 import { GrTrash } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
@@ -10,7 +11,6 @@ import { getVariables, setVariables } from '@/utils/storage-variables';
 import { Button } from '../ui';
 import { Input } from '../ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
-import { VariablesHeader } from './variables-header/variables-header';
 
 export const VariablesBlock = () => {
   const t = useTranslations('variablesBlock');
@@ -65,7 +65,7 @@ export const VariablesBlock = () => {
                       type="text"
                       value={row.value}
                     />
-                    <Button onClick={() => handleDelete(index)} title={`Click To DELETE Variable`}>
+                    <Button onClick={() => handleDelete(index)} title={t('hintDelBtn')}>
                       <GrTrash />
                     </Button>
                   </div>
