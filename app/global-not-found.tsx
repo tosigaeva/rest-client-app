@@ -4,7 +4,7 @@ import './globals.css';
 import { NextIntlClientProvider } from 'next-intl';
 import { Inter } from 'next/font/google';
 
-import { NotFoundPage } from '@/components/not-found-page';
+import { NotFoundPage } from '@/components';
 
 const inter = Inter({ subsets: ['latin'] });
 
