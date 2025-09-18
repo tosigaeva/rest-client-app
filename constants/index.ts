@@ -64,10 +64,14 @@ export enum PROGRAMMING_LANGUAGES {
 }
 
 export const ROUTES = {
+  ABOUT: '/about',
+  API: '/api',
   HISTORY: '/history',
   MAIN: '/',
+  NEXT: '/_next',
   REST: '/rest',
   SIGN_IN: '/sign-in',
   SIGN_UP: '/sign-up',
   VARIABLES: '/variables',
+  VERSEL: '/_vercel',
 };

@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 import { getCurrentUser } from '@/actions/auth-actions';
+import { ROUTES } from '@/constants';
 import { getUserRequestHistory, RequestLog } from '@/lib/history';
 
 export default async function HistoryList() {
@@ -20,8 +21,7 @@ export default async function HistoryList() {
         <h3 className="mb-3 text-center text-[40px]">{t('empty_title')}</h3>
         <div className="flex justify-center gap-2">
           <p className="text-xl font-light">{t('empty_description')}</p>
-          {/* TODO: replace "/rest" with constant ROUTES.REST */}
-          <Link className="text-xl font-light underline" href="/rest">
+          <Link className="text-xl font-light underline" href={ROUTES.REST}>
             {t('open_rest_client')}
           </Link>
         </div>
