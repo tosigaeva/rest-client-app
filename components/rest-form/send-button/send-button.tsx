@@ -23,7 +23,6 @@ export const SendButton = () => {
   }
 
   const sendRequest = async (query: string) => {
-    console.log(body);
     dispatch(
       sendRequestThunk({
         body,

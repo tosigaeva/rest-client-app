@@ -18,7 +18,6 @@ export async function POST(req: Request) {
         console.warn('Invalid Firebase token', error);
       }
     }
-
     const requestParams = {
       body: body ? JSON.stringify(body) : undefined,
       headers,
@@ -26,7 +25,6 @@ export async function POST(req: Request) {
     };
     const res = await fetch(url, requestParams);
     const latency = Date.now() - start;
-
     let data;
     let isJson = false;
 
@@ -34,7 +32,11 @@ export async function POST(req: Request) {
       data = await res.json();
       isJson = true;
     } catch {
-      data = await res.text();
+      try {
+        data = await res.text();
+      } catch {
+        data = res.body;
+      }
     }
 
     const requestSize = body ? new TextEncoder().encode(JSON.stringify(body)).length : 0;
@@ -44,7 +46,7 @@ export async function POST(req: Request) {
 
     if (userId) {
       await saveRequestLog(userId, {
-        baseUrl: new URL(url).origin,
+        baseUrl: url,
         body,
         error: res.ok ? null : res.statusText,
         headers,
@@ -62,6 +64,7 @@ export async function POST(req: Request) {
       isJson,
       ok: res.ok,
       status: res.status,
+      statusText: res.statusText,
     });
   } catch (e: unknown) {
     const latency = Date.now() - start;

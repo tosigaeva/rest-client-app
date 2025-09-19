@@ -21,12 +21,12 @@ export const sendRequestThunk = createAsyncThunk<
 
     const result = await res.json();
     const returnValue = {
-      data: typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2),
-      status: res.status,
-      statusText: res.statusText,
+      data: !result.isJson ? result.data : JSON.stringify(result.data, null, 2),
+      status: result.status,
+      statusText: result.statusText,
     };
 
-    if (!res.ok) {
+    if (!result.ok) {
       return rejectWithValue(returnValue);
     }
     return returnValue;
