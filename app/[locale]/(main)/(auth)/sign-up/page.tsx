@@ -40,7 +40,7 @@ export default function SignUpPage() {
   return (
     <main>
       <div className="m-full mx-auto mt-24 mb-auto max-w-lg px-8 pt-0 pb-8">
-        <h2 className="text-xxl mb-10 text-center">{t('signup_page.title')}</h2>
+        <h2 className="mb-10 text-center text-[40px]">{t('signup_page.title')}</h2>
         <Form {...form}>
           <form className="flex flex-col" onSubmit={form.handleSubmit(onSubmit)}>
             <FloatingInput
