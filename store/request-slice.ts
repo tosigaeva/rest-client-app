@@ -19,21 +19,14 @@ export const sendRequestThunk = createAsyncThunk<
       method: 'POST',
     });
 
-    let data;
-    try {
-      const result = await res.json();
-      data = typeof result.data === 'string' ? result.data : JSON.stringify(result.data, null, 2);
-    } catch {
-      data = '';
-    }
-
+    const result = await res.json();
     const returnValue = {
-      data,
-      status: res.status,
-      statusText: res.statusText,
+      data: !result.isJson ? result.data : JSON.stringify(result.data, null, 2),
+      status: result.status,
+      statusText: result.statusText,
     };
 
-    if (!res.ok) {
+    if (!result.ok) {
       return rejectWithValue(returnValue);
     }
     return returnValue;
