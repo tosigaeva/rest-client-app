@@ -2,15 +2,17 @@ import type { ReactNode } from 'react';
 
 import { AppSidebar } from '@components';
 import { Footer, Header } from '@components';
+import { redirect } from 'next/navigation';
 
 import { getCurrentUser } from '@/actions/auth-actions';
 import { SidebarProvider } from '@/components/ui/sidebar';
+import { ROUTES } from '@/constants';
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
   const user = await getCurrentUser();
 
   if (!user) {
-    return <div>User not found</div>;
+    redirect(ROUTES.MAIN);
   }
 
   return (
