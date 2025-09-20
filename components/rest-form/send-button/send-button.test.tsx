@@ -43,6 +43,10 @@ vi.mock('next/navigation', async () => {
   };
 });
 
+vi.mock('@/context/auth-context', () => ({
+  useAuth: () => ({ user: null }),
+}));
+
 describe('SendButton', () => {
   beforeEach(() => {
     mockDispatch.mockClear();

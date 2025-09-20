@@ -34,7 +34,6 @@ export const WelcomeBlock = async () => {
           <h2 className="mb-2 text-2xl font-bold sm:text-3xl md:text-5xl">
             {t('welcomeBack')}, {username}!
           </h2>
-          {/* Контейнер карточек с ранним переносом */}
           <div className="flex w-full flex-wrap items-center justify-center gap-3">
             {navItems.map((item) => (
               <div

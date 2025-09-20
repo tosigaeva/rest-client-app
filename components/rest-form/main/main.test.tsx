@@ -10,6 +10,14 @@ import { RestMain } from './main';
 
 const mockDispatch = vi.fn();
 
+vi.mock('@/context/auth-context', () => ({
+  useAuth: () => ({ user: { getIdToken: vi.fn() } }),
+}));
+
+vi.mock('@/context/auth-context', () => ({
+  useAuth: () => ({ user: null }),
+}));
+
 vi.mock('react-redux', () => ({
   useDispatch: () => mockDispatch,
 }));
@@ -56,6 +64,8 @@ describe('RestMain', () => {
     expect(input.value).toBe('/api/test');
 
     fireEvent.blur(input);
-    expect(mockDispatch).toHaveBeenCalledWith(setRequestUrl('/api/test'));
+    expect(mockDispatch).toHaveBeenCalledWith(
+      setRequestUrl({ requestUrl: '/api/test', username: 'Guest' }),
+    );
   });
 });

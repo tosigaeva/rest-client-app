@@ -31,6 +31,10 @@ interface SelectProps {
   value: string;
 }
 
+vi.mock('@/context/auth-context', () => ({
+  useAuth: () => ({ user: null }),
+}));
+
 vi.mock('@/components/ui/select', () => ({
   Select: ({ children, onValueChange, value }: SelectProps) => (
     <select

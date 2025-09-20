@@ -15,6 +15,9 @@ vi.mock('@/components/ui/button', () => ({
   ),
 }));
 
+vi.mock('@/context/auth-context', () => ({
+  useAuth: () => ({ user: null }),
+}));
 vi.mock('@/components/ui/input', () => ({
   Input: ({
     onChange,

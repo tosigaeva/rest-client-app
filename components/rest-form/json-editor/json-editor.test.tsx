@@ -8,6 +8,10 @@ import restReducer from '@/store/rest-slice';
 
 import { BodyEditor } from './json-editor';
 
+vi.mock('@/context/auth-context', () => ({
+  useAuth: () => ({ user: null }),
+}));
+
 const mockDispatch = vi.fn();
 vi.mock('react-redux', async () => {
   const actual = await vi.importActual<typeof import('react-redux')>('react-redux');
