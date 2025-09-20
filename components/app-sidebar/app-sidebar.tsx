@@ -35,7 +35,7 @@ export async function AppSidebar() {
   const user = await getCurrentUser();
   return user ? (
     <Sidebar>
-      <SidebarContent>
+      <SidebarContent className="bg-fuchsia-50">
         <SidebarGroup>
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -45,7 +45,7 @@ export async function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link className="flex items-center gap-2" href={item.url}>
                       {item.icon}
-                      <span>{item.title}</span>
+                      <span className="font-caprasimo text-2xl">{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

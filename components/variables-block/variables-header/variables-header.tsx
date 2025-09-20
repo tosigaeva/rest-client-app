@@ -25,7 +25,7 @@ export const VariablesHeader = ({ onAddRow, onSave, user }: VariablesHeaderProps
         'p-4 shadow dark:bg-neutral-900',
       )}
     >
-      <h2 className="font-caprasimo text-5xl font-semibold">{`${t('variablesHeader')} ${username}`}</h2>
+      <h2 className="font-caprasimo text-3xl font-semibold">{`${t('variablesHeader')} ${username}`}</h2>
       <div className="flex gap-4">
         <Button
           className={STYLE_BUTTON}
