@@ -4,8 +4,9 @@ import { BodyEditor } from '@components';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@/store/store';
+import { HeaderProps } from '@/type';
 
-export const RestResponse = () => {
+export const RestResponse = ({ user }: HeaderProps) => {
   const { loading, response } = useSelector((state: RootState) => state.restRequest);
 
   if (loading) return <p>Loading...</p>;
@@ -32,7 +33,7 @@ export const RestResponse = () => {
       <div className="flex items-start gap-2 text-sm">
         <h3 className="font-semibold text-neutral-800 dark:text-neutral-100">Body:</h3>
         <div className="flex-1 overflow-scroll">
-          <BodyEditor initialBody={response.data} readOnly />
+          <BodyEditor initialBody={response.data} readOnly user={user} />
         </div>
       </div>
     </div>

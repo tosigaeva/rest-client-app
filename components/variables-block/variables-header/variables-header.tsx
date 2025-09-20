@@ -3,7 +3,6 @@ import { GrAdd, GrSave } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui';
-import { useAuth } from '@/context/auth-context';
 
 type VariablesHeaderProps = {
   onAddRow: () => void;
@@ -12,8 +11,7 @@ type VariablesHeaderProps = {
 
 export const VariablesHeader = ({ onAddRow, onSave }: VariablesHeaderProps) => {
   const t = useTranslations('variablesBlock');
-  const { user } = useAuth();
-  const username = user?.displayName || 'Guest';
+  const username = 'Guest';
 
   return (
     <div className="flex w-full justify-between">

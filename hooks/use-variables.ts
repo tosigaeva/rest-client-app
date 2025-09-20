@@ -2,21 +2,20 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import { useAuth } from '@/context/auth-context';
 import { addRow } from '@/lib/variables/add-row-variables';
 import { deleteRowVariables } from '@/lib/variables/delete-row-variables';
 import { initializeVariables } from '@/lib/variables/initialize-variables';
 import { saveVariables } from '@/lib/variables/save-variables';
 import { updateRowInputVariables } from '@/lib/variables/update-row-input-variables';
-import { RowType } from '@/type';
+import { RowType, ServerUser } from '@/type';
 
 export const useVariables = (
+  user: ServerUser,
   getVariables: (user: string) => Record<string, string>,
   setVariables: (user: string, variables: Record<string, string>) => void,
 ) => {
   const [rows, setRows] = useState<RowType[]>([{ saved: false, value: '', variable: '' }]);
   const [variables, setVariablesState] = useState<Record<string, string>>({});
-  const { user } = useAuth();
   const username = user?.uid || 'Guest';
   const t = useTranslations('variablesBlock');
 

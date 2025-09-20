@@ -6,15 +6,17 @@ import { useTranslations } from 'use-intl';
 
 import { useVariables } from '@/hooks/use-variables';
 import { cn } from '@/lib/utils';
+import { HeaderProps } from '@/type';
 import { getVariables, setVariables } from '@/utils/storage-variables';
 
 import { Button } from '../ui';
 import { Input } from '../ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 
-export const VariablesBlock = () => {
+export const VariablesBlock = ({ user }: HeaderProps) => {
   const t = useTranslations('variablesBlock');
   const { handleAddRow, handleDelete, handleInputChange, handleSave, rows } = useVariables(
+    user!,
     getVariables,
     setVariables,
   );

@@ -7,17 +7,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { EMPTY_HEADER } from '@/constants';
-import { useAuth } from '@/context/auth-context';
 import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
-import { Header } from '@/type';
+import { Header, HeaderProps } from '@/type';
 
-export const RestHeaders = () => {
+export const RestHeaders = ({ user }: HeaderProps) => {
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);
   const headers: Header[] = useSelector((state: RootState) => state.restData.headers);
   const dispatch = useDispatch();
   const searchParams = useSearchParams();
-  const { user } = useAuth();
   const username = user?.uid || 'Guest';
   useEffect(() => {
     searchParams
