@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 
 import { Footer, Header } from '@components';
+import { AppSidebar } from '@components';
 
-import { AppSidebar } from '@/components/app-sidebar/app-sidebar';
 import { SidebarProvider } from '@/components/ui/sidebar';
 
 export default function LocaleLayout({ children }: { children: ReactNode }) {

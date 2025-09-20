@@ -1,11 +1,11 @@
 'use client';
 
+import { FloatingInput } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-import { FloatingInput } from '@components';
 import { Button, Form } from '@/components/ui';
 import { ROUTES } from '@/constants';
 import { Link, useRouter } from '@/i18n/navigation';

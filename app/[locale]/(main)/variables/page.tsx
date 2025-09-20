@@ -8,8 +8,8 @@ const Variable = dynamic(() =>
 
 export default function Variables() {
   return (
-      <Suspense fallback={<Spinner />}>
-        <Variable />
-      </Suspense>
+    <Suspense fallback={<Spinner />}>
+      <Variable />
+    </Suspense>
   );
 }
