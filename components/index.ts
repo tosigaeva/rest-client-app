@@ -6,7 +6,6 @@ export { HistoryItem } from './history/item/history-item';
 export { LanguageSelect } from './language-select/language-select';
 export { NotFoundPage } from './not-found-page/not-found-page';
 export { PasswordChecklist } from './password-checklist/password-checklist';
-export { ProtectedRoutes } from './protected-routes/protected-routes';
 export { Body } from './rest-form/body/body';
 export { GeneratedCode } from './rest-form/generated-code/generated-code';
 export { HeaderItem } from './rest-form/header-item/header-item';
