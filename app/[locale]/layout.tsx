@@ -6,7 +6,6 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 
 import { Toaster } from '@/components/ui';
-import { AuthProvider } from '@/context/auth-context';
 
 import '../globals.css';
 import { routing } from '@/i18n/routing';
@@ -35,12 +34,10 @@ export default async function RootLayout({
     <html lang={(await params).locale || 'en'}>
       <body className="flex min-h-screen flex-col">
         <NextIntlClientProvider>
-          <AuthProvider>
-            <Wrapper>
-              {children}
-              <Toaster />
-            </Wrapper>
-          </AuthProvider>
+          <Wrapper>
+            {children}
+            <Toaster />
+          </Wrapper>
         </NextIntlClientProvider>
       </body>
     </html>

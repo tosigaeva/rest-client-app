@@ -1,7 +1,10 @@
 import { Spinner } from '@components';
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
-import HistoryList from '@/components/history/list/history-list';
+const HistoryList = dynamic(() =>
+  import('@/components/history/list/history-list').then((mod) => mod.default),
+);
 
 export default async function History() {
   return (

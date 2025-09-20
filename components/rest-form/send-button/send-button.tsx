@@ -4,16 +4,15 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/context/auth-context';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
+import { HeaderProps } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
 import { setQueryParams } from '@/utils/set-query-params';
 
-export const SendButton = () => {
+export const SendButton = ({ user }: HeaderProps) => {
   const dispatch = useAppDispatch();
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
-  const { user } = useAuth();
 
   const router = useRouter();
   const [isValid, setIsValid] = useState(!!(method && requestUrl));
@@ -29,7 +28,7 @@ export const SendButton = () => {
         headers: prepareHeaders(headers),
         method,
         query,
-        token: user ? await user.getIdToken() : undefined,
+        token: user ? user.uid : undefined,
         url: requestUrl,
       }),
     );

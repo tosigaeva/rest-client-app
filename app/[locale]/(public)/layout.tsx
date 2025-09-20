@@ -2,10 +2,17 @@ import type { ReactNode } from 'react';
 
 import { Footer, Header } from '@components';
 
-export default function PublicLayout({ children }: { children: ReactNode }) {
+import { getCurrentUser } from '@/actions/auth-actions';
+
+export default async function PublicLayout({ children }: { children: ReactNode }) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    return <div>User not found</div>;
+  }
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Header user={user} />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>

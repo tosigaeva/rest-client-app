@@ -12,6 +12,12 @@ export interface Header {
   value: string;
 }
 
+export type HeaderProps = {
+  user?: null | ServerUser;
+};
+
+export type { Locale } from '@/i18n/routing';
+
 export interface Headers {
   body: string;
   header: Header;
@@ -21,8 +27,6 @@ export interface Headers {
   response: string;
   url: string;
 }
-
-export type { Locale } from '@/i18n/routing';
 
 export type HttpMethod = (typeof HTTP_METHODS)[number];
 
@@ -39,4 +43,11 @@ export type RowType = {
   saved: boolean;
   value: string;
   variable: string;
+};
+
+export type ServerUser = {
+  displayName: string | undefined;
+  email: string | undefined;
+  emailVerified: boolean;
+  uid: string;
 };

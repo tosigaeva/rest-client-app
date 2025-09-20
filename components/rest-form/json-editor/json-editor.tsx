@@ -6,21 +6,22 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { useAuth } from '@/context/auth-context';
 import { setBody as setStateBody } from '@/store/rest-slice';
+import { ServerUser } from '@/type';
 
 export const BodyEditor = ({
   initialBody = '',
   readOnly = false,
+  user = null,
 }: {
   initialBody?: string;
   readOnly?: boolean;
+  user?: null | ServerUser;
 }) => {
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
   const [body, setBody] = useState(!readOnly ? decode(segments[4] ?? '') : '');
   const dispatch = useDispatch();
-  const { user } = useAuth();
   const username = user?.displayName || 'Guest';
   const [isJson, setIsJson] = useState<boolean>(() => {
     try {

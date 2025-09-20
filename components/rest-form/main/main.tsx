@@ -13,17 +13,15 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { HTTP_METHODS } from '@/constants';
-import { useAuth } from '@/context/auth-context';
 import { setMethod, setRequestUrl } from '@/store/rest-slice';
-import { HttpMethod } from '@/type';
+import { HeaderProps, HttpMethod } from '@/type';
 
 const DEBOUNCE_DELAY = 1000;
 
-export const RestMain = () => {
+export const RestMain = ({ user }: HeaderProps) => {
   const dispatch = useDispatch();
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
-  const { user } = useAuth();
   const username = user?.uid || 'Guest';
   const [url, setUrl] = useState<string>(() => {
     try {

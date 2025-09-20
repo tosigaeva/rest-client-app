@@ -10,14 +10,14 @@ import { MdLogout } from 'react-icons/md';
 
 import { Button } from '@/components/ui';
 import { ROUTES } from '@/constants';
-import { useAuth } from '@/context/auth-context';
+import { signOut } from '@/context/auth-context';
 import { Link, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
+import { HeaderProps } from '@/type';
 
-export const Header = () => {
+export const Header = ({ user }: HeaderProps) => {
   const t = useTranslations('auth');
   const [isSticky, setIsSticky] = useState(false);
-  const { signOut, user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
