@@ -4,6 +4,7 @@ import { VariablesHeader } from '@components';
 import { GrTrash } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
+import { STYLE_BUTTON } from '@/constants';
 import { useVariables } from '@/hooks/use-variables';
 import { cn } from '@/lib/utils';
 import { AppProps } from '@/type';
@@ -24,14 +25,19 @@ export const VariablesBlock = ({ user }: AppProps) => {
   return (
     <section className="mt-35 flex flex-col items-center justify-center gap-10 p-4">
       <VariablesHeader onAddRow={handleAddRow} onSave={handleSave} user={user!} />
-      <div className="w-full">
+      <div
+        className={cn(
+          'w-full rounded-2xl border border-neutral-200',
+          'bg-fuchsia-50 p-4 shadow dark:bg-neutral-900',
+        )}
+      >
         <Table className="w-full border-collapse">
           <TableHeader>
             <TableRow>
-              <TableHead className="h-16 w-1/2 border p-2 text-left text-2xl">
+              <TableHead className="font-caprasimo h-16 w-1/2 border p-2 text-left text-2xl">
                 {t('variables')}
               </TableHead>
-              <TableHead className="h-16 w-1/2 border p-2 text-left text-2xl">
+              <TableHead className="font-caprasimo h-16 w-1/2 border p-2 text-left text-2xl">
                 {t('value')}
               </TableHead>
             </TableRow>
@@ -40,7 +46,7 @@ export const VariablesBlock = ({ user }: AppProps) => {
             {rows.map((row, index) => (
               <TableRow key={index}>
                 <TableCell className="border p-2">
-                  <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center justify-between gap-2 bg-white">
                     <Input
                       checked={row.saved}
                       className={cn(
@@ -60,14 +66,18 @@ export const VariablesBlock = ({ user }: AppProps) => {
                   </div>
                 </TableCell>
                 <TableCell className="border p-2">
-                  <div className="flex justify-between gap-2">
+                  <div className="flex justify-between gap-2 bg-white">
                     <Input
                       className="w-full rounded border p-1"
                       onChange={(e) => handleInputChange(index, 'value', e.target.value)}
                       type="text"
                       value={row.value}
                     />
-                    <Button onClick={() => handleDelete(index)} title={t('hintDelBtn')}>
+                    <Button
+                      className={STYLE_BUTTON}
+                      onClick={() => handleDelete(index)}
+                      title={t('hintDelBtn')}
+                    >
                       <GrTrash />
                     </Button>
                   </div>

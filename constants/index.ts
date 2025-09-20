@@ -51,3 +51,5 @@ export const ROUTES = {
   VARIABLES: '/variables',
   VERSEL: '/_vercel',
 };
+
+export const STYLE_BUTTON = `px-4 py-2 text-gray-700 font-caprasimo bg-fuchsia-300 border border-gray-300 rounded-md hover:bg-fuchsia-400 transition-colors cursor-pointer`;

@@ -38,7 +38,7 @@ export const LanguageSelect = () => {
           {locale.toUpperCase()}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="font-delius">
         {locales.map((lang) => (
           <DropdownMenuItem key={lang} onSelect={() => handleLanguageChange(lang)}>
             {t(`${lang}`)}

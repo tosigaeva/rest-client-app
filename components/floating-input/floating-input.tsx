@@ -30,7 +30,7 @@ export function FloatingInput<T extends FieldValues>({
             <input
               {...field}
               className={cn(
-                'peer w-full rounded-sm border px-3.5 pt-5 pb-2 outline-none focus:border-black',
+                'peer w-full rounded-sm border bg-white px-3.5 pt-5 pb-2 outline-none focus:border-black',
                 {
                   'border-gray-300': !error,
                   'border-red-500 focus:border-red-500': error,

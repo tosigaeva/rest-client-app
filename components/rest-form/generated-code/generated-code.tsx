@@ -72,9 +72,9 @@ export const GeneratedCode = ({ user }: AppProps) => {
   })();
 
   return (
-    <div className="flex flex-row gap-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
+    <div className="flex flex-row gap-4 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
       <div className="flex flex-col items-start gap-2">
-        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+        <h3 className="font-caprasimo text-lg font-semibold text-neutral-800 dark:text-neutral-100">
           Generated Code
         </h3>
         <Select
@@ -93,7 +93,7 @@ export const GeneratedCode = ({ user }: AppProps) => {
           <SelectContent>
             {(Object.keys(PROGRAMMING_LANGUAGES) as (keyof typeof PROGRAMMING_LANGUAGES)[]).map(
               (item) => (
-                <SelectItem key={item} value={item}>
+                <SelectItem className="font-delius" key={item} value={item}>
                   {item}
                 </SelectItem>
               ),

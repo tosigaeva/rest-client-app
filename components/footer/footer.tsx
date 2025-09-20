@@ -19,7 +19,7 @@ export const Footer = () => {
         <div className="flex gap-4">
           {DEVELOPERS.map((author) => (
             <Link
-              className="text-gray-900 hover:text-orange-600"
+              className="font-caprasimo text-gray-900 hover:text-orange-600"
               href={author.git}
               key={author.name}
               target="_blank"
@@ -29,7 +29,7 @@ export const Footer = () => {
           ))}
         </div>
 
-        <span className="text-sm text-gray-900">&copy; 2025 REST{t('client')} </span>
+        <span className="font-caprasimo text-sm text-gray-900">&copy; 2025 REST{t('client')} </span>
 
         <Link href={RSS_LINK} target="_blank">
           <Image alt={t('logo')} height={40} src="rss-logo.svg" width={40} />

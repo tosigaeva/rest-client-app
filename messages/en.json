@@ -17,7 +17,7 @@
       "btn": "Open"
     },
     "history": {
-      "title": "History",
+      "title": "History Request",
       "description": "View previous requests",
       "btn": "View"
     },
@@ -112,12 +112,12 @@
     "hintSaveBtn": "Click To SAVE Variables",
     "hintAddRowBtn": "Click to Add a Row to write Variables",
     "hintDelBtn": "Click To DELETE Variable",
-    "variables": "Key_Variable",
+    "variables": "Variable (key)",
     "value": "Value",
     "btnSave": "Save",
     "btnAdd": "Add Row",
     "messageError": "Please fill in the ",
-    "messageErrorVariables": "'Key_Variable' field",
+    "messageErrorVariables": "'Variable (key)' field",
     "and": " and ",
     "messageErrorValue": "'Value' field",
     "messageErrorUnknown": "An unknown error occurred!",

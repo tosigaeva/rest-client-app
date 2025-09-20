@@ -9,7 +9,7 @@ import { GrGroup } from 'react-icons/gr';
 import { MdLogout } from 'react-icons/md';
 
 import { Button } from '@/components/ui';
-import { ROUTES } from '@/constants';
+import { ROUTES, STYLE_BUTTON } from '@/constants';
 import { signOut } from '@/context/auth-context';
 import { Link, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -55,8 +55,8 @@ export const Header = ({ user }: AppProps) => {
     >
       <Link className="ml-2" href={'/'}>
         <div className="flex justify-between gap-1.5 pl-4 md:pl-8">
-          <Image alt="logo-app" height={20} src="/icon1.png" width={35} />
-          <h1 className="text-3xl font-bold">RestCafé</h1>
+          <Image alt="logo-app" height={20} src="/icon1.png" width={40} />
+          <h1 className="font-caprasimo text-4xl font-bold">RestCafé</h1>
         </div>
       </Link>
       <div className="pr-4 md:pr-8">
@@ -66,15 +66,15 @@ export const Header = ({ user }: AppProps) => {
           </Link>
           <LanguageSelect />
           {user ? (
-            <Button className="cursor-pointer" onClick={onSignOut}>
+            <Button className={STYLE_BUTTON} onClick={onSignOut}>
               <MdLogout />
             </Button>
           ) : (
             <>
-              <Button asChild>
+              <Button asChild className={STYLE_BUTTON}>
                 <Link href={ROUTES.SIGN_IN}>{t('signin')}</Link>
               </Button>
-              <Button asChild>
+              <Button asChild className={STYLE_BUTTON}>
                 <Link href={ROUTES.SIGN_UP}>{t('singup')}</Link>
               </Button>
             </>

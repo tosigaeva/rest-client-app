@@ -24,7 +24,7 @@ export function PasswordChecklist({ password }: Props) {
   ];
 
   return (
-    <div className="flex flex-wrap">
+    <div className="font-delius flex flex-wrap">
       {checks.map((check) => (
         <div
           className="flex w-1/2 items-center gap-2 pt-0.5 text-sm"

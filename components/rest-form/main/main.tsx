@@ -44,7 +44,7 @@ export const RestMain = ({ user }: AppProps) => {
   }, [url, dispatch]);
 
   return (
-    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
+    <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
       <Select
         defaultValue={segments[2] || 'GET'}
         onValueChange={(value: HttpMethod) => dispatch(setMethod(value))}
@@ -54,14 +54,14 @@ export const RestMain = ({ user }: AppProps) => {
         </SelectTrigger>
         <SelectContent>
           {HTTP_METHODS.map((item) => (
-            <SelectItem key={item} value={item}>
+            <SelectItem className="font-delius bg-white" key={item} value={item}>
               {item}
             </SelectItem>
           ))}
         </SelectContent>
       </Select>
       <Input
-        className="min-w-[200px] flex-1"
+        className="min-w-[200px] flex-1 bg-white"
         onBlur={(e) => dispatch(setRequestUrl({ requestUrl: e.target.value, username }))}
         onChange={(e) => setUrl(e.target.value)}
         placeholder="Endpoint URL"

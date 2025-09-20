@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Delius&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
+
+@theme {
+  --font-caprasimo: 'Caprasimo';
+  --font-delius: 'Delius';
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -135,7 +141,6 @@
   padding: 1rem;
   border-radius: 0.5rem;
   text-align: center;
-  max-width: 30rem;
   width: 100%;
   box-sizing: border-box;
 }

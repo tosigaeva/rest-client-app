@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { EMPTY_HEADER } from '@/constants';
+import { EMPTY_HEADER, STYLE_BUTTON } from '@/constants';
 import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
 import { AppProps, Header } from '@/type';
@@ -31,18 +31,20 @@ export const RestHeaders = ({ user }: AppProps) => {
   }
 
   return (
-    <div className="space-y-4 rounded-2xl border border-neutral-200 bg-neutral-50 p-4 shadow dark:bg-neutral-900">
+    <div className="space-y-4 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
       <div className="flex flex-wrap items-center gap-3">
-        <h3 className="text-lg font-semibold text-neutral-800 dark:text-neutral-100">Headers</h3>
+        <h3 className="font-caprasimo text-lg font-semibold text-neutral-800 dark:text-neutral-100">
+          Headers
+        </h3>
         <Input
-          className="w-40"
+          className="w-40 bg-white"
           onChange={(e) => setHeader((prev) => ({ ...prev, headerKey: e.target.value }))}
           placeholder="Key"
           type="text"
           value={header.headerKey}
         />
         <Input
-          className="w-40"
+          className="w-40 bg-white"
           onChange={(e) => {
             setHeader((prev) => ({ ...prev, value: e.target.value }));
           }}
@@ -50,7 +52,7 @@ export const RestHeaders = ({ user }: AppProps) => {
           type="text"
           value={header.value}
         />
-        <Button onClick={handlerAddHeader} size="sm">
+        <Button className={STYLE_BUTTON} onClick={handlerAddHeader} size="sm">
           Add Header
         </Button>
       </div>

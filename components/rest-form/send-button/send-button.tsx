@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
+import { STYLE_BUTTON } from '@/constants';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
 import { AppProps } from '@/type';
@@ -49,7 +50,7 @@ export const SendButton = ({ user }: AppProps) => {
       >
         {!isValid && 'Please select HTTP method and enter url'}
       </div>
-      <Button disabled={!isValid} onClick={handleOnClick} size="sm">
+      <Button className={STYLE_BUTTON} disabled={!isValid} onClick={handleOnClick} size="sm">
         Send Request
       </Button>
     </>
