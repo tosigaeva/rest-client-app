@@ -4,15 +4,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { DEVELOPERS, RSS_LINK } from '@/constants';
+import { useAuth } from '@/context/auth-context';
 import { cn } from '@/lib/utils';
 
 export const Footer = () => {
+  const { user } = useAuth();
   const t = useTranslations('footer');
   return (
     <footer
       className={cn(
         'bg-glass border-bg-300 text-muted w-full border-t py-1 text-center text-sm backdrop-blur-md',
-        'md:w-[calc(100vw-16rem-20px)]',
+        user
+          ? {
+              'md:left-64 md:w-[calc(100vw-16rem)]': true,
+            }
+          : {
+              'w-dvw': true,
+            },
       )}
     >
       <div className="flex flex-col items-center justify-between px-6 py-1 md:flex-row">

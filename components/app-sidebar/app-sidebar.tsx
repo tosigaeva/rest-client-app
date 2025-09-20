@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { GrCloudUpload, GrHistory, GrPowerCycle } from 'react-icons/gr';
 
+import { getCurrentUser } from '@/actions/auth-actions';
 import {
   Sidebar,
   SidebarContent,
@@ -30,8 +31,9 @@ const items = [
   },
 ];
 
-export function AppSidebar() {
-  return (
+export async function AppSidebar() {
+  const user = await getCurrentUser();
+  return user ? (
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
@@ -41,8 +43,8 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <div>{item.icon}</div>
+                    <Link className="flex items-center gap-2" href={item.url}>
+                      {item.icon}
                       <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
@@ -53,5 +55,5 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  );
+  ) : null;
 }

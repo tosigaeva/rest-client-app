@@ -45,12 +45,17 @@ export const Header = ({ user }: AppProps) => {
   return (
     <header
       className={cn(
-        'fixed top-0 z-50 flex justify-between transition-all duration-300',
-        'w-full md:left-64 md:w-[calc(100vw-16rem)]',
-        {
-          'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
-          'h-16 bg-transparent py-4': !isSticky,
-        },
+        'fixed top-0 z-50 flex w-full justify-between transition-all duration-300',
+        user
+          ? {
+              'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
+              'h-16 bg-transparent py-4': !isSticky,
+              'md:left-64 md:w-[calc(100vw-16rem)]': true,
+            }
+          : {
+              'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
+              'h-16 bg-transparent py-4': !isSticky,
+            },
       )}
     >
       <Link className="ml-2" href={'/'}>
