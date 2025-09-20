@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 
-import { Footer, Header } from '@components';
 import { AppSidebar } from '@components';
+import { Footer, Header } from '@components';
 
 import { SidebarProvider } from '@/components/ui/sidebar';
 
-export default function LocaleLayout({ children }: { children: ReactNode }) {
+export default function PrivateLayout({ children }: { children: ReactNode }) {
   return (
     <SidebarProvider>
       <div className="flex h-screen">
