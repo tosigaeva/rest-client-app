@@ -4,7 +4,6 @@ export { FloatingInput } from './floating-input/floating-input';
 export { Footer } from './footer/footer';
 export { Header } from './header/header';
 export { HistoryItem } from './history/item/history-item';
-export { default as HistoryList } from './history/list/history-list';
 export { LanguageSelect } from './language-select/language-select';
 export { NotFoundPage } from './not-found-page/not-found-page';
 export { PasswordChecklist } from './password-checklist/password-checklist';
