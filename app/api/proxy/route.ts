@@ -28,11 +28,14 @@ export async function POST(req: Request) {
     let isJson = false;
 
     try {
-      data = await res.json();
+      const jsonResponse = res.clone();
+      data = await jsonResponse.json();
       isJson = true;
     } catch {
       try {
-        data = await res.text();
+        const textResponse = res.clone();
+        data = await textResponse.text();
+        isJson = true;
       } catch {
         data = res.body;
       }
