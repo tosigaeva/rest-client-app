@@ -1,6 +1,6 @@
 'use client';
 
-import { BodyEditor } from '@components';
+import { BodyEditor, Spinner } from '@components';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@/store/store';
@@ -9,7 +9,7 @@ import { AppProps } from '@/type';
 export const RestResponse = ({ user }: AppProps) => {
   const { loading, response } = useSelector((state: RootState) => state.restRequest);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner />;
   if (!response) return <p>No response yet.</p>;
 
   return (
