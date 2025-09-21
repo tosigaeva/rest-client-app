@@ -9,9 +9,9 @@ import { Input } from '@/components/ui/input';
 import { EMPTY_HEADER } from '@/constants';
 import { addHeader, removeHeader } from '@/store/rest-slice';
 import { RootState } from '@/store/store';
-import { Header, HeaderProps } from '@/type';
+import { AppProps, Header } from '@/type';
 
-export const RestHeaders = ({ user }: HeaderProps) => {
+export const RestHeaders = ({ user }: AppProps) => {
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);
   const headers: Header[] = useSelector((state: RootState) => state.restData.headers);
   const dispatch = useDispatch();

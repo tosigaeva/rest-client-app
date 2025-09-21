@@ -1,19 +1,14 @@
 import { HistoryItem } from '@components';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
-import { getCurrentUser } from '@/actions/auth-actions';
 import { ROUTES } from '@/constants';
 import { getUserRequestHistory, RequestLog } from '@/lib/history';
+import { AppProps } from '@/type';
 
-export default async function HistoryList() {
+export default async function HistoryList({ user }: AppProps) {
   const t = await getTranslations('history');
-  const user = await getCurrentUser();
-  if (!user) {
-    redirect(ROUTES.MAIN);
-  }
-  const userId = user.uid;
+  const userId = user!.uid;
   const history: RequestLog[] = await getUserRequestHistory(userId);
 
   if (history.length === 0) {

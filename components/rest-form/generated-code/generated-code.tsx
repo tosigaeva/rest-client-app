@@ -13,11 +13,11 @@ import {
 } from '@/components/ui/select';
 import { PROGRAMMING_LANGUAGES } from '@/constants';
 import { RootState } from '@/store/store';
-import { HeaderProps, ProgrammingLanguages, RequestData } from '@/type';
+import { AppProps, ProgrammingLanguages, RequestData } from '@/type';
 import { generateCode } from '@/utils/generate-code';
 import { prepareHeaders } from '@/utils/prepare-headers';
 
-export const GeneratedCode = ({ user }: HeaderProps) => {
+export const GeneratedCode = ({ user }: AppProps) => {
   const [settings, setSettings] = useState({ client: 'curl', language: 'shell' });
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
   const username = user?.uid || 'Guest';
