@@ -33,6 +33,12 @@ export const BodyEditor = ({
   });
 
   useEffect(() => {
+    if (!readOnly) {
+      dispatch(setStateBody({ body, username }));
+    }
+  }, []);
+
+  useEffect(() => {
     if (readOnly && initialBody) {
       try {
         const parsed = JSON.parse(initialBody);
