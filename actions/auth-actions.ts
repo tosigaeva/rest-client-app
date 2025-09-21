@@ -2,18 +2,21 @@
 
 import { cookies } from 'next/headers';
 
+import { ROUTES } from '@/constants';
 import { adminAuth } from '@/lib/firebase-admin';
 
-export async function createSession(uid: string) {
+const MAX_AGE = 60 * 60 * 24;
+
+export async function createSession(token: string) {
   const cookieName = process.env.SESSION_COOKIE_NAME;
   if (!cookieName) {
     throw new Error('SESSION_COOKIE_NAME environment variable is not set');
   }
 
-  (await cookies()).set(cookieName, uid, {
+  (await cookies()).set(cookieName, token, {
     httpOnly: true,
-    maxAge: 60 * 60 * 24,
-    path: '/',
+    maxAge: MAX_AGE,
+    path: ROUTES.MAIN,
     secure: process.env.NODE_ENV === 'production',
   });
 }
@@ -27,11 +30,13 @@ export async function getCurrentUser() {
   }
 
   try {
-    const userRecord = await adminAuth.getUser(sessionCookie.value);
+    const decodedSession = await adminAuth.verifyIdToken(sessionCookie.value);
+    const userRecord = await adminAuth.getUser(decodedSession.uid);
     return {
       displayName: userRecord.displayName,
       email: userRecord.email,
       emailVerified: userRecord.emailVerified,
+      token: sessionCookie.value,
       uid: userRecord.uid,
     };
   } catch {

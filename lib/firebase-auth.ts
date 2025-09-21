@@ -39,13 +39,15 @@ export const handleFirebaseError = <T extends FieldValues>(
 export const registerUser = async (email: string, password: string, name: string) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(userCredential.user, { displayName: name });
-  await createSession(userCredential.user.uid);
+  const token = await userCredential.user.getIdToken();
+  await createSession(token);
   return userCredential.user;
 };
 
 export const signInUser = async (email: string, password: string) => {
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
-  await createSession(userCredential.user.uid);
+  const token = await userCredential.user.getIdToken();
+  await createSession(token);
   return userCredential.user;
 };
 
