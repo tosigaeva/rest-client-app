@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 
 import { getCurrentUser } from '@/actions/auth-actions';
 import { ROUTES } from '@/constants';
+import { cn } from '@/lib/utils';
 
 export default async function RestClientLayout({ children }: { children: ReactNode }) {
   const user = await getCurrentUser();
@@ -28,7 +29,15 @@ export default async function RestClientLayout({ children }: { children: ReactNo
 
   return (
     <div className="flex flex-col gap-6 rounded-2xl bg-white p-6">
-      <h2 className="mb-4 text-xl font-semibold text-gray-800 dark:text-gray-100">REST Client</h2>
+      <div
+        className={cn(
+          'flex w-full items-center justify-between rounded-2xl',
+          'border border-neutral-200 bg-fuchsia-50',
+          'p-4 shadow dark:bg-neutral-900',
+        )}
+      >
+        <h2 className="font-caprasimo text-3xl text-gray-800 dark:text-gray-100">REST Client</h2>
+      </div>
       <RestMain user={user} />
       <RestHeaders user={user} />
       <Body user={user} />

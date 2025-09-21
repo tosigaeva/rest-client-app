@@ -26,7 +26,7 @@ export default async function HistoryList({ user }: AppProps) {
   }
 
   return (
-    <section className="m-full mx-auto mt-24 mb-auto flex flex-col gap-10 px-8 pt-0 pb-8">
+    <section className="m-full mx-auto mt-10 mb-auto flex flex-col gap-10 px-8 pt-0 pb-8">
       <div className="space-y-3 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
         <h3 className="font-caprasimo text-3xl text-neutral-800 dark:text-neutral-100">
           {t('title')}

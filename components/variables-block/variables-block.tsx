@@ -23,7 +23,7 @@ export const VariablesBlock = ({ user }: AppProps) => {
   );
 
   return (
-    <section className="mt-35 flex flex-col items-center justify-center gap-10 p-4">
+    <section className="mt-10 flex flex-col items-center justify-center gap-10 p-4">
       <VariablesHeader onAddRow={handleAddRow} onSave={handleSave} user={user!} />
       <div
         className={cn(

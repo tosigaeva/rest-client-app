@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { GrGroup } from 'react-icons/gr';
+import { GrGroup, GrHomeRounded } from 'react-icons/gr';
 import { MdLogout } from 'react-icons/md';
 
 import { Button } from '@/components/ui';
@@ -44,17 +44,11 @@ export const Header = ({ isAuth }: { isAuth: boolean }) => {
   return (
     <header
       className={cn(
-        'fixed top-0 z-50 flex w-full justify-between transition-all duration-300',
-        isAuth
-          ? {
-              'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
-              'h-16 bg-transparent py-4': !isSticky,
-              'md:left-64 md:w-[calc(100vw-16rem)]': true,
-            }
-          : {
-              'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
-              'h-16 bg-transparent py-4': !isSticky,
-            },
+        'sticky top-0 z-50 flex w-full justify-between backdrop-blur-sm transition-all duration-300',
+        {
+          'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
+          'h-16 bg-transparent py-4': !isSticky,
+        },
       )}
     >
       <Link className="ml-2" href={'/'}>
@@ -70,9 +64,16 @@ export const Header = ({ isAuth }: { isAuth: boolean }) => {
           </Link>
           <LanguageSelect />
           {isAuth ? (
-            <Button className={STYLE_BUTTON} onClick={onSignOut}>
-              <MdLogout />
-            </Button>
+            <>
+              <Button asChild className={STYLE_BUTTON}>
+                <Link href={ROUTES.SIGN_IN}>
+                  <GrHomeRounded />
+                </Link>
+              </Button>
+              <Button className={STYLE_BUTTON} onClick={onSignOut}>
+                <MdLogout />
+              </Button>
+            </>
           ) : (
             <>
               <Button asChild className={STYLE_BUTTON}>
