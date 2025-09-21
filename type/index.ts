@@ -1,5 +1,9 @@
 import { HTTP_METHODS, PROGRAMMING_LANGUAGES } from '@/constants';
 
+export type AppProps = {
+  user?: null | ServerUser;
+};
+
 export type GeneratedCodeArguments = {
   body?: string;
   headers?: Header[];
@@ -11,10 +15,6 @@ export interface Header {
   headerKey: string;
   value: string;
 }
-
-export type HeaderProps = {
-  user?: null | ServerUser;
-};
 
 export type { Locale } from '@/i18n/routing';
 

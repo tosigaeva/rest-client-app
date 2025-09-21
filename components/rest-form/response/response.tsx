@@ -4,9 +4,9 @@ import { BodyEditor } from '@components';
 import { useSelector } from 'react-redux';
 
 import { RootState } from '@/store/store';
-import { HeaderProps } from '@/type';
+import { AppProps } from '@/type';
 
-export const RestResponse = ({ user }: HeaderProps) => {
+export const RestResponse = ({ user }: AppProps) => {
   const { loading, response } = useSelector((state: RootState) => state.restRequest);
 
   if (loading) return <p>Loading...</p>;

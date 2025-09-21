@@ -6,14 +6,14 @@ import { useTranslations } from 'use-intl';
 
 import { useVariables } from '@/hooks/use-variables';
 import { cn } from '@/lib/utils';
-import { HeaderProps } from '@/type';
+import { AppProps } from '@/type';
 import { getVariables, setVariables } from '@/utils/storage-variables';
 
 import { Button } from '../ui';
 import { Input } from '../ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../ui/table';
 
-export const VariablesBlock = ({ user }: HeaderProps) => {
+export const VariablesBlock = ({ user }: AppProps) => {
   const t = useTranslations('variablesBlock');
   const { handleAddRow, handleDelete, handleInputChange, handleSave, rows } = useVariables(
     user!,
@@ -23,7 +23,7 @@ export const VariablesBlock = ({ user }: HeaderProps) => {
 
   return (
     <section className="mt-35 flex flex-col items-center justify-center gap-10 p-4">
-      <VariablesHeader onAddRow={handleAddRow} onSave={handleSave} />
+      <VariablesHeader onAddRow={handleAddRow} onSave={handleSave} user={user!} />
       <div className="w-full">
         <Table className="w-full border-collapse">
           <TableHeader>

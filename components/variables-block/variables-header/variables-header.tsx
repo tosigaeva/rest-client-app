@@ -3,15 +3,17 @@ import { GrAdd, GrSave } from 'react-icons/gr';
 import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui';
+import { ServerUser } from '@/type';
 
 type VariablesHeaderProps = {
   onAddRow: () => void;
   onSave: () => void;
+  user: ServerUser;
 };
 
-export const VariablesHeader = ({ onAddRow, onSave }: VariablesHeaderProps) => {
+export const VariablesHeader = ({ onAddRow, onSave, user }: VariablesHeaderProps) => {
   const t = useTranslations('variablesBlock');
-  const username = 'Guest';
+  const username = user?.displayName || 'Guest';
 
   return (
     <div className="flex w-full justify-between">

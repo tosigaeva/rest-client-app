@@ -14,11 +14,11 @@ import {
 } from '@/components/ui/select';
 import { HTTP_METHODS } from '@/constants';
 import { setMethod, setRequestUrl } from '@/store/rest-slice';
-import { HeaderProps, HttpMethod } from '@/type';
+import { AppProps, HttpMethod } from '@/type';
 
 const DEBOUNCE_DELAY = 1000;
 
-export const RestMain = ({ user }: HeaderProps) => {
+export const RestMain = ({ user }: AppProps) => {
   const dispatch = useDispatch();
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);

@@ -13,9 +13,9 @@ import { ROUTES } from '@/constants';
 import { signOut } from '@/context/auth-context';
 import { Link, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
-import { HeaderProps } from '@/type';
+import { AppProps } from '@/type';
 
-export const Header = ({ user }: HeaderProps) => {
+export const Header = ({ user }: AppProps) => {
   const t = useTranslations('auth');
   const [isSticky, setIsSticky] = useState(false);
   const router = useRouter();

@@ -6,11 +6,11 @@ import { useSelector } from 'react-redux';
 import { Button } from '@/components/ui/button';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
-import { HeaderProps } from '@/type';
+import { AppProps } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
 import { setQueryParams } from '@/utils/set-query-params';
 
-export const SendButton = ({ user }: HeaderProps) => {
+export const SendButton = ({ user }: AppProps) => {
   const dispatch = useAppDispatch();
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
