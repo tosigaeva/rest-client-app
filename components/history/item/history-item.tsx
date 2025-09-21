@@ -6,7 +6,7 @@ type Props = {
   doc: RequestLog;
 };
 
-export async function HistoryItem({ doc }: Props) {
+export function HistoryItem({ doc }: Props) {
   const date = new Date(doc.timestamp).toDateString();
   const time = new Date(doc.timestamp).toLocaleTimeString();
 
