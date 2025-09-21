@@ -10,6 +10,18 @@ vi.mock('next/link', () => ({
   ),
 }));
 
+vi.mock('next-intl/server', () => ({
+  getTranslations: vi.fn().mockResolvedValue((key: string) => {
+    const map: Record<string, string> = {
+      history: 'History',
+      menu: 'Menu',
+      rest: 'Rest-client',
+      variables: 'Variables',
+    };
+    return map[key] ?? key;
+  }),
+}));
+
 vi.mock('@/actions/auth-actions', () => ({
   getCurrentUser: vi.fn().mockResolvedValue({ email: 'test@example.com', uid: '123' }),
 }));

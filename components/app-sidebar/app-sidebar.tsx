@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import { GrCloudUpload, GrHistory, GrPowerCycle } from 'react-icons/gr';
 
@@ -15,35 +16,33 @@ import {
 const items = [
   {
     icon: <GrCloudUpload />,
-    title: 'Rest-client',
-    url: '/rest',
+    url: 'rest',
   },
   {
     icon: <GrHistory />,
-    title: 'History',
-    url: '/history',
+    url: 'history',
   },
   {
     icon: <GrPowerCycle />,
-    title: 'Variables',
-    url: '/variables',
+    url: 'variables',
   },
 ];
 
 export async function AppSidebar() {
+  const t = await getTranslations('sidebar');
   return (
     <Sidebar>
       <SidebarContent className="bg-fuchsia-50">
         <SidebarGroup>
-          <SidebarGroupLabel>Menu</SidebarGroupLabel>
+          <SidebarGroupLabel>{t('menu')}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem key={item.url}>
                   <SidebarMenuButton asChild>
-                    <Link className="flex items-center gap-2" href={item.url}>
+                    <Link className="flex items-center gap-2" href={`/${item.url}`}>
                       {item.icon}
-                      <span className="font-caprasimo text-2xl">{item.title}</span>
+                      <span className="font-caprasimo text-2xl">{t(item.url)}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
