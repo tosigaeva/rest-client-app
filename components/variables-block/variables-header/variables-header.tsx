@@ -4,8 +4,8 @@ import { useTranslations } from 'use-intl';
 
 import { Button } from '@/components/ui';
 import { STYLE_BUTTON } from '@/constants';
-import { ServerUser } from '@/type';
 import { cn } from '@/lib/utils';
+import { ServerUser } from '@/type';
 
 type VariablesHeaderProps = {
   onAddRow: () => void;

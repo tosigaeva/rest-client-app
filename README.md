@@ -6,20 +6,23 @@ The goal of the project is to provide a convenient tool for testing and debuggin
 ---
 
 ## Key Ideas and Motivation
-- Deliver a simple and fast REST client available in the browser, oriented toward team collaboration.  
-- Support any open REST API without building a custom backend: requests are proxied via Next.js server routes to avoid CORS issues.  
-- Store request history and analytics per user (via Supabase) and provide a convenient interface for replaying past requests.  
+
+- Deliver a simple and fast REST client available in the browser, oriented toward team collaboration.
+- Support any open REST API without building a custom backend: requests are proxied via Next.js server routes to avoid CORS issues.
+- Store request history and analytics per user (via Supabase) and provide a convenient interface for replaying past requests.
 - Ensure basic security (authentication/authorization), private routes, and enable teamwork within a small team.
 
 ---
 
 ## Target Audience
-- Frontend developers and testers who need a lightweight REST client as part of their toolkit.  
+
+- Frontend developers and testers who need a lightweight REST client as part of their toolkit.
 - Student teams in development courses where architecture, testing, and teamwork are required.
 
 ---
 
 ## Core Features
+
 - **Private REST client page**:
   - HTTP method selector (GET, POST, PUT, DELETE, etc.),
   - URL input (encoded/decoded in the route),
@@ -53,6 +56,7 @@ The goal of the project is to provide a convenient tool for testing and debuggin
 ---
 
 ## Why Next.js (App Router)
+
 - App Router provides server-side routes and rendering, which is useful for:
   - proxying requests to external APIs (bypassing CORS) and logging analytics to Supabase,
   - server-rendering aggregated history/analytics before sending to the client.
@@ -61,11 +65,12 @@ The goal of the project is to provide a convenient tool for testing and debuggin
 ---
 
 ## Architecture (Overview)
+
 - **Frontend (Next.js App Router)** — routes:  
   `/` (Main), `/auth` (Sign In/Up), `/rest/[method]/[encodedUrl]/[encodedBody]?headers=...` (REST client), `/variables`, `/history`.
-- **Server functions (Next API / server actions)** — proxy external API calls, log request history in Supabase.  
-- **Database / Auth** — Supabase (Auth + Postgres) for storing history/analytics and user data.  
-- **Variables storage** — browser `localStorage` (synced after login).  
+- **Server functions (Next API / server actions)** — proxy external API calls, log request history in Supabase.
+- **Database / Auth** — Supabase (Auth + Postgres) for storing history/analytics and user data.
+- **Variables storage** — browser `localStorage` (synced after login).
 - **Testing** — unit/integration tests with Jest + Testing Library, coverage report integrated into CI.
 
 ---
@@ -83,6 +88,7 @@ Follow the steps below to set up and run the **RestCafé** locally.
 ---
 
 ## Prerequisites
+
 Before running the project, make sure you have the following installed:
 
 - [Node.js](https://nodejs.org/) (version 18 or above)
@@ -99,22 +105,22 @@ Before running the project, make sure you have the following installed:
    git clone https://github.com/HasanDense/rest-client-app.git
    cd rest-client-app
 
-2. **Create your own .env file:** 
-    Use the `.env.example` file as a template.
-    Set the environment variables to the values obtained during Firebase registration.
-  
+2. **Create your own .env file:**
+   Use the `.env.example` file as a template.
+   Set the environment variables to the values obtained during Firebase registration.
+
 3. **Install dependencies:**:
-    npm install
-        or, if you prefer yarn:
-    yarn install
+   npm install
+   or, if you prefer yarn:
+   yarn install
 
 4. **Run the Application:**:
-    npm run dev
-or  
+   npm run dev
+   or  
     yarn dev
 
 5. **Open localhost:**:
-    Open http://localhost:3000 in your browser.
+   Open http://localhost:3000 in your browser.
 
 ## Available Scripts
 

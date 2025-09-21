@@ -4,11 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { DEVELOPERS, RSS_LINK } from '@/constants';
-import { useAuth } from '@/context/auth-context';
 import { cn } from '@/lib/utils';
+import { AppProps } from '@/type';
 
-export const Footer = () => {
-  const { user } = useAuth();
+export const Footer = ({ user }: AppProps) => {
   const t = useTranslations('footer');
   return (
     <footer

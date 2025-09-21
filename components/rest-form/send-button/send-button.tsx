@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 import { Button } from '@/components/ui/button';
 import { STYLE_BUTTON } from '@/constants';
-import { useAuth } from '@/context/auth-context';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
 import { AppProps } from '@/type';
