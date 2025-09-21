@@ -12,7 +12,7 @@ import { Link, useRouter } from '@/i18n/navigation';
 import { handleFirebaseError, signInUser } from '@/lib/firebase-auth';
 import { SignInFormData, useValidationSchemas } from '@/lib/validation-auth';
 
-export default function SignUpPage() {
+export default function SignInPage() {
   const t = useTranslations('auth');
   const { signInSchema } = useValidationSchemas();
   const form = useForm<SignInFormData>({

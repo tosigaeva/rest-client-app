@@ -29,18 +29,11 @@ function authMiddleware(request: NextRequest) {
   }
 
   const isProtectedRoute = matchesRoute(pathname, AUTH_ROUTES.protected);
-  const isPublicRoute = matchesRoute(pathname, AUTH_ROUTES.public);
   const isAuthenticated = validateSession(request);
 
   if (isProtectedRoute && !isAuthenticated) {
     const url = request.nextUrl.clone();
     url.pathname = ROUTES.SIGN_IN;
-    return NextResponse.redirect(url, 301);
-  }
-
-  if (isAuthenticated && isPublicRoute) {
-    const url = request.nextUrl.clone();
-    url.pathname = ROUTES.MAIN;
     return NextResponse.redirect(url, 301);
   }
 
