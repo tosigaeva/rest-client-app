@@ -122,5 +122,9 @@
     "messageErrorValue": "'Value' field",
     "messageErrorUnknown": "An unknown error occurred!",
     "messageSuccessful": "Data saved successfully!"
+  },
+  "aboutCourse": {
+    "react": "React Course by RS School",
+    "description": "This course is designed for individuals who have a basic understanding of JavaScript and want to enhance their skills in building modern web applications using React. Whether you're a beginner looking to get started with React or an experienced developer aiming to deepen your knowledge, this course provides a comprehensive learning experience."
   }
 }

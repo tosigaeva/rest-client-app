@@ -1,3 +1,4 @@
+export { AboutCourse } from './about-course/about-course';
 export { AboutUsPage } from './about-us-page/about-us-page';
 export { AppSidebar } from './app-sidebar/app-sidebar';
 export { FloatingInput } from './floating-input/floating-input';
