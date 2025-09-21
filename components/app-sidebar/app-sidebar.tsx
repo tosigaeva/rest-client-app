@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { GrCloudUpload, GrHistory, GrPowerCycle } from 'react-icons/gr';
 
-import { getCurrentUser } from '@/actions/auth-actions';
 import {
   Sidebar,
   SidebarContent,
@@ -32,8 +31,7 @@ const items = [
 ];
 
 export async function AppSidebar() {
-  const user = await getCurrentUser();
-  return user ? (
+  return (
     <Sidebar>
       <SidebarContent className="bg-fuchsia-50">
         <SidebarGroup>
@@ -55,5 +53,5 @@ export async function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  ) : null;
+  );
 }
