@@ -5,16 +5,8 @@ import { Mock, vi } from 'vitest';
 import { ROUTES } from '@/constants';
 import { signOut } from '@/context/auth-context';
 import { useRouter } from '@/i18n/navigation';
-import { ServerUser } from '@/type';
 
 import { Header } from './header';
-
-const mockUser: ServerUser = {
-  displayName: 'Alice',
-  email: 'alice@example.com',
-  emailVerified: true,
-  uid: 'user-1',
-};
 
 vi.mock('next-intl', () => ({
   useTranslations: (ns?: string) => (key: string) => `${ns?.toUpperCase()}.${key.toUpperCase()}`,
@@ -71,30 +63,30 @@ describe('Header', () => {
   });
 
   it('renders logo and app title', () => {
-    render(<Header user={null} />);
+    render(<Header isAuth={false} />);
     expect(screen.getByAltText('logo-app')).toBeInTheDocument();
     expect(screen.getByText('RestCafé')).toBeInTheDocument();
   });
 
   it('renders LanguageSelect component', () => {
-    render(<Header user={null} />);
+    render(<Header isAuth={false} />);
     expect(screen.getByText('LanguageSelect')).toBeInTheDocument();
   });
 
   it('renders Sign In and Sign Up buttons when user is null', () => {
-    render(<Header user={null} />);
+    render(<Header isAuth={false} />);
     expect(screen.getByText('AUTH.SIGNIN')).toBeInTheDocument();
     expect(screen.getByText('AUTH.SINGUP')).toBeInTheDocument();
   });
 
   it('renders logout button when user is present', () => {
-    render(<Header user={mockUser} />);
+    render(<Header isAuth={true} />);
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   it('calls signOut and navigates on logout', async () => {
     (signOut as Mock).mockResolvedValue(undefined);
-    render(<Header user={mockUser} />);
+    render(<Header isAuth={true} />);
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
@@ -108,7 +100,7 @@ describe('Header', () => {
 
   it('shows error toast if signOut fails', async () => {
     (signOut as Mock).mockRejectedValue(new Error('fail'));
-    render(<Header user={mockUser} />);
+    render(<Header isAuth={true} />);
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
@@ -119,7 +111,7 @@ describe('Header', () => {
   });
 
   it('updates sticky state on scroll', () => {
-    render(<Header user={null} />);
+    render(<Header isAuth={false} />);
     expect(document.querySelector('header')?.className).toContain('bg-transparent');
 
     Object.defineProperty(window, 'scrollY', { value: 20, writable: true });
