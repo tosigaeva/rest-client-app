@@ -42,5 +42,4 @@ function authMiddleware(request: NextRequest) {
 
 export const config = {
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
-  runtime: 'experimental-edge',
 };
