@@ -148,6 +148,7 @@
     "send": "Адправіць запыт",
     "please-enter-valid-method-and-url": "Калі ласка, абярыце HTTP-метад і ўвядзіце URL",
     "No-response": "Пакуль няма адказу.",
-    "status": "Статус"
+    "status": "Статус",
+    "generatedCode": "Згенераваны код"
   }
 }

@@ -1,4 +1,5 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -18,6 +19,7 @@ import { generateCode } from '@/utils/generate-code';
 import { prepareHeaders } from '@/utils/prepare-headers';
 
 export const GeneratedCode = ({ user }: AppProps) => {
+  const t = useTranslations('rest-client');
   const [settings, setSettings] = useState({ client: 'curl', language: 'shell' });
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
   const username = user?.uid || 'Guest';
@@ -75,7 +77,7 @@ export const GeneratedCode = ({ user }: AppProps) => {
     <div className="flex flex-row gap-4 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
       <div className="flex flex-col items-start gap-2">
         <h3 className="font-caprasimo text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-          Generated Code
+          {t('generatedCode')}
         </h3>
         <Select
           onValueChange={(value: ProgrammingLanguages) =>

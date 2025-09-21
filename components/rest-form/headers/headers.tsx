@@ -36,7 +36,7 @@ export const RestHeaders = ({ user }: AppProps) => {
     <div className="space-y-4 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
       <div className="flex flex-wrap items-center gap-3">
         <h3 className="font-caprasimo text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-          Headers
+          {t('headers')}
         </h3>
         <Input
           className="w-40 bg-white"

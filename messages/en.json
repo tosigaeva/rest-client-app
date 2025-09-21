@@ -144,6 +144,7 @@
     "send": "Send Request",
     "please-enter-valid-method-and-url": "Please select HTTP method and enter url",
     "No-response": "No response yet.",
-    "status": "Status"
+    "status": "Status",
+    "generatedCode": "Generated Code"
   }
 }

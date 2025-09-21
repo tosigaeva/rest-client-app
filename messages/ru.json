@@ -144,6 +144,7 @@
     "send": "Отправить запрос",
     "please-enter-valid-method-and-url": "Пожалуйста, выберите HTTP-метод и введите URL",
     "No-response": "Пока нет ответа.",
-    "status": "Статус"
+    "status": "Статус",
+    "generatedCode": "Сгенерированный код"
   }
 }
