@@ -17,11 +17,15 @@ export async function POST(req: Request) {
     } catch (error) {
       console.warn('Invalid Firebase token', error);
     }
-    const requestParams = {
-      body: body ? JSON.stringify(body) : undefined,
+    const requestParams: RequestInit = {
       headers,
       method,
     };
+
+    if (method !== 'GET' && method !== 'HEAD' && body) {
+      requestParams.body = JSON.stringify(body);
+    }
+
     const res = await fetch(url, requestParams);
     const latency = Date.now() - start;
     let data;
