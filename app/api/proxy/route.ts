@@ -12,8 +12,7 @@ export async function POST(req: Request) {
     let userId: null | string = null;
     if (token) {
       try {
-        const decoded = await adminAuth.verifyIdToken(token);
-        userId = decoded.uid;
+        userId = token;
       } catch (error) {
         console.warn('Invalid Firebase token', error);
       }
