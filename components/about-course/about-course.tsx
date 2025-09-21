@@ -1,13 +1,21 @@
 import { useTranslations } from 'next-intl';
 
+import { cn } from '@/lib/utils';
+
 export const AboutCourse = () => {
   const t = useTranslations('aboutCourse');
   return (
-    <div className="flex w-full flex-col items-center justify-center gap-4 text-center md:w-3/4">
-      <h2 className="mb-12 text-center text-4xl font-bold tracking-tight capitalize">
+    <div
+      className={cn(
+        'flex w-full flex-col items-center justify-between rounded-2xl',
+        'border border-neutral-200 bg-fuchsia-50',
+        'p-4 shadow dark:bg-neutral-900',
+      )}
+    >
+      <h2 className="font-caprasimo mb-12 text-center text-3xl tracking-tight capitalize">
         {t('react')}
       </h2>
-      <h3 className="sm:text-l text-lg md:text-xl">{t('description')}</h3>
+      <h3 className="font-caprasimo text-center text-2xl">{t('description')}</h3>
     </div>
   );
 };

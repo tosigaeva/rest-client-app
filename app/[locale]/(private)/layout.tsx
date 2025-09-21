@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
 import { getCurrentUser } from '@/actions/auth-actions';
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
 import { ROUTES } from '@/constants';
 
 export default async function PrivateLayout({ children }: { children: ReactNode }) {
@@ -16,13 +16,15 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen">
+      <div className="flex w-full overflow-hidden">
         <AppSidebar />
-        <div className="flex flex-1 flex-col">
-          <Header isAuth={user !== undefined && user !== null} />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        <SidebarInset className="flex h-full flex-col overflow-hidden">
+          <div className="flex flex-1 flex-col">
+            <Header isAuth={user !== undefined && user !== null} />
+            <main className="flex-1 overflow-auto">{children}</main>
+            <Footer />
+          </div>
+        </SidebarInset>
       </div>
     </SidebarProvider>
   );
