@@ -14,6 +14,7 @@ vi.mock('@components', () => ({
   BodyEditor: ({ initialBody }: { initialBody: string }) => (
     <div data-testid="body-editor">{initialBody}</div>
   ),
+  Spinner: () => <div>Loading...</div>,
 }));
 
 describe('RestResponse', () => {
