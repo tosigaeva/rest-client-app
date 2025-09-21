@@ -49,5 +49,6 @@ export type ServerUser = {
   displayName: string | undefined;
   email: string | undefined;
   emailVerified: boolean;
+  token: string;
   uid: string;
 };

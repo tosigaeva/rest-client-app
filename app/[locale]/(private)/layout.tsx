@@ -1,8 +1,7 @@
-import type { ReactNode } from 'react';
-
 import { AppSidebar } from '@components';
 import { Footer, Header } from '@components';
 import { redirect } from 'next/navigation';
+import { ReactNode } from 'react';
 
 import { getCurrentUser } from '@/actions/auth-actions';
 import { SidebarProvider } from '@/components/ui/sidebar';
@@ -20,7 +19,7 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
       <div className="flex h-screen">
         <AppSidebar />
         <div className="flex flex-1 flex-col">
-          <Header user={user} />
+          <Header isAuth={user !== undefined && user !== null} />
           <main className="flex-1">{children}</main>
           <Footer />
         </div>

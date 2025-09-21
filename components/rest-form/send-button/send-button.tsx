@@ -7,11 +7,10 @@ import { Button } from '@/components/ui/button';
 import { STYLE_BUTTON } from '@/constants';
 import { sendRequestThunk } from '@/store/request-slice';
 import { RootState, useAppDispatch } from '@/store/store';
-import { AppProps } from '@/type';
 import { prepareHeaders } from '@/utils/prepare-headers';
 import { setQueryParams } from '@/utils/set-query-params';
 
-export const SendButton = ({ user }: AppProps) => {
+export const SendButton = () => {
   const dispatch = useAppDispatch();
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
@@ -29,7 +28,6 @@ export const SendButton = ({ user }: AppProps) => {
         headers: prepareHeaders(headers),
         method,
         query,
-        token: user ? user.uid : undefined,
         url: requestUrl,
       }),
     );

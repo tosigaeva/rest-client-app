@@ -13,9 +13,8 @@ import { ROUTES, STYLE_BUTTON } from '@/constants';
 import { signOut } from '@/context/auth-context';
 import { Link, useRouter } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
-import { AppProps } from '@/type';
 
-export const Header = ({ user }: AppProps) => {
+export const Header = ({ isAuth }: { isAuth: boolean }) => {
   const t = useTranslations('auth');
   const [isSticky, setIsSticky] = useState(false);
   const router = useRouter();
@@ -46,7 +45,7 @@ export const Header = ({ user }: AppProps) => {
     <header
       className={cn(
         'fixed top-0 z-50 flex w-full justify-between transition-all duration-300',
-        user
+        isAuth
           ? {
               'h-12 bg-orange-300 py-2 shadow-lg': isSticky,
               'h-16 bg-transparent py-4': !isSticky,
@@ -70,7 +69,7 @@ export const Header = ({ user }: AppProps) => {
             <GrGroup className="h-7 w-7 transition-colors duration-300 hover:text-orange-600" />
           </Link>
           <LanguageSelect />
-          {user ? (
+          {isAuth ? (
             <Button className={STYLE_BUTTON} onClick={onSignOut}>
               <MdLogout />
             </Button>

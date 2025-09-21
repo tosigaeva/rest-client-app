@@ -9,7 +9,7 @@ export default async function PublicLayout({ children }: { children: ReactNode }
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header user={user} />
+      <Header isAuth={user !== undefined && user !== null} />
       <main className="flex-1">{children}</main>
       <Footer user={user} />
     </div>

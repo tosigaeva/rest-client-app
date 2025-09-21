@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 
+import { getCurrentUser } from '@/actions/auth-actions';
 import { adminAuth } from '@/lib/firebase-admin';
 import { saveRequestLog } from '@/lib/history';
 
@@ -7,15 +8,14 @@ export async function POST(req: Request) {
   const start = Date.now();
 
   try {
-    const { body, headers, method, query, token, url } = await req.json();
+    const { body, headers, method, query, url } = await req.json();
 
     let userId: null | string = null;
-    if (token) {
-      try {
-        userId = token;
-      } catch (error) {
-        console.warn('Invalid Firebase token', error);
-      }
+    try {
+      const user = await getCurrentUser();
+      userId = user?.uid ?? null;
+    } catch (error) {
+      console.warn('Invalid Firebase token', error);
     }
     const requestParams = {
       body: body ? JSON.stringify(body) : undefined,

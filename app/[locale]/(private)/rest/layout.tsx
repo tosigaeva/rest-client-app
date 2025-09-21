@@ -33,7 +33,7 @@ export default async function RestClientLayout({ children }: { children: ReactNo
       <RestHeaders user={user} />
       <Body user={user} />
       <GeneratedCode user={user} />
-      <SendButton user={user} />
+      <SendButton />
       {children}
     </div>
   );
