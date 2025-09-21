@@ -1,4 +1,5 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -12,6 +13,7 @@ import { setQueryParams } from '@/utils/set-query-params';
 
 export const SendButton = () => {
   const dispatch = useAppDispatch();
+  const t = useTranslations('rest-client');
   const { body, headers, method, requestUrl } = useSelector((state: RootState) => state.restData);
 
   const router = useRouter();
@@ -46,10 +48,10 @@ export const SendButton = () => {
       <div
         className={`rounded-md px-2 py-1 text-sm transition-colors duration-500 ${'bg-transparent text-red-600'}`}
       >
-        {!isValid && 'Please select HTTP method and enter url'}
+        {!isValid && t('please-enter-valid-method-and-url')}
       </div>
       <Button className={STYLE_BUTTON} disabled={!isValid} onClick={handleOnClick} size="sm">
-        Send Request
+        {t('send')}
       </Button>
     </>
   );

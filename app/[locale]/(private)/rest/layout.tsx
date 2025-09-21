@@ -1,3 +1,4 @@
+import { getTranslations } from 'next-intl/server';
 import dynamic from 'next/dynamic';
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -8,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 export default async function RestClientLayout({ children }: { children: ReactNode }) {
   const user = await getCurrentUser();
-
+  const t = await getTranslations('rest-client');
   if (!user) {
     redirect(ROUTES.MAIN);
   }
@@ -36,7 +37,9 @@ export default async function RestClientLayout({ children }: { children: ReactNo
           'p-4 shadow dark:bg-neutral-900',
         )}
       >
-        <h2 className="font-caprasimo text-3xl text-gray-800 dark:text-gray-100">REST Client</h2>
+        <h2 className="font-caprasimo text-3xl text-gray-800 dark:text-gray-100">
+          REST{t('client')}
+        </h2>
       </div>
       <RestMain user={user} />
       <RestHeaders user={user} />

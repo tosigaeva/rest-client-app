@@ -1,5 +1,6 @@
 'use client';
 import { decode } from 'js-base64';
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -19,6 +20,7 @@ import { AppProps, HttpMethod } from '@/type';
 const DEBOUNCE_DELAY = 1000;
 
 export const RestMain = ({ user }: AppProps) => {
+  const t = useTranslations('rest-client');
   const dispatch = useDispatch();
   const pathname = usePathname();
   const segments = pathname.split('/').filter(Boolean);
@@ -64,7 +66,7 @@ export const RestMain = ({ user }: AppProps) => {
         className="min-w-[200px] flex-1 bg-white"
         onBlur={(e) => dispatch(setRequestUrl({ requestUrl: e.target.value, username }))}
         onChange={(e) => setUrl(e.target.value)}
-        placeholder="Endpoint URL"
+        placeholder={t('placeholder_url')}
         type="text"
         value={url}
       />

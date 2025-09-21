@@ -132,5 +132,18 @@
     "History": "History",
     "Variables": "Variables",
     "menu": "Menu"
+  },
+  "rest-client": {
+    "client": " Client",
+    "body": "Body",
+    "headers": "Headers",
+    "placeholder_url": "Endpoint URL",
+    "key": "Key",
+    "value": "Value",
+    "add": "Add Header",
+    "send": "Send Request",
+    "please-enter-valid-method-and-url": "Please select HTTP method and enter url",
+    "No-response": "No response yet.",
+    "status": "Status"
   }
 }

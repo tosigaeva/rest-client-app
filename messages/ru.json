@@ -132,5 +132,18 @@
     "History": "История",
     "Variables": "Переменные",
     "menu": "Меню"
+  },
+  "rest-client": {
+    "client": "-клиент",
+    "body": "Тело",
+    "headers": "Заголовки",
+    "placeholder_url": "URL-адрес конечной точки",
+    "key": "Ключ",
+    "value": "Значение",
+    "add": "Добавить заголовок",
+    "send": "Отправить запрос",
+    "please-enter-valid-method-and-url": "Пожалуйста, выберите HTTP-метод и введите URL",
+    "No-response": "Пока нет ответа.",
+    "status": "Статус"
   }
 }

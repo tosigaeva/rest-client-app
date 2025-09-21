@@ -135,5 +135,19 @@
     "History": "Гісторыя",
     "Variables": "Зменныя",
     "menu": "Меню"
+  },
+  "rest-client": {
+    "client": "-кліент",
+    "body": "Тэла",
+    "headers": "Загалоўкі",
+    "guest": "Госць",
+    "placeholder_url": "URL-адрас канчатковай кропкі",
+    "key": "Ключ",
+    "value": "Значэнне",
+    "add": "Дадаць загаловак",
+    "send": "Адправіць запыт",
+    "please-enter-valid-method-and-url": "Калі ласка, абярыце HTTP-метад і ўвядзіце URL",
+    "No-response": "Пакуль няма адказу.",
+    "status": "Статус"
   }
 }
