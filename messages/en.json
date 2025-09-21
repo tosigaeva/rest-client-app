@@ -1,0 +1,130 @@
+{
+  "languageSwitcher": {
+    "be": "BE Беларуская",
+    "en": "EN English",
+    "ru": "RU Русский"
+  },
+  "signIn": "Sign In",
+  "signUp": "Sign up free",
+  "welcomeBlock": {
+    "welcome": "Welcome to",
+    "welcomeBack": "Welcome back",
+    "descriptionApp": "RestCafé is a modern and user-friendly API testing tool inspired by Postman, designed for developers, testers, and teams who want to streamline their workflow.",
+    "textUnderBtn": "Get started for free – no credit card required",
+    "restClient": {
+      "title": "RESTful Client",
+      "description": "Description for RESTful Client",
+      "btn": "Open"
+    },
+    "history": {
+      "title": "History Request",
+      "description": "View previous requests",
+      "btn": "View"
+    },
+    "variables": {
+      "title": "Variables",
+      "description": "Manage your environment variables",
+      "btn": "Edit"
+    }
+  },
+  "notFound": {
+    "btn": "Back to the Beginning"
+  },
+  "history": {
+    "empty_title": "You haven't executed any requests yet",
+    "empty_description": "It's empty here. Try those options:",
+    "open_rest_client": "Open REST Client",
+    "title": "History Requests",
+    "description": "Click on a request to restore it in the REST Client."
+  },
+  "auth": {
+    "signin": "Sign In",
+    "singup": "Sign Up",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "signup_page": {
+      "title": "New Account",
+      "have_account": "Already have an account?"
+    },
+    "signin_page": {
+      "title": "Sign in",
+      "subtitle": "Hey there... Welcome back!",
+      "no_account": "New User?"
+    },
+    "validation": {
+      "name_required": "Name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Invalid email address",
+      "password_required": "Password is required",
+      "password_invalid": "Invalid Password"
+    },
+    "password_checks": {
+      "uppercase": "One uppercase letter",
+      "lowercase": "One lowercase letter",
+      "special_char": "One special character",
+      "min_length": "8 characters minimum",
+      "number": "One number"
+    },
+    "toasts": {
+      "signup_success": "Account created successfully!",
+      "signin_success": "Logged in successfully!",
+      "signout_success": "Goodbye! See you soon...",
+      "signout_error": "Sign out failed. Please try again.",
+      "in-use": "Email is already in use",
+      "invalid": "Check your email and password",
+      "unknown": "Something went wrong"
+    },
+    "btn": "Back to the Beginning"
+  },
+  "footer": {
+    "client": " Client App",
+    "Anastasiia": "Anastasiia",
+    "Katsiaryna": "Katsiaryna",
+    "Yulia": "Yulia",
+    "logo": "RS School logo"
+  },
+  "header": {
+    "main": "Main",
+    "si": "Sign In",
+    "su": "Sign Up"
+  },
+  "about": {
+    "team": "a team that cooks with love",
+    "Yulia": {
+      "name": "Yulia",
+      "descr": "Master of transforming code into culinary masterpieces. Each line is an ingredient in the perfect solution.",
+      "major": "Captain of the Kitchen | Team Lead, Developer"
+    },
+    "Anastasiia": {
+      "name": "Anastasiia",
+      "descr": "Digital chef who turns complex problems into delicious solutions, serving innovation one line of code at a time.",
+      "major": "Master Chef of Solutions, Developer"
+    },
+    "Katsiaryna": {
+      "name": "Katsiaryna",
+      "descr": "Master of digital presentation, where every style is an ingredient of the perfect UI",
+      "major": "Cooking Code, Developer"
+    }
+  },
+  "variablesBlock": {
+    "variablesHeader": "Variables",
+    "hintSaveBtn": "Click To SAVE Variables",
+    "hintAddRowBtn": "Click to Add a Row to write Variables",
+    "hintDelBtn": "Click To DELETE Variable",
+    "variables": "Variable (key)",
+    "value": "Value",
+    "btnSave": "Save",
+    "btnAdd": "Add Row",
+    "messageError": "Please fill in the ",
+    "messageErrorVariables": "'Variable (key)' field",
+    "and": " and ",
+    "messageErrorValue": "'Value' field",
+    "messageErrorUnknown": "An unknown error occurred!",
+    "messageSuccessful": "Data saved successfully!"
+  },
+  "aboutCourse": {
+    "react": "React Course by RS School",
+    "description": "This course is designed for individuals who have a basic understanding of JavaScript and want to enhance their skills in building modern web applications using React. Whether you're a beginner looking to get started with React or an experienced developer aiming to deepen your knowledge, this course provides a comprehensive learning experience."
+  }
+}
