@@ -40,6 +40,6 @@ describe('Footer', () => {
 
     const img = screen.getByAltText('RSS Logo');
     expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute('src', 'rss-logo.svg');
+    expect(img).toHaveAttribute('src', '/rss-logo.svg');
   });
 });
