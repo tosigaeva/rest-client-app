@@ -24,7 +24,7 @@ export const Footer = () => {
         </div>
         <span className="font-caprasimo text-sm text-gray-900">&copy; 2025 REST{t('client')} </span>
         <Link href={RSS_LINK} target="_blank">
-          <Image alt={t('logo')} height={40} src="rss-logo.svg" width={40} />
+          <Image alt={t('logo')} height={40} src="/rss-logo.svg" width={40} />
         </Link>
       </div>
     </footer>

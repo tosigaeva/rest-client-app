@@ -22,7 +22,7 @@ export const BodyEditor = ({
   const segments = pathname.split('/').filter(Boolean);
   const [body, setBody] = useState(!readOnly ? decode(segments[4] ?? '') : '');
   const dispatch = useDispatch();
-  const username = user?.displayName || 'Guest';
+  const username = user?.uid || 'Guest';
   const [isJson, setIsJson] = useState<boolean>(() => {
     try {
       JSON.parse(body);

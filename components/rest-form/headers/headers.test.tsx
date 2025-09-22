@@ -9,6 +9,28 @@ import { Header } from '@/type';
 
 import { RestHeaders } from './headers';
 
+vi.mock('next-intl', () => ({
+  useTranslations: (namespace: string) => {
+    const translations: Record<string, Record<string, string>> = {
+      'rest-client': {
+        add: 'Add Header',
+        body: 'Body',
+        client: 'Client',
+        headers: 'Headers',
+        key: 'Key',
+        'No-response': 'No response yet.',
+        placeholder_url: 'Endpoint URL',
+        'please-enter-valid-method-and-url': 'Please select HTTP method and enter url',
+        send: 'Send Request',
+        status: 'Status',
+        value: 'Value',
+      },
+    };
+
+    return (key: string) => translations[namespace]?.[key] ?? key;
+  },
+}));
+
 vi.mock('@/components/ui/button', () => ({
   Button: ({ children, onClick }: { children: React.ReactNode; onClick?: () => void }) => (
     <button onClick={onClick}>{children}</button>

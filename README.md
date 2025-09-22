@@ -77,7 +77,7 @@ The goal of the project is to provide a convenient tool for testing and debuggin
 
 ## Deployment
 
-https://rest-client-app-rust.vercel.app/
+https://rest-client-app-wts9.vercel.app/
 
 ---
 

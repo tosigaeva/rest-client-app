@@ -1,5 +1,6 @@
 'use client';
 import { HeaderItem } from '@components';
+import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,6 +13,7 @@ import { RootState } from '@/store/store';
 import { AppProps, Header } from '@/type';
 
 export const RestHeaders = ({ user }: AppProps) => {
+  const t = useTranslations('rest-client');
   const [header, setHeader] = useState<Header>(EMPTY_HEADER);
   const headers: Header[] = useSelector((state: RootState) => state.restData.headers);
   const dispatch = useDispatch();
@@ -34,12 +36,12 @@ export const RestHeaders = ({ user }: AppProps) => {
     <div className="space-y-4 rounded-2xl border border-neutral-200 bg-fuchsia-50 p-4 shadow dark:bg-neutral-900">
       <div className="flex flex-wrap items-center gap-3">
         <h3 className="font-caprasimo text-lg font-semibold text-neutral-800 dark:text-neutral-100">
-          Headers
+          {t('headers')}
         </h3>
         <Input
           className="w-40 bg-white"
           onChange={(e) => setHeader((prev) => ({ ...prev, headerKey: e.target.value }))}
-          placeholder="Key"
+          placeholder={t('key')}
           type="text"
           value={header.headerKey}
         />
@@ -48,12 +50,12 @@ export const RestHeaders = ({ user }: AppProps) => {
           onChange={(e) => {
             setHeader((prev) => ({ ...prev, value: e.target.value }));
           }}
-          placeholder="Value"
+          placeholder={t('value')}
           type="text"
           value={header.value}
         />
         <Button className={STYLE_BUTTON} onClick={handlerAddHeader} size="sm">
-          Add Header
+          {t('add')}
         </Button>
       </div>
       <div className="space-y-2">

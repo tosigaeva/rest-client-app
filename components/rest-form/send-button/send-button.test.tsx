@@ -8,6 +8,29 @@ import { HttpMethod } from '@/type';
 import { SendButton } from './send-button';
 
 const mockDispatch = vi.fn();
+
+vi.mock('next-intl', () => ({
+  useTranslations: (namespace: string) => {
+    const translations: Record<string, Record<string, string>> = {
+      'rest-client': {
+        add: 'Add Header',
+        body: 'Body',
+        client: 'Client',
+        headers: 'Headers',
+        key: 'Key',
+        'No-response': 'No response yet.',
+        placeholder_url: 'Endpoint URL',
+        'please-enter-valid-method-and-url': 'Please select HTTP method and enter url',
+        send: 'Send Request',
+        status: 'Status',
+        value: 'Value',
+      },
+    };
+
+    return (key: string) => translations[namespace]?.[key] ?? key;
+  },
+}));
+
 vi.mock('react-redux', async () => {
   const actual = await vi.importActual<typeof redux>('react-redux');
   return {
