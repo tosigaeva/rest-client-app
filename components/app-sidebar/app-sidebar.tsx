@@ -1,5 +1,4 @@
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
 import { GrCloudUpload, GrHistory, GrPowerCycle } from 'react-icons/gr';
 
 import {
@@ -9,9 +8,9 @@ import {
   SidebarGroupContent,
   SidebarGroupLabel,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import { Link } from '@/i18n/navigation';
 
 const items = [
   {
@@ -39,12 +38,13 @@ export async function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton asChild>
-                    <Link className="flex items-center gap-2" href={`/${item.url}`}>
-                      {item.icon}
-                      <span className="font-caprasimo text-2xl">{t(item.url)}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                  <Link
+                    className="flex items-center gap-2 hover:bg-fuchsia-300"
+                    href={`/${item.url}`}
+                  >
+                    {item.icon}
+                    <span className="font-caprasimo text-2xl">{t(item.url)}</span>
+                  </Link>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>

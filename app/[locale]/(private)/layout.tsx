@@ -16,12 +16,12 @@ export default async function PrivateLayout({ children }: { children: ReactNode 
 
   return (
     <SidebarProvider>
-      <div className="flex w-full overflow-hidden">
+      <div className="flex w-full">
         <AppSidebar />
-        <SidebarInset className="flex h-full flex-col overflow-hidden">
+        <SidebarInset className="flex h-full flex-col">
           <div className="flex flex-1 flex-col">
             <Header isAuth={user !== undefined && user !== null} />
-            <main className="flex-1 overflow-auto">{children}</main>
+            <main className="flex-1">{children}</main>
             <Footer />
           </div>
         </SidebarInset>

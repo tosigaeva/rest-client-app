@@ -4,8 +4,8 @@ import { beforeAll, describe, expect, it, vi } from 'vitest';
 import { SidebarProvider } from '../ui/sidebar';
 import { AppSidebar } from './app-sidebar';
 
-vi.mock('next/link', () => ({
-  default: ({ children, href }: { children: React.ReactNode; href: string }) => (
+vi.mock('@/i18n/navigation', () => ({
+  Link: ({ children, href }: { children: React.ReactNode; href: string }) => (
     <a href={href}>{children}</a>
   ),
 }));
